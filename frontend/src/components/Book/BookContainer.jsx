@@ -214,7 +214,7 @@ const BookContainer = () => {
         </HTMLFlipBook>
       </div>
       <button
-        className="absolute left-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#8B4513] p-3 rounded-full"
+        className=" tongleButton absolute left-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
         onClick={flipToPrevPage}
       >
         ←
@@ -222,7 +222,7 @@ const BookContainer = () => {
 
       {/* Right arrow button */}
       <button
-        className="absolute right-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#8B4513] p-3 rounded-full"
+        className=" tongleButton absolute right-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
         onClick={flipToNextPage}
       >
         →

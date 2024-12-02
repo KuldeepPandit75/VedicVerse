@@ -48,6 +48,7 @@ function App() {
               </PrivateRoute>
             }
           />
+
           <Route
             path="meta"
             element={
