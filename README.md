@@ -24,12 +24,12 @@ Translation Tools: Integrated APIs for Sanskrit verse translation
 
 ### Prerequisites
 
-Make sure you have the following installed:
+Make sure you have the following installed:<br/>
 
-Node.js
-MongoDB
-A modern web browser
-Python
+Node.js<br/>
+MongoDB<br/>
+A modern web browser<br/>
+Python<br/>
 
 ### Installation
 
@@ -57,11 +57,11 @@ npm install
 
 Create a .env file in the backend directory.
 
-Add the required configurations:
-PORT="PORT"
-MBD_USERNAME="USERNAME"
-MBD_PASSWORD="PASS"
-ACCESS_KEY="KEY"
+Add the required configurations:<br/>
+PORT="PORT"<br/>
+MBD_USERNAME="USERNAME"<br/>
+MBD_PASSWORD="PASS"<br/>
+ACCESS_KEY="KEY"<br/>
 
 4. Start the Chatbot:
 
