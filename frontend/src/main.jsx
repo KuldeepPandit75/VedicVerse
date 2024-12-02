@@ -25,8 +25,8 @@ function App() {
           element={<Login isUserAuthenticated={isUserAuthenticated} />}
         />
         <Route path="/" element={<Layout isAuthenticated={isAuthenticated} />}>
-          <Route path="" element={<Meta />} />
-          <Route path="home" element={<Home />} />
+          <Route path="" element={<Home />} />
+          <Route path="meta" element={<Meta />} />
         </Route>
       </>
     )

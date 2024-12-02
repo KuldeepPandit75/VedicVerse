@@ -3,15 +3,29 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="bg-transparent flex justify-between items-center px-8 py-4">
-      <h1 className="text-red-600 text-2xl font-bold">Vedic Verse</h1>
-      <ul className="flex space-x-8">
-        <li className="text-white font-semibold hover:text-red-400">Home</li>
-        <li className="text-white font-semibold hover:text-red-400">
+    <nav className="bg-transparent flex justify-between items-center px-6 py-4">
+      {/* Logo */}
+      <h1 className="text-[#A41623] text-4xl font-bold font-samarkan">
+        Vedic Verse
+      </h1>
+
+      {/* Navigation Links */}
+      <ul className="flex justify-around bg-[#A41623BF] rounded-2xl w-[506px]">
+        <li className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer">
+          Home
+        </li>
+        <li className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer">
           Introduction
         </li>
-        <li className="text-white font-semibold hover:text-red-400">Vedas</li>
+        <li className=" text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer">
+          Vedas
+        </li>
       </ul>
+
+      {/* Profile Icon */}
+      <button className=" h-10 w-10 rounded-full">
+        <img src="Group 1.png" alt="User" className="" />
+      </button>
     </nav>
   );
 };

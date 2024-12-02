@@ -1,16 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @font-face {
-    font-family: 'Samarkan';
-    src: url('/SAMAN___.ttf') format('truetype');
+  font-family: "Samarkan";
+  src: url("/SAMAN___.ttf") format("truetype");
 }
 
-*{
-    margin:0;
-    padding:0;
-    /* font-family: "Akaya Kanadaka"  */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Akaya Kanadaka";
 }
 
-body{
-    overflow: hidden;
-    font-family: roboto;
+body {
+  overflow: hidden;
+  background-image: url("background-img.png");
 }
-  
