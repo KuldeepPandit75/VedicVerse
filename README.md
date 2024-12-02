@@ -83,7 +83,7 @@ npm run dev
 
 ### Access the application: Open your browser and navigate to http://localhost:5173.
 
-##Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
