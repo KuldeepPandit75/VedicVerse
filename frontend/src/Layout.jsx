@@ -5,7 +5,6 @@ import Navbar from "./components/header/Navbar.jsx";
 function Layout({ isAuthenticated, isUserAuthenticated }) {
   return (
     <>
-      <Navbar/>
       <Outlet />
     </>
   );

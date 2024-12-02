@@ -3,10 +3,23 @@ import React from "react";
 // import Navbar from "./compone";
 // import {Feature as Card} from "./components/F"
 import Card from "../features/Feature";
+import { useNavigate } from "react-router";
+import Navbar from "../header/Navbar";
+
+
 const Home = () => {
+
+  const navigate=useNavigate();
+
+  const navtoMeta=()=>{
+    navigate("/meta")
+  }
+
   return (
+    <>
+    <Navbar/>
     <div className="min-h-screen bg-cover bg-center flex justify-evenly mt-5">
-      <div className=" hover:scale-105 cursor-pointer">
+      <div className=" hover:scale-105 cursor-pointer" onClick={()=>navtoMeta()}>
         <div className="   w-80 h-72 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
           <img src="guru.png" alt="guru" className="w-64 h-60" />
         </div>
@@ -49,6 +62,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
