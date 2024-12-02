@@ -14,16 +14,38 @@ import Layout from "./Layout.jsx";
 import Meta from "./components/meta/Meta.jsx";
 import Home from "./components/home/Home.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import BookContainer from "./components/Book/BookContainer.jsx";
 
 function App() {
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route path="login" element={<Login />} />
         <Route path="/" element={<Layout />}>
-          <Route path="" element={<PrivateRoute><Home /></PrivateRoute>} />
-          <Route path="meta" element={<PrivateRoute><Meta /></PrivateRoute>} />
+          <Route
+            path=""
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="book"
+            element={
+              <PrivateRoute>
+                <BookContainer />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="meta"
+            element={
+              <PrivateRoute>
+                <Meta />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </>
     )
