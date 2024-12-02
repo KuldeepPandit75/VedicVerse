@@ -3,7 +3,7 @@ import {useEffect ,useRef , createElement} from 'react'
 import Lobby from "./scenes/Lobby.js";
 
 const PhaserGame = () => {
-    const gameContainer = useRef(null);
+  const gameContainer = useRef(null);
 
     useEffect(() => {
         const config = {
@@ -22,25 +22,25 @@ const PhaserGame = () => {
             scene: Lobby,
         };
 
-        const game = new Phaser.Game(config);
+    const game = new Phaser.Game(config);
 
-        const handleResize = () => {
-            game.scale.resize(window.innerWidth, window.innerHeight);
-        };
+    const handleResize = () => {
+      game.scale.resize(window.innerWidth, window.innerHeight);
+    };
 
-        window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
 
-        return () => {
-            game.destroy(true); // Clean up on unmount
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
+    return () => {
+      game.destroy(true); // Clean up on unmount
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-    return createElement("div", {
-        ref: gameContainer,
-        id: "game-container",
-        style: { width: "100%", height: "100vh" },
-    });
+  return createElement("div", {
+    ref: gameContainer,
+    id: "game-container",
+    style: { width: "100%", height: "100vh" },
+  });
 };
 
 export default PhaserGame;
