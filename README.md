@@ -22,7 +22,7 @@ Translation Tools: Integrated APIs for Sanskrit verse translation
 
 ## Getting Started
 
-###Prerequisites
+### Prerequisites
 
 Make sure you have the following installed:
 
@@ -37,13 +37,13 @@ git clone https://github.com/KuldeepPandit75/VedicVerse.git
 cd VedicVerse
 ```
 
-###Install dependencies:
+### Install dependencies:
 
 ```bash
 npm install
 ```
 
-###Configure the environment variables:
+### Configure the environment variables:
 
 Create a .env file in the root directory.
 Add the required configurations for MongoDB, API keys, etc.
