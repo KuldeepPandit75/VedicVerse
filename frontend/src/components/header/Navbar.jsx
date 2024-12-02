@@ -1,7 +1,13 @@
 // src/components/Navbar.jsx
 import React from "react";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
+  const navigate=useNavigate();
+
+  const navtoHome=()=>{
+    navigate("/")
+  }
   return (
     <nav className="bg-transparent flex justify-between items-center px-6 py-4">
       {/* Logo */}
@@ -11,7 +17,7 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <ul className="flex justify-around bg-[#A41623BF] rounded-2xl w-[506px]">
-        <li className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer">
+        <li className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer" onClick={()=>navtoHome()}>
           Home
         </li>
         <li className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer">

@@ -47,7 +47,7 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="tanslate" element={<PrivateRoute><Translate /></PrivateRoute>} />
+          <Route path="translate" element={<PrivateRoute><Translate /></PrivateRoute>} />
         </Route>
       </>
     )
