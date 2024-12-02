@@ -1,4 +1,6 @@
 import Phaser from "phaser";
+import {useEffect ,useRef , createElement} from 'react'
+import Lobby from "./scenes/Lobby.js";
 
 const PhaserGame = () => {
     const gameContainer = useRef(null);
@@ -8,7 +10,7 @@ const PhaserGame = () => {
             type: Phaser.AUTO,
             width: window.innerWidth,
             height: window.innerHeight,
-            backgroundColor: "#fff",
+            backgroundColor: "#000",
             parent: gameContainer.current,
             physics: {
                 default: "arcade",
@@ -17,7 +19,7 @@ const PhaserGame = () => {
                     debug: false,
                 },
             },
-            scene: [TitleScreen],
+            scene: Lobby,
         };
 
         const game = new Phaser.Game(config);
