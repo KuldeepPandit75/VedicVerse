@@ -13,6 +13,9 @@ const Home = () => {
   const navtoTranslate=()=>{
     navigate("/translate")
   }
+  const navtoBook=()=>{
+    navigate("/vedbooks")
+  }
 
   return (
     <>
@@ -31,7 +34,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <div className=" hover:scale-105 transition-transform duration-300 cursor-pointer">
+      <div className=" hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={()=>navtoBook()}>
         <div className="   w-80 h-72 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
           <img src="veds 1.png" alt="guru" className="w-64 h-60" />
         </div>

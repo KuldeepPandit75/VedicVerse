@@ -41,7 +41,7 @@ function App() {
             }
           />
           <Route
-            path="VedBooks"
+            path="vedbooks"
             element={
               <PrivateRoute>
                 <VedBooks />

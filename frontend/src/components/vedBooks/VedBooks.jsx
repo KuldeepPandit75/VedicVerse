@@ -1,7 +1,13 @@
 import React from "react";
 import Navbar from "../header/Navbar";
+import { useNavigate } from "react-router";
 
 export default function VedBooks() {
+  const navigate = useNavigate();
+
+  const navtobook=()=>{
+    navigate("/book")
+  }
   return (
     <div className="min-h-screen backdrop-blur-[10px]">
       <Navbar />
@@ -12,6 +18,7 @@ export default function VedBooks() {
               src="/gita.jpg" 
               alt="Book Cover"
               className="w-full h-full object-cover rounded-lg shadow-md"
+              onClick={()=>navtobook()}
             />
           </li>
           <li className="w-full  hover:scale-105 cursor-pointer ">
