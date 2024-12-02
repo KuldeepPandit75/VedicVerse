@@ -67,7 +67,6 @@ const BookContainer = () => {
     },
   ];
 
-  // Combine the arrays alternately
   const linkedListArray = [];
   const maxLength = Math.max(pages.length, trans.length);
 
@@ -82,32 +81,37 @@ const BookContainer = () => {
 
   console.log(linkedListArray);
   const contBoxRef = useRef(null);
+  const bookRef = useRef(null);
   useEffect(() => {
     gsap.fromTo(
       contBoxRef.current,
-      { x: "-100vw", opacity: 0 }, // Starting position off-screen
+      { x: "-100vw", opacity: 0 },
       {
-        x: "0", // Final position
+        x: "0",
         opacity: 1,
-        duration: 2, // Animation duration
-        ease: "power2.out", // Smooth easing
+        duration: 2,
+        ease: "power2.out",
       }
     );
   }, []);
-  // cover page components
+
   const CoverPage = () => (
     <div className="cover-page relative w-full h-full bg-gradient-to-br from-[#8B4513] to-[#654321]">
-      {/* book front page photo  */}
-
       <img src="/gita.jpg" alt="frontPage   " />
     </div>
   );
-  const pageFlipSound = useRef(new Audio("/pageTurnSound.mp3")); // Add your sound file to public folder
+  const pageFlipSound = useRef(new Audio("/pageTurnSound.mp3"));
 
   const handleStartPageFlip = () => {
-    // Play the sound immediately when a page turn starts
     pageFlipSound.current.currentTime = 0;
     pageFlipSound.current.play();
+  };
+  const flipToPrevPage = () => {
+    bookRef.current.pageFlip().flipPrev();
+  };
+
+  const flipToNextPage = () => {
+    bookRef.current.pageFlip().flipNext();
   };
 
   return (
@@ -119,9 +123,10 @@ const BookContainer = () => {
 
       <div
         ref={contBoxRef}
-        className="flipbook-container relative z-10 flex  justify-end pr-8 items-center min-h-screen py-5"
+        className="flipbook-container relative z-10 flex  justify-center pr-8 items-center min-h-screen py-5"
       >
         <HTMLFlipBook
+          ref={bookRef}
           width={400}
           height={600}
           size="fixed"
@@ -156,8 +161,6 @@ const BookContainer = () => {
                 height: "100%",
               }}
             >
-              {/* Header with enhanced design */}
-
               <div className="header text-center  mb-6">
                 <div className="absolute inset-4 border-[3px] border-[#d4af37]" />
                 <div className="absolute inset-6 border-[1px] border-[#d4af37]" />
@@ -183,13 +186,11 @@ const BookContainer = () => {
                 </h2>
               </div>
 
-              {/* Content with enhanced styling */}
               <div className="content flex   text-center m-auto w-80 h-80 rounded-lg p-6 ">
                 {/* Sholk */}
                 {page.sanskrit || page.description}
               </div>
 
-              {/* Enhanced Footer with decorative page number */}
               <div className="footer text-center mt-6 relative">
                 <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2">
                   <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"></div>
@@ -204,6 +205,19 @@ const BookContainer = () => {
           ))}
         </HTMLFlipBook>
       </div>
+      <button
+        className=" tongleButton absolute left-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
+        onClick={flipToPrevPage}
+      >
+        ←
+      </button>
+
+      <button
+        className=" tongleButton absolute right-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
+        onClick={flipToNextPage}
+      >
+        →
+      </button>
     </div>
   );
 };

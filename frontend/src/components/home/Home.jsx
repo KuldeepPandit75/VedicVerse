@@ -1,15 +1,11 @@
-// src Home.jsx
 import React from "react";
-// import Navbar from "./compone";
-// import {Feature as Card} from "./components/F"
+
 import Card from "../features/Feature";
 import { useNavigate } from "react-router";
 import Navbar from "../header/Navbar";
 
-
 const Home = () => {
-
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const navtoMeta=()=>{
     navigate("/meta")
