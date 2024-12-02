@@ -82,6 +82,7 @@ const BookContainer = () => {
 
   console.log(linkedListArray);
   const contBoxRef = useRef(null);
+  const bookRef = useRef(null);
   useEffect(() => {
     gsap.fromTo(
       contBoxRef.current,
@@ -109,6 +110,13 @@ const BookContainer = () => {
     pageFlipSound.current.currentTime = 0;
     pageFlipSound.current.play();
   };
+  const flipToPrevPage = () => {
+    bookRef.current.pageFlip().flipPrev();
+  };
+
+  const flipToNextPage = () => {
+    bookRef.current.pageFlip().flipNext();
+  };
 
   return (
     <div className="container min-h-screen min-w-full bg-gradient-to-b from-[#f7e6d0] to-[#f9d9b4]">
@@ -119,9 +127,10 @@ const BookContainer = () => {
 
       <div
         ref={contBoxRef}
-        className="flipbook-container relative z-10 flex  justify-end pr-8 items-center min-h-screen py-5"
+        className="flipbook-container relative z-10 flex  justify-center pr-8 items-center min-h-screen py-5"
       >
         <HTMLFlipBook
+          ref={bookRef}
           width={400}
           height={600}
           size="fixed"
@@ -204,6 +213,20 @@ const BookContainer = () => {
           ))}
         </HTMLFlipBook>
       </div>
+      <button
+        className="absolute left-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#8B4513] p-3 rounded-full"
+        onClick={flipToPrevPage}
+      >
+        ←
+      </button>
+
+      {/* Right arrow button */}
+      <button
+        className="absolute right-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#8B4513] p-3 rounded-full"
+        onClick={flipToNextPage}
+      >
+        →
+      </button>
     </div>
   );
 };
