@@ -14,6 +14,7 @@ import Layout from "./Layout.jsx";
 import Meta from "./components/meta/Meta.jsx";
 import Home from "./components/home/Home.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import Translate from "./components/translate/Translate.jsx";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="" element={<PrivateRoute><Home /></PrivateRoute>} />
           <Route path="meta" element={<PrivateRoute><Meta /></PrivateRoute>} />
+          <Route path="tanslate" element={<PrivateRoute><Translate /></PrivateRoute>} />
         </Route>
       </>
     )
