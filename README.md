@@ -20,7 +20,7 @@ Backend: Node.js, Express.js
 Data Management: MongoDB for storing user data and library resources
 Translation Tools: Integrated APIs for Sanskrit verse translation
 
-## Getting Started
+# Getting Started
 
 ### Prerequisites
 
@@ -29,7 +29,9 @@ Make sure you have the following installed:
 Node.js
 MongoDB
 A modern web browser
-Installation
+
+### Installation
+
 Clone the repository:
 
 ```bash
