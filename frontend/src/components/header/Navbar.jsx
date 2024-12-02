@@ -7,6 +7,10 @@ const Navbar = () => {
   const navtoHome=()=>{
     navigate("/")
   }
+
+  const navtoVedas=()=>{
+    navigate("/vedbooks")
+  }
   return (
     <nav className=" flex justify-between items-center px-6 py-4">
       <h1 className="text-[#A41623] text-4xl font-bold font-samarkan">
@@ -20,7 +24,7 @@ const Navbar = () => {
         <li className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer">
           Introduction
         </li>
-        <li className=" text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer">
+        <li className=" text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer" onClick={()=>navtoVedas()}>
           Vedas
         </li>
       </ul>
