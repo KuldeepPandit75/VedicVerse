@@ -16,6 +16,7 @@ import Home from "./components/home/Home.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import BookContainer from "./components/Book/BookContainer.jsx";
 import Translate from "./components/translate/Translate.jsx";
+import VedBooks from "./components/vedBooks/VedBooks.jsx";
 
 function App() {
   const router = createBrowserRouter(
@@ -40,6 +41,14 @@ function App() {
             }
           />
           <Route
+            path="VedBooks"
+            element={
+              <PrivateRoute>
+                <VedBooks />
+              </PrivateRoute>
+            }
+          />
+          <Route
             path="meta"
             element={
               <PrivateRoute>
@@ -47,7 +56,14 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="tanslate" element={<PrivateRoute><Translate /></PrivateRoute>} />
+          <Route
+            path="tanslate"
+            element={
+              <PrivateRoute>
+                <Translate />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </>
     )

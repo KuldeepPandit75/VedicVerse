@@ -3,7 +3,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="bg-transparent flex justify-between items-center px-6 py-4">
+    <nav className=" flex justify-between items-center px-6 py-4">
       {/* Logo */}
       <h1 className="text-[#A41623] text-4xl font-bold font-samarkan">
         Vedic Verse
