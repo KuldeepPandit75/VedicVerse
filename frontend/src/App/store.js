@@ -2,7 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import vedicReducer from "../features/vedicSlice.js"
 
 const store=configureStore({
-    reducer: vedicReducer
+    reducer: {
+        vedic: vedicReducer
+    }
 })
 
 export default store;

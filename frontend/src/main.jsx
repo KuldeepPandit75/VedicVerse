@@ -1,4 +1,4 @@
-import { StrictMode, useState } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import {
@@ -13,20 +13,17 @@ import Login from "./components/login/Login.jsx";
 import Layout from "./Layout.jsx";
 import Meta from "./components/meta/Meta.jsx";
 import Home from "./components/home/Home.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 function App() {
-  const [isAuthenticated, isUserAuthenticated] = useState(false);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route
-          path="login"
-          element={<Login isUserAuthenticated={isUserAuthenticated} />}
-        />
-        <Route path="/" element={<Layout isAuthenticated={isAuthenticated} />}>
-          <Route path="" element={<Meta />} />
-          <Route path="home" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="" element={<PrivateRoute><Home /></PrivateRoute>} />
+          <Route path="meta" element={<PrivateRoute><Meta /></PrivateRoute>} />
         </Route>
       </>
     )

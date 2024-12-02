@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { API } from "../../service/api.js";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/vedicSlice.js";
-import { useNavigate } from "react-router";
+import { useNavigate, Navigate } from "react-router";
 import { Alert } from "@mui/material";
 import "@fontsource/akaya-kanadaka";
 
@@ -89,7 +89,8 @@ const loginInitialValues = {
     password: ""
 }
 
-function Login(props) {
+function Login() {
+    
     const [page, setPage] = useState("login")
     const [signup, setSignup] = useState(signupInitialValues);
     const [error, setError] = useState("");
@@ -159,16 +160,15 @@ function Login(props) {
             setError("");
             setLogin(loginInitialValues);
 
-            sessionStorage.setItem("accessToken", `Bearer ${res.data.accessToken}`);
-            console.log(res.data);
+            const accessToken = `Bearer ${res.data.accessToken}`;
+            sessionStorage.setItem("accessToken", accessToken);
+            localStorage.setItem("accessToken", accessToken);
 
             dispatch(setUser(res.data));
 
-            props.isUserAuthenticated(true);
-
             navigate("/");
         } else {
-            setError("Unable to login")
+            setError("Unable to login");
         }
     }
 
