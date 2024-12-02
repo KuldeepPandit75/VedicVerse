@@ -102,12 +102,10 @@ git push origin feature-name
 ```
 Open a pull request.
 
-##License
-This project is licensed under the MIT License.
 
-##Contact
+## Contact
 For queries or collaboration, feel free to reach out:
 
-Author: Kuldeep Pandit
-Email: kuldeep.pandit75@gmail.com
-GitHub: KuldeepPandit75
+Author: Kuldeep Pandit, Kuldeep Chaudhary
+Email: kuldeepk11139@gmail.com
+GitHub: KuldeepPandit75, Kuldeepchaudhary108
