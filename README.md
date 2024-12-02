@@ -104,8 +104,8 @@ Open a pull request.
 
 
 ## Contact
-For queries or collaboration, feel free to reach out:
+For queries or collaboration, feel free to reach out:<br/>
 
-Author: Kuldeep Pandit, Kuldeep Chaudhary
-Email: kuldeepk11139@gmail.com
-GitHub: KuldeepPandit75, Kuldeepchaudhary108
+Author: Kuldeep Pandit, Kuldeep Chaudhary<br/>
+Email: kuldeepk11139@gmail.com<br/>
+GitHub: KuldeepPandit75, Kuldeepchaudhary108<br/>
