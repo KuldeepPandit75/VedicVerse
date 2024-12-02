@@ -20,7 +20,7 @@ Backend: Node.js, Express.js
 Data Management: MongoDB for storing user data and library resources
 Translation Tools: Integrated APIs for Sanskrit verse translation
 
-# Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -29,32 +29,59 @@ Make sure you have the following installed:
 Node.js
 MongoDB
 A modern web browser
+Python
 
 ### Installation
 
-Clone the repository:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/KuldeepPandit75/VedicVerse.git
 cd VedicVerse
 ```
 
-### Install dependencies:
+2. Install dependencies:
 
 ```bash
+cd frontend
 npm install
 ```
 
-### Configure the environment variables:
-
-Create a .env file in the root directory.
-Add the required configurations for MongoDB, API keys, etc.
-Start the application:
-
 ```bash
-npm start
-Access the application: Open your browser and navigate to http://localhost:5173.
+cd ..
+cd backend
+npm install
 ```
+
+3. Configure the environment variables:
+
+Create a .env file in the backend directory.
+
+Add the required configurations:
+PORT="PORT"
+MBD_USERNAME="USERNAME"
+MBD_PASSWORD="PASS"
+ACCESS_KEY="KEY"
+
+4. Start the Chatbot:
+
+Simply run main.py file in final_bot file
+
+5. Start the backend:
+
+```
+cd backend
+node index.js
+```
+
+6. Start the frontend:
+
+```
+cd frontend
+npm run dev
+```
+
+### Access the application: Open your browser and navigate to http://localhost:5173.
 
 ##Contributing
 
