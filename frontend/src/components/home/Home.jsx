@@ -5,22 +5,49 @@ import React from "react";
 import Card from "../features/Feature";
 const Home = () => {
   return (
-    <div
-      className="min-h-screen bg-cover bg-center"
-      style={{
-        backgroundImage: "url('temple-background.jpg')",
-      }}
-    >
-      <Card
-        image="collection-icon.svg"
-        title="Collection of Vedas"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut metus finibus."
-      />
-      <Card
-        image="translate-icon.svg"
-        title="Translate Vedic Texts"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut metus finibus."
-      />
+    <div className="min-h-screen bg-cover bg-center flex justify-evenly mt-5">
+      <div className=" hover:scale-105 cursor-pointer">
+        <div className="   w-80 h-72 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
+          <img src="guru.png" alt="guru" className="w-64 h-60" />
+        </div>
+        <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl text-center">
+          <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
+            Explore Our Culture in 2D
+          </h2>
+          <p className="text-white">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Consequuntur, eligendi.
+          </p>
+        </div>
+      </div>
+      <div className=" hover:scale-105 cursor-pointer">
+        <div className="   w-80 h-72 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
+          <img src="veds 1.png" alt="guru" className="w-64 h-60" />
+        </div>
+        <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl font-samarkan text-center">
+          <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
+            Collection of vedas
+          </h2>
+          <p className="text-white">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Consequuntur, eligendi.
+          </p>
+        </div>
+      </div>
+      <div className=" hover:scale-105 cursor-pointer">
+        <div className="   w-80 h-72 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
+          <img src="vedvyas 1.png" alt="guru" className="w-64 h-60" />
+        </div>
+        <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl  text-center">
+          <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
+            Translate Vedic Texts{" "}
+          </h2>
+          <p className="text-white">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Consequuntur, eligendi.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
