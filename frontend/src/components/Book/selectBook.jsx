@@ -9,7 +9,7 @@ export default function selectBook() {
   };
   const navtoBook = () => {
     navigate("/vedbooks");
-  };
+  };  
   return (
     <div className="flex justify-evenly items-center  min-h-screen min-w-full bg-gradient-to-b from-[#f7e6d0] to-[#e3a55e] ">
       <div className="cursor-pointer ">

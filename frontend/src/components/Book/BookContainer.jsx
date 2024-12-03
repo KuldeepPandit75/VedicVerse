@@ -187,6 +187,7 @@ const BookContainer = () => {
                     alt=""
                   />
                 </div>
+
                 <h1 className="text-xl font-bold text-[#8B4513] mb-2 font-sanskrit drop-shadow-lg">
                   {page.chapter || page.authorName}
                 </h1>
@@ -202,7 +203,10 @@ const BookContainer = () => {
                   {page.sanskrit || page.description}
                 </div>
 
-                <div className="footer text-center mt-6 relative">
+                <div className=" top-48 left-20 -z-10 absolute opacity-80">
+                  <img src="/water2.png" alt="waterMark" />
+                </div>
+                <div className=" text-center mt-6 relative">
                   <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2">
                     <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"></div>
                   </div>

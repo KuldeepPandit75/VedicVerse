@@ -9,6 +9,25 @@ const pdfFiles = {
   samved: "/books/samved.pdf",
   rigved: "/books/rigved.pdf",
   yajurved: "/books/yajurved.pdf",
+  arthved: "/books/arthved-part-1.pdf",
+  gita: "/books/bhagwat-git.pdf",
+  bhagwat: "/books/bhagwat-puran.pdf",
+  nard: "/books/nard-puran.pdf",
+  shiv: "/books/shiv-puran.pdf",
+  vaman: "/books/vamanouran.pdf",
+  vishnu: "/books/vishnu-puran.pdf",
+};
+const coverPhoto = {
+  samved: "/samved.jpeg",
+  rigved: "/rigved.jpeg",
+  yajurved: "/yajurved.jpeg",
+  arthved: "/arthved.jpeg",
+  gita: "/gita.jpeg",
+  bhagwat: "/bhagwat.jpeg",
+  nard: "/narad.jpeg",
+  shiv: "/shiv.jpeg",
+  vaman: "/vaman.jpeg",
+  vishnu: "/vishnu.jpeg",
 };
 
 // Set up PDF.js worker
@@ -18,6 +37,7 @@ const PDFViewer = () => {
   const location = useLocation();
   const selectedBook = location.state || {};
   const pdfFile = pdfFiles[selectedBook.bookName];
+  const cover = coverPhoto[selectedBook.bookName];
 
   const [numPages, setNumPages] = useState(0);
   const [pageImages, setPageImages] = useState([]); // Array to store rendered pages
@@ -92,6 +112,13 @@ const PDFViewer = () => {
     setCurrentPage(pageIndex + 1); // Update the current page
   };
 
+  // tongle page button
+  const flipToPrevPage = () => {
+    bookRef.current.pageFlip().flipPrev();
+  };
+  const flipToNextPage = () => {
+    bookRef.current.pageFlip().flipNext();
+  };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#d4bb9a] to-[#ce9a5e] py-10">
       {/* <div className="absolute inset-0 z-0">
@@ -117,8 +144,13 @@ const PDFViewer = () => {
           onFlip={onFlip} // Trigger page tracking on flip
         >
           {/* Cover Page */}
-          <div className="page-content bg-gradient-to-br from-[#8B4513] to-[#654321] rounded-lg p-6 flex items-center justify-center">
-            <h2 className="text-3xl font-bold">Cover Page</h2>
+          <div className="bg-gradient-to-br from-[#b79278] to-[#a77747] rounded-lg p-6 flex items-center justify-center">
+            {/* <h2 className="text-3xl font-bold">Cover Page</h2> */}
+            <img
+              className="w-[400px] h-[550px] rounded-lg"
+              src={cover}
+              alt="coverPage"
+            />
           </div>
 
           {/* Render PDF Pages */}
@@ -162,6 +194,9 @@ const PDFViewer = () => {
                         पृष्ठ {index + 1} / {pageImages.length}
                       </span>
                     </div>
+                    <div className=" top-48 left-20 z-10 absolute opacity-80">
+                      <img src="/water2.png" alt="waterMark" />
+                    </div>
                   </div>
                 </>
               ) : (
@@ -173,6 +208,19 @@ const PDFViewer = () => {
       ) : (
         <p className="text-lg font-semibold">Loading PDF...</p>
       )}
+      <button
+        className=" tongleButton absolute left-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
+        onClick={flipToPrevPage}
+      >
+        ←
+      </button>
+
+      <button
+        className=" tongleButton absolute right-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
+        onClick={flipToNextPage}
+      >
+        →
+      </button>
     </div>
   );
 };
