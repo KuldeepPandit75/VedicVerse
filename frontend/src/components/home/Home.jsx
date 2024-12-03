@@ -7,60 +7,76 @@ import Navbar from "../header/Navbar";
 const Home = () => {
   const navigate = useNavigate();
 
-  const navtoMeta=()=>{
-    navigate("/meta")
-  }
-  const navtoTranslate=()=>{
-    navigate("/translate")
-  }
-  const navtoBook=()=>{
-    navigate("/vedbooks")
-  }
+  const navtoMeta = () => {
+    navigate("/meta");
+  };
+  const navtoTranslate = () => {
+    navigate("/translate");
+  };
+  const navtoBook = () => {
+    navigate("/vedbooks");
+  };
 
   return (
     <>
-    <Navbar/>
-    <div className="min-h-screen bg-cover bg-center flex justify-evenly mt-5">
-      <div className=" hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={()=>navtoMeta()}>
-        <div className="   w-80 h-72 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
-          <img src="guru.png" alt="guru" className="w-64 h-60" />
+      <Navbar />
+      <div className="min-h-screen bg-cover bg-center flex justify-evenly mt-5">
+        <div
+          className=" hover:scale-105 transition-transform duration-300 cursor-pointer"
+          onClick={() => navtoMeta()}
+        >
+          <div className="   w-80 h-64 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
+            <img src="guru.png" alt="guru" className="w-64 h-60" />
+          </div>
+          <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl text-center">
+            <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
+              Explore Our Culture in 2D
+            </h2>
+            <p className="text-white ">
+              Step into the timeless world of Vedic culture, brought to life in
+              a captivating 2D metaverse. Discover ancient traditions, learn
+              about our rich heritage, and interact with a visually immersive
+              representation of Indian culture. <b>--In progress--</b>
+            </p>
+          </div>
         </div>
-        <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl text-center">
-          <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
-            Explore Our Culture in 2D
-          </h2>
-          <p className="text-white ">
-          Step into the timeless world of Vedic culture, brought to life in a captivating 2D metaverse. Discover ancient traditions, learn about our rich heritage, and interact with a visually immersive representation of Indian culture. <b>--In progress--</b>
-          </p>
+        <div
+          className=" hover:scale-105 transition-transform duration-300 cursor-pointer"
+          onClick={() => navtoBook()}
+        >
+          <div className="   w-80 h-64 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
+            <img src="veds 1.png" alt="guru" className="w-64 h-60" />
+          </div>
+          <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl font-samarkan text-center">
+            <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
+              Collection of vedas
+            </h2>
+            <p className="text-white">
+              Unlock the wisdom of the ages through our curated library of the
+              Vedas. Explore sacred scriptures that have shaped human thought,
+              philosophy, and spirituality for millennia.
+            </p>
+          </div>
+        </div>
+        <div
+          className=" hover:scale-105 transition-transform duration-300 cursor-pointer"
+          onClick={() => navtoTranslate()}
+        >
+          <div className="   w-80 h-64 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
+            <img src="vedvyas 1.png" alt="guru" className="w-64 h-60" />
+          </div>
+          <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl  text-center">
+            <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
+              Translate Vedic Texts{" "}
+            </h2>
+            <p className="text-white">
+              Bridge the gap between ancient knowledge and the modern world. Use
+              our tools to translate and understand Vedic texts, preserving
+              their meaning and making them accessible to everyone.
+            </p>
+          </div>
         </div>
       </div>
-      <div className=" hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={()=>navtoBook()}>
-        <div className="   w-80 h-72 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
-          <img src="veds 1.png" alt="guru" className="w-64 h-60" />
-        </div>
-        <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl font-samarkan text-center">
-          <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
-            Collection of vedas
-          </h2>
-          <p className="text-white">
-          Unlock the wisdom of the ages through our curated library of the Vedas. Explore sacred scriptures that have shaped human thought, philosophy, and spirituality for millennia.
-          </p>
-        </div>
-      </div>
-      <div className=" hover:scale-105 transition-transform duration-300 cursor-pointer" onClick={()=>navtoTranslate()}>
-        <div className="   w-80 h-72 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
-          <img src="vedvyas 1.png" alt="guru" className="w-64 h-60" />
-        </div>
-        <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl  text-center">
-          <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
-            Translate Vedic Texts{" "}
-          </h2>
-          <p className="text-white">
-          Bridge the gap between ancient knowledge and the modern world. Use our tools to translate and understand Vedic texts, preserving their meaning and making them accessible to everyone.
-          </p>
-        </div>
-      </div>
-    </div>
     </>
   );
 };

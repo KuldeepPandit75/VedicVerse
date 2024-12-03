@@ -124,7 +124,7 @@ const BookContainer = () => {
   };
 
   return (
-    <div className="container min-h-screen min-w-full bg-gradient-to-b from-[#f7e6d0] to-[#f9d9b4]">
+    <div className="container min-h-screen min-w-full bg-gradient-to-b from-[#f7e6d0] to-[#e09c4f]">
       {}
       <div className="absolute inset-0 z-10">
         <LeafComponents />
