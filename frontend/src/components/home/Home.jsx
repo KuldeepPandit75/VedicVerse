@@ -14,7 +14,7 @@ const Home = () => {
     navigate("/translate");
   };
   const navtoBook = () => {
-    navigate("/vedbooks");
+    navigate("/bookstype");
   };
 
   return (
