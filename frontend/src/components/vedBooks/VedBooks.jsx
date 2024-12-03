@@ -5,9 +5,12 @@ import { useNavigate } from "react-router";
 export default function VedBooks() {
   const navigate = useNavigate();
 
-  const navtobook=()=>{
-    navigate("/book")
-  }
+  const navtogita = () => {
+    navigate("/book");
+  };
+  const navtobook = (bookName) => {
+    navigate("/uploadBook", { state: { bookName } });
+  };
   return (
     <div className="min-h-screen backdrop-blur-[10px]">
       <Navbar />
@@ -15,17 +18,18 @@ export default function VedBooks() {
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <li className="w-full hover:scale-105  cursor-pointer">
             <img
-              src="/gita.jpg" 
+              src="/gita.jpg"
               alt="Book Cover"
               className="w-full h-full object-cover rounded-lg shadow-md"
-              onClick={()=>navtobook()}
-            />
+              onClick={() => navtogita()}
+            />  
           </li>
           <li className="w-full  hover:scale-105 cursor-pointer ">
             <img
-              src="/book3.jpeg" 
+              src="/book3.jpeg"
               alt="Book Cover"
               className="w-full h-full object-cover rounded-lg shadow-md"
+              onClick={() => navtobook("rigved")}
             />
           </li>
           <li className="w-full hover:scale-105 cursor-pointer ">
@@ -40,11 +44,12 @@ export default function VedBooks() {
               src="/book4.jpeg"
               alt="Book Cover"
               className="w-full h-full object-cover rounded-lg shadow-md"
+              onClick={() => navtobook("samved")}
             />
           </li>
           <li className="w-full  hover:scale-105  cursor-pointer">
             <img
-              src="/book5.jpeg" 
+              src="/book5.jpeg"
               alt="Book Cover"
               className="w-full h-full object-cover rounded-lg shadow-md"
             />

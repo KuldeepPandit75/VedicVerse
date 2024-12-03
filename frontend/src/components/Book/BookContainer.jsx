@@ -7,7 +7,7 @@ const BookContainer = () => {
   const pages = [
     {
       chapter: "अध्याय १४",
-      verse: "श्लोक १४.२",
+      श्लोक: " १४.२",
       title: "गुणत्रयविभागयोग",
       sanskrit:
         " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
@@ -16,35 +16,44 @@ const BookContainer = () => {
     },
     {
       chapter: "अध्याय १४",
-      verse: "श्लोक १४.२",
+      श्लोक: " १४.२",
       title: "गुणत्रयविभागयोग",
       sanskrit:
-        "2 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
+        " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
       translation:
         "By knowing this knowledge, you will attain oneness with Me. Even at creation, you won’t be born, and at dissolution, you will not suffer.",
     },
     {
       chapter: "अध्याय १४",
-      verse: "श्लोक १४.२",
+      श्लोक: " १४.२",
       title: "गुणत्रयविभागयोग",
       sanskrit:
-        "3 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
+        " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
       translation:
         "By knowing this knowledge, you will attain oneness with Me. Even at creation, you won’t be born, and at dissolution, you will not suffer.",
     },
     {
       chapter: "अध्याय १४",
-      verse: "श्लोक १४.२",
+      श्लोक: " १४.२",
       title: "गुणत्रयविभागयोग",
       sanskrit:
-        "4 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
+        " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
+      translation:
+        "By knowing this knowledge, you will attain oneness with Me. Even at creation, you won’t be born, and at dissolution, you will not suffer.",
+    },
+    {
+      chapter: "अध्याय १४",
+      श्लोक: " १४.२",
+      title: "गुणत्रयविभागयोग",
+      sanskrit:
+        " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
       translation:
         "By knowing this knowledge, you will attain oneness with Me. Even at creation, you won’t be born, and at dissolution, you will not suffer.",
     },
   ];
   const trans = [
     {
-      authorName: "Swami Sivananda",
+      authorName: "chapter 15",
       author_id: 16,
       description:
         "Here are heroes, mighty archers, equal in battle to Bhima and Arjuna, Yuyudhana (Satyaki), Virata, and Drupada—all mighty warriors.",
@@ -140,9 +149,9 @@ const BookContainer = () => {
           className="demo-book"
           style={{ gap: "50px" }}
           flippingTime={2000}
-          // onChangeState={handleStartPageFlip} // Use only this event handler
+          onChangeState={handleStartPageFlip}
           // onStartPageFlip={handleStartPageFlip}
-          onFlip={handleStartPageFlip}
+          // onFlip={handleStartPageFlip}
           // onInit={handleStartPageFlip}
           drawShadow={true}
         >
@@ -155,7 +164,7 @@ const BookContainer = () => {
           {linkedListArray.map((page, index) => (
             <div
               key={index}
-              className="page-content bg-[#fff9f0] rounded-lg p-6"
+              className="page-content bg-[#efe2cf] rounded-lg p-6"
               style={{
                 width: "100%",
                 height: "100%",
@@ -182,23 +191,26 @@ const BookContainer = () => {
                   {page.chapter || page.authorName}
                 </h1>
                 <h2 className="text-base font-semibold text-[#8B4513] font-sanskrit">
-                  {page.verse || page.verseNumber}
+                  {page.श्लोक || page.verseNumber}
                 </h2>
-              </div>
 
-              <div className="content flex   text-center m-auto w-80 h-80 rounded-lg p-6 ">
-                {/* Sholk */}
-                {page.sanskrit || page.description}
-              </div>
-
-              <div className="footer text-center mt-6 relative">
-                <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2">
-                  <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"></div>
+                <div className="text-center mt-8">
+                  {page.sanskrit ? " ~ श्लोक ~" : "~ अर्थ ~"}
                 </div>
-                <div className="relative inline-block">
-                  <span className="inline-block px-8 py-2 text-lg text-[#8B4513] border-2 border-[#d4af37] rounded-full bg-[#fff9f0] relative z-10">
-                    पृष्ठ {index + 1} / {pages.length}
-                  </span>
+                <div className="content flex   text-center m-auto w-80 h-80 rounded-lg p-6 ">
+                  {/* Sholk */}
+                  {page.sanskrit || page.description}
+                </div>
+
+                <div className="footer text-center mt-6 relative">
+                  <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2">
+                    <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"></div>
+                  </div>
+                  <div className="relative inline-block">
+                    <span className="inline-block px-8 py-1 text-lg text-[#8B4513] border-2 border-[#d4af37] rounded-full bg-[#fff9f0] relative z-10">
+                      पृष्ठ {index + 1} / {linkedListArray.length}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
