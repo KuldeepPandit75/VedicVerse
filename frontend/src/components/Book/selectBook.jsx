@@ -9,13 +9,13 @@ export default function selectBook() {
   };
   const navtoBook = () => {
     navigate("/vedbooks");
-  };  
+  };
   return (
-    <div className="flex justify-evenly items-center  min-h-screen min-w-full bg-gradient-to-b from-[#f7e6d0] to-[#e3a55e] ">
+    <div className="flex justify-evenly items-center  min-h-screen min-w-full backdrop-blur-md">
       <div className="cursor-pointer ">
         <img
-          className="w-[300px] h-[450px] hover:scale-105 transition-transform duration-400"
-          src="/gita.jpg"
+          className="w-[300px] h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
+          src="/vedas.jpeg"
           alt="error"
           onClick={() => navtoBook()}
         />
@@ -25,8 +25,8 @@ export default function selectBook() {
       </div>
       <div className="cursor-pointer ">
         <img
-          className="w-[300px] h-[450px] hover:scale-105 transition-transform duration-400"
-          src="/gita.jpg"
+          className="w-[300px] h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
+          src="/vedas2.jpeg"
           alt="error"
           onClick={() => navtogita()}
         />

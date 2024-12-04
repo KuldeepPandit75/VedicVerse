@@ -25,7 +25,7 @@ const Home = () => {
           className=" hover:scale-105 transition-transform duration-300 cursor-pointer"
           onClick={() => navtoMeta()}
         >
-          <div className="   w-80 h-64 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className="   w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="guru.png" alt="guru" className="w-64 h-60" />
           </div>
           <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl text-center">
@@ -44,7 +44,7 @@ const Home = () => {
           className=" hover:scale-105 transition-transform duration-300 cursor-pointer"
           onClick={() => navtoBook()}
         >
-          <div className="   w-80 h-64 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className="   w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="veds 1.png" alt="guru" className="w-64 h-60" />
           </div>
           <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl font-samarkan text-center">
@@ -62,7 +62,7 @@ const Home = () => {
           className=" hover:scale-105 transition-transform duration-300 cursor-pointer"
           onClick={() => navtoTranslate()}
         >
-          <div className="   w-80 h-64 bg-[#FFD29D] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className="   w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="vedvyas 1.png" alt="guru" className="w-64 h-60" />
           </div>
           <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl  text-center">

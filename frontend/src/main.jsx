@@ -17,6 +17,7 @@ import PrivateRoute from "./components/PrivateRoute.jsx";
 import BookContainer from "./components/Book/BookContainer.jsx";
 import SelectBook from "./components/Book/selectBook.jsx";
 import Translate from "./components/translate/Translate.jsx";
+import Translate2 from "./components/translate/Translate2.jsx";
 import VedBooks from "./components/vedBooks/VedBooks.jsx";
 import PDFViewer from "./components/Book/Book2.jsx";
 
@@ -72,6 +73,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Meta />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="translate2"
+            element={
+              <PrivateRoute>
+                <Translate2 />
               </PrivateRoute>
             }
           />
