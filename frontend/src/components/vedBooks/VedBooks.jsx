@@ -4,16 +4,16 @@ import { useNavigate } from "react-router";
 
 export default function VedBooks() {
   const coverPhoto = [
-    { name: "samved", path: "/samved.jpeg" },
-    { name: "rigved", path: "/rigved.jpeg" },
-    { name: "yajurved", path: "/yajurved.jpeg" },
-    { name: "arthved", path: "/arthved.jpeg" },
-    { name: "gita", path: "/gita.jpg" },
-    { name: "bhagwat", path: "/bhagwat.jpeg" },
-    { name: "nard", path: "/narad.jpeg" },
-    { name: "shiv", path: "/shiv.jpeg" },
-    { name: "vaman", path: "/vaman.jpeg" },
-    { name: "vishnu", path: "/vishnu.jpeg" },
+    { name: "samved", path: "/cover/samved.jpeg" },
+    { name: "rigved", path: "/cover/rigved.jpeg" },
+    { name: "yajurved", path: "/cover/yajurved.jpeg" },
+    { name: "arthved", path: "/cover/arthved.jpeg" },
+    { name: "gita", path: "/cover/gita.jpg" },
+    { name: "bhagwat", path: "/cover/bhagwat.jpeg" },
+    { name: "nard", path: "/cover/narad.jpeg" },
+    { name: "shiv", path: "/cover/shiv.jpeg" },
+    { name: "vaman", path: "/cover/vaman.jpeg" },
+    { name: "vishnu", path: "/cover/vishnu.jpeg" },
   ];
 
   const navigate = useNavigate();

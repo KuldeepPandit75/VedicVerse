@@ -15,22 +15,22 @@ export default function selectBook() {
       <div className="cursor-pointer ">
         <img
           className="w-[300px] h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
-          src="/vedas.jpeg"
+          src="/cover/vedas.jpeg"
           alt="error"
           onClick={() => navtoBook()}
         />
-        <p className="text-center text-4xl mt-3 text-[#A41623] font-samarkan font-semibold">
+        <p className="text-center text-4xl mt-3 text-[#5a040de4] font-samarkan font-semibold">
           Library
         </p>
       </div>
       <div className="cursor-pointer ">
         <img
           className="w-[300px] h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
-          src="/vedas2.jpeg"
+          src="/cover/vedas2.jpeg"
           alt="error"
           onClick={() => navtogita()}
         />
-        <p className="text-center text-4xl mt-3 text-[#A41623] font-samarkan font-semibold">
+        <p className="text-center text-4xl mt-3 text-[#5a040dfa] font-samarkan font-semibold">
           2D Library
         </p>
       </div>

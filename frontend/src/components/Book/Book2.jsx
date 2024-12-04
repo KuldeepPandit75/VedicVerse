@@ -18,16 +18,16 @@ const pdfFiles = {
   vishnu: "/books/vishnu-puran.pdf",
 };
 const coverPhoto = {
-  samved: "/samved.jpeg",
-  rigved: "/rigved.jpeg",
-  yajurved: "/yajurved.jpeg",
-  arthved: "/arthved.jpeg",
-  gita: "/gita.jpeg",
-  bhagwat: "/bhagwat.jpeg",
-  nard: "/narad.jpeg",
-  shiv: "/shiv.jpeg",
-  vaman: "/vaman.jpeg",
-  vishnu: "/vishnu.jpeg",
+  samved: "/cover/samved.jpeg",
+  rigved: "/cover/rigved.jpeg",
+  yajurved: "/cover/yajurved.jpeg",
+  arthved: "/cover/arthved.jpeg",
+  gita: "/cover/gita.jpeg",
+  bhagwat: "/cover/bhagwat.jpeg",
+  nard: "/cover/narad.jpeg",
+  shiv: "/cover/shiv.jpeg",
+  vaman: "/cover/vaman.jpeg",
+  vishnu: "/cover/vishnu.jpeg",
 };
 
 // Set up PDF.js worker

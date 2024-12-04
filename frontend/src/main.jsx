@@ -77,7 +77,7 @@ function App() {
             }
           />
           <Route
-            path="translate2"
+            path="translate"
             element={
               <PrivateRoute>
                 <Translate2 />
@@ -85,7 +85,7 @@ function App() {
             }
           />
           <Route
-            path="translate"
+            path="translate2"
             element={
               <PrivateRoute>
                 <Translate />

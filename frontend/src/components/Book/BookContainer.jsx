@@ -106,7 +106,7 @@ const BookContainer = () => {
 
   const CoverPage = () => (
     <div className="cover-page relative w-full h-full bg-gradient-to-br from-[#8B4513] to-[#654321]">
-      <img src="/gita.jpg" alt="frontPage   " />
+      <img src="/cover/gita.jpg" alt="frontPage   " />
     </div>
   );
   const pageFlipSound = useRef(new Audio("/pageTurnSound.mp3"));
@@ -171,9 +171,6 @@ const BookContainer = () => {
               }}
             >
               <div className="header text-center  mb-6">
-                <div className="absolute inset-4 border-[3px] border-[#d4af37]" />
-                <div className="absolute inset-6 border-[1px] border-[#d4af37]" />
-
                 <div className="ornamental-border flex items-center justify-center gap-2 mb-2">
                   <img src="/left3.png" className="w-28  h-14 " alt="" />
                   <img
@@ -205,6 +202,9 @@ const BookContainer = () => {
 
                 <div className=" top-48 left-20 -z-10 absolute opacity-80">
                   <img src="/water2.png" alt="waterMark" />
+                </div>
+                <div className="z-0 absolute top-0 left-0">
+                  <img className="h-[600px]" src="/border3.webp" alt="error" />
                 </div>
                 <div className=" text-center mt-6 relative">
                   <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2">
