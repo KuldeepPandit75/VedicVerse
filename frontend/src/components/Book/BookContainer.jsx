@@ -9,39 +9,34 @@ const BookContainer = () => {
   const linkedListArray = [];
 
   for (let i = 0; i < verse.length; i++) {
-    const pages = [
-      {
-        chapter: `अध्याय ${verse[i].chapter_number}`,
-        श्लोक: `श्लोक ${verse[i].verse_number}`,
-        title: "गुणत्रयविभागयोग",
-        sanskrit: ` ${verse[i].text}`,
-        translation: `${translations.hindi[i].description}`,
-      },
-    ];
-    console.log(pages);
-    const trans = [
-      {
-        chapter: `Chapterr ${verse[i].chapter_id}`,
-        author_id: 16,
-        description:
-          "Here are heroes, mighty archers, equal in battle to Bhima and Arjuna, Yuyudhana (Satyaki), Virata, and Drupada—all mighty warriors.",
+    const page = {
+      chapter: `अध्याय ${verse[i].chapter_number}`,
+      chapter_number: `${verse[i].chapter_number}`,
+      श्लोक: ` ${verse[i].verse_number}`,
+      title: "गुणत्रयविभागयोग",
+      sanskrit: ` ${verse[i].text}`,
+      translation: `${translations.hindi[i].description}`,
+    };
 
-        transliteration: `${verse[i].transliteration}`,
-        translation: `${translations.english[i].description}`,
-      },
-    ];
+    const trans = {
+      chapter: `Chapter ${verse[i].chapter_id}`,
+      author_id: 16,
+      श्लोक: ` ${verse[i].verse_number}`,
+      chapter_number: `${verse[i].chapter_number}`,
+      description:
+        "Here are heroes, mighty archers, equal in battle to Bhima and Arjuna, Yuyudhana (Satyaki), Virata, and Drupada—all mighty warriors.",
+      transliteration: `${verse[i].transliteration}`,
+      translation: `${translations.english[i].description}`,
+    };
 
-    console.log(pages);
-
-    if (i < pages.length) {
-      linkedListArray.push(pages[i]);
-    }
-    if (i < trans.length) {
-      linkedListArray.push(trans[i]);
-    }
+    linkedListArray.push(page, trans);
   }
+  console.log(verse.length);
+  console.log(translations.length);
+  console.log(translations.english.length);
+  console.log(translations.hindi.length);
+  // console.log(linkedListArray);
 
-  console.log(linkedListArray);
   const contBoxRef = useRef(null);
   const bookRef = useRef(null);
   useEffect(() => {
@@ -139,11 +134,12 @@ const BookContainer = () => {
                 </div>
 
                 <h1 className="text-2xl font-bold text-[#8B4513] mb-2 font-sanskrit drop-shadow-lg">
-                  {page.chapter || page.authorName}
+                  {page.chapter}
                 </h1>
                 <h2 className="text-lg font-semibold text-[#8B4513] font-sanskrit">
-                  {page.sanskrit ? " श्लोक " : "Verse"}.
-                  {page.श्लोक || page.verseNumber}
+                  {page.sanskrit ? " श्लोक " : "Verse"}
+                  {"\t"}
+                  {page.chapter_number}.{page.श्लोक}
                 </h2>
 
                 <div className="text-center mt-4">
