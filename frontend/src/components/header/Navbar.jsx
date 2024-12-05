@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   const navtoVedas = () => {
-    navigate("/vedbooks");
+    navigate("/bookstype");
   };
   return (
     <nav className=" flex justify-between items-center px-6 py-6">
