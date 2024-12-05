@@ -2,84 +2,37 @@ import React, { useEffect, useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { gsap } from "gsap";
 import LeafComponents from "./leaf";
+import verse from "./json/verse.json";
+import translations from "./json/translation.json";
 
 const BookContainer = () => {
-  const pages = [
-    {
-      chapter: "अध्याय १४",
-      श्लोक: " १४.२",
-      title: "गुणत्रयविभागयोग",
-      sanskrit:
-        " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
-      translation:
-        "By knowing this knowledge, you will attain oneness with Me. Even at creation, you won’t be born, and at dissolution, you will not suffer.",
-    },
-    {
-      chapter: "अध्याय १४",
-      श्लोक: " १४.२",
-      title: "गुणत्रयविभागयोग",
-      sanskrit:
-        " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
-      translation:
-        "By knowing this knowledge, you will attain oneness with Me. Even at creation, you won’t be born, and at dissolution, you will not suffer.",
-    },
-    {
-      chapter: "अध्याय १४",
-      श्लोक: " १४.२",
-      title: "गुणत्रयविभागयोग",
-      sanskrit:
-        " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
-      translation:
-        "By knowing this knowledge, you will attain oneness with Me. Even at creation, you won’t be born, and at dissolution, you will not suffer.",
-    },
-    {
-      chapter: "अध्याय १४",
-      श्लोक: " १४.२",
-      title: "गुणत्रयविभागयोग",
-      sanskrit:
-        " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
-      translation:
-        "By knowing this knowledge, you will attain oneness with Me. Even at creation, you won’t be born, and at dissolution, you will not suffer.",
-    },
-    {
-      chapter: "अध्याय १४",
-      श्लोक: " १४.२",
-      title: "गुणत्रयविभागयोग",
-      sanskrit:
-        " 1 इदं ज्ञानमुपाश्रित्य मम साधर्म्यमागताः। सर्गेऽपि नोपजायन्ते प्रलये न व्यथन्ति च।।",
-      translation:
-        "By knowing this knowledge, you will attain oneness with Me. Even at creation, you won’t be born, and at dissolution, you will not suffer.",
-    },
-  ];
-  const trans = [
-    {
-      authorName: "chapter 15",
-      author_id: 16,
-      description:
-        "Here are heroes, mighty archers, equal in battle to Bhima and Arjuna, Yuyudhana (Satyaki), Virata, and Drupada—all mighty warriors.",
-      id: 26,
-      lang: "english",
-      language_id: 1,
-      verseNumber: 4,
-      verse_id: 4,
-    },
-    {
-      authorName: "Swami Sivananda",
-      author_id: 16,
-      description:
-        "Dhrishtaketu, Chekitana, the valiant king of Kasi, Purujit, Kuntibhoja, and Saibya—the best of men.",
-      id: 33,
-      lang: "english",
-      language_id: 1,
-      verseNumber: 5,
-      verse_id: 5,
-    },
-  ];
-
   const linkedListArray = [];
-  const maxLength = Math.max(pages.length, trans.length);
 
-  for (let i = 0; i < maxLength; i++) {
+  for (let i = 0; i < verse.length; i++) {
+    const pages = [
+      {
+        chapter: `अध्याय ${verse[i].chapter_number}`,
+        श्लोक: `श्लोक ${verse[i].verse_number}`,
+        title: "गुणत्रयविभागयोग",
+        sanskrit: ` ${verse[i].text}`,
+        translation: `${translations.hindi[i].description}`,
+      },
+    ];
+    console.log(pages);
+    const trans = [
+      {
+        chapter: `Chapterr ${verse[i].chapter_id}`,
+        author_id: 16,
+        description:
+          "Here are heroes, mighty archers, equal in battle to Bhima and Arjuna, Yuyudhana (Satyaki), Virata, and Drupada—all mighty warriors.",
+
+        transliteration: `${verse[i].transliteration}`,
+        translation: `${translations.english[i].description}`,
+      },
+    ];
+
+    console.log(pages);
+
     if (i < pages.length) {
       linkedListArray.push(pages[i]);
     }
@@ -185,19 +138,24 @@ const BookContainer = () => {
                   />
                 </div>
 
-                <h1 className="text-xl font-bold text-[#8B4513] mb-2 font-sanskrit drop-shadow-lg">
+                <h1 className="text-2xl font-bold text-[#8B4513] mb-2 font-sanskrit drop-shadow-lg">
                   {page.chapter || page.authorName}
                 </h1>
-                <h2 className="text-base font-semibold text-[#8B4513] font-sanskrit">
+                <h2 className="text-lg font-semibold text-[#8B4513] font-sanskrit">
+                  {page.sanskrit ? " श्लोक " : "Verse"}.
                   {page.श्लोक || page.verseNumber}
                 </h2>
 
-                <div className="text-center mt-8">
-                  {page.sanskrit ? " ~ श्लोक ~" : "~ अर्थ ~"}
+                <div className="text-center mt-4">
+                  {page.sanskrit ? " ~ श्लोक ~" : "~ Verse ~"}
                 </div>
-                <div className="content flex   text-center m-auto w-80 h-80 rounded-lg p-6 ">
+                <div className="content  text-lg  text-center m-auto w-80 h-80 rounded-lg  ">
                   {/* Sholk */}
-                  {page.sanskrit || page.description}
+                  {page.sanskrit || page.transliteration}
+                  <div className="text-center mt-10">
+                    {page.sanskrit ? " ~ अर्थ ~" : "~ Meaning ~"}
+                  </div>
+                  {page.translation || page.description}
                 </div>
 
                 <div className=" top-48 left-20 -z-10 absolute opacity-80">

@@ -40,15 +40,16 @@ const PDFViewer = () => {
   const cover = coverPhoto[selectedBook.bookName];
 
   const [numPages, setNumPages] = useState(0);
-  const [pageImages, setPageImages] = useState([]); // Array to store rendered pages
-  const [loadedPages, setLoadedPages] = useState(new Set()); // Set to track loaded pages
-  const [currentPage, setCurrentPage] = useState(1); // Track the current page
+  const [pageImages, setPageImages] = useState([]);
+  const [loadedPages, setLoadedPages] = useState(new Set());
+  const [currentPage, setCurrentPage] = useState(1);
+
   const bookRef = useRef(null);
-  const bufferPages = 4; // Number of pages to preload on each side
+  const bufferPages = 4;
 
   // Function to render a specific page
   const renderPage = async (pdf, pageNumber) => {
-    if (loadedPages.has(pageNumber)) return; // Skip if already loaded
+    if (loadedPages.has(pageNumber)) return;
 
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
@@ -64,7 +65,7 @@ const PDFViewer = () => {
     await page.render({
       canvasContext: context,
       viewport,
-      background: "rgba(0, 0, 0,0)",
+      background: "rgba(0, 0, 0, 0)",
     }).promise;
 
     setPageImages((prev) => {
@@ -73,7 +74,7 @@ const PDFViewer = () => {
       return updatedImages;
     });
 
-    setLoadedPages((prev) => new Set(prev).add(pageNumber)); // Mark page as loaded
+    setLoadedPages((prev) => new Set(prev).add(pageNumber));
   };
 
   // Function to handle loading visible and adjacent pages
@@ -90,8 +91,8 @@ const PDFViewer = () => {
     const loadPdf = async () => {
       const pdf = await pdfjs.getDocument(pdfFile).promise;
       setNumPages(pdf.numPages);
-      setPageImages(new Array(pdf.numPages).fill(null)); // Initialize array with placeholders
-      await loadVisiblePages(pdf); // Load initial visible pages
+      setPageImages(new Array(pdf.numPages).fill(null));
+      await loadVisiblePages(pdf);
     };
 
     loadPdf().catch((error) => console.error("Error loading PDF:", error));
@@ -100,16 +101,15 @@ const PDFViewer = () => {
   useEffect(() => {
     const loadPdf = async () => {
       const pdf = await pdfjs.getDocument(pdfFile).promise;
-      await loadVisiblePages(pdf); // Load pages on currentPage change
+      await loadVisiblePages(pdf);
     };
 
     loadPdf();
-  }, [currentPage]); // Re-run when currentPage changes
-
+  }, [currentPage]);
   // Handle page changes from the flipbook
   const onFlip = (e) => {
-    const pageIndex = e.data; // Get the page index from the flipbook
-    setCurrentPage(pageIndex + 1); // Update the current page
+    const pageIndex = e.data;
+    setCurrentPage(pageIndex + 1);
   };
 
   // tongle page button
@@ -141,7 +141,7 @@ const PDFViewer = () => {
           style={{ gap: "50px" }}
           flippingTime={1000}
           drawShadow={true}
-          onFlip={onFlip} // Trigger page tracking on flip
+          onFlip={onFlip}
         >
           {/* Cover Page */}
           <div className="bg-gradient-to-br from-[#b79278] to-[#a77747] rounded-lg p-6 flex items-center justify-center">
