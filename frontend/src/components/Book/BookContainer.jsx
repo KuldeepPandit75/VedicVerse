@@ -4,11 +4,12 @@ import { gsap } from "gsap";
 import LeafComponents from "./leaf";
 import verse from "./json/verse.json";
 import translations from "./json/translation.json";
+import chapters from "./json/chapters.json";
 
 const BookContainer = () => {
   const linkedListArray = [];
 
-  for (let i = 0; i < verse.length; i++) {
+  for (let i = 0; i < 10; i++) {
     const page = {
       chapter: `अध्याय ${verse[i].chapter_number}`,
       chapter_number: `${verse[i].chapter_number}`,
@@ -109,6 +110,28 @@ const BookContainer = () => {
           </div>
 
           {/* pages*/}
+          {/* this part is done in futur  */}
+          {/* {  <div className="cover-page relative w-full h-full bg-gradient-to-br from-[#8B4513] to-[#654321]">
+            <div className="z-0 absolute top-0 left-0">
+              <img className="h-[600px]" src="/border3.webp" alt="error" />
+            </div>
+          </div>
+          <div className="header text-center bg-[#efe2cf]  mb-6">
+            <div className="ornamental-border flex items-center justify-center gap-2 mb-2">
+              <img src="/left3.png" className="w-28  h-14 " alt="" />
+              <img
+                src="om2.png"
+                alt="Om"
+                className="w-14 h-42 transform hover:rotate-180 transition-transform duration-1000"
+              />
+              <img src="/left5.png" className="w-28 h-14 rotate-180" alt="" />
+            </div>
+
+            <div className=" top-48 left-20 -z-10 absolute opacity-80">
+              <img src="/water2.png" alt="waterMark" />
+            </div>
+          </div>} */}
+
           {linkedListArray.map((page, index) => (
             <div
               key={index}
