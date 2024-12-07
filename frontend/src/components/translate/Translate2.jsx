@@ -55,11 +55,11 @@ function Translate2() {
           >
             Translate
           </button>
-          <div className="mt-5 px-10 w-full ml-10">
-            <h3 className="text-[#6f2214] text-4xl font-bold text-left font-samarkan ml-8">
+          <div className="mt-5 px-10 w-full flex flex-col justify-center items-center ">
+            <h3 className="text-[#6f2214] text-4xl font-bold text-left font-samarkan -ml-[600px]">
               Translation:
             </h3>
-            <p className="text-[#6f2214] mt-2 text-xl  font-medium ml-3">
+            <p className="text-[#6f2214] mt-2 text-xl  font-medium ml-3 w-[80%]" >
               {translation}
             </p>
           </div>

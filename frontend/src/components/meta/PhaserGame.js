@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import {useEffect ,useRef , createElement} from 'react'
 import Lobby from "./scenes/Lobby.js";
+import Temple from "./scenes/Temple.js";
 
 const PhaserGame = () => {
   const gameContainer = useRef(null);
@@ -19,7 +20,7 @@ const PhaserGame = () => {
                     debug: false,
                 },
             },
-            scene: Lobby,
+            scene: [Lobby,Temple]
         };
 
     const game = new Phaser.Game(config);

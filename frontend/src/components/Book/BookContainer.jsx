@@ -98,9 +98,9 @@ const BookContainer = () => {
           className="demo-book"
           style={{ gap: "50px" }}
           flippingTime={2000}
-          onChangeState={handleStartPageFlip}
+          // onChangeState={handleStartPageFlip}
           // onStartPageFlip={handleStartPageFlip}
-          // onFlip={handleStartPageFlip}
+          onFlip={handleStartPageFlip}
           // onInit={handleStartPageFlip}
           drawShadow={true}
         >
