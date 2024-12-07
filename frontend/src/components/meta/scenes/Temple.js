@@ -8,6 +8,7 @@ class Temple extends Phaser.Scene {
     preload() {
         this.load.image('temple', "/temple.jpg");
         this.load.image('player', "/monk2.png");
+        this.load.audio('backgroundMusic', "/temple.mp3")
 
         //improved 2d
 
@@ -21,16 +22,24 @@ class Temple extends Phaser.Scene {
 
         // Create a tile sprite for the background to allow for a larger map
 
-        const mapWidth = this.cameras.main.width * 2; // Example map width
-        const mapHeight = this.cameras.main.height * 2; // Example map height
+        const mapWidth = this.cameras.main.width; // Example map width
+        const mapHeight = this.cameras.main.height * 1.85; // Example map height
         const background = this.add.tileSprite(0, 0, mapWidth, mapHeight, 'temple');
+        background.setScale(1.3)
         background.setOrigin(0, 0); // Set origin to top-left
 
         // Add player sprite at the center
 
-        this.player = this.physics.add.sprite(this.cameras.main.width / 2, this.cameras.main.height / 2, 'player');
+        this.player = this.physics.add.sprite(this.cameras.main.width / 2, mapHeight*1.8, 'player');
         this.player.setOrigin(0.5, 0.5); // Center the player sprite
         this.player.setScale(0.4); // Decrease the size of the player
+
+        //Music tamjham
+        this.music = this.sound.add('backgroundMusic', {
+            loop: true, // Enable looping
+            volume: 0.5, // Adjust volume (optional)
+        });
+        this.music.play();
 
         // Prevent player from moving out of the world bounds
         this.player.setCollideWorldBounds(true);
