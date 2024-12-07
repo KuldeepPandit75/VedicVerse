@@ -8,20 +8,20 @@ import "./translate.css";
 function Translate2() {
   const [translation, setTranslation] = useState("First enter the Verse");
   const [verse, setVerse] = useState(null);
-  const [lang,setLang]=useState("Hindi")
+  const [lang, setLang] = useState("Hindi");
 
   const handleChange = (e) => {
     setVerse(e.target.value);
   };
 
-  const onLanguageChange=(e)=>{
-    setLang(e.target.value)
-  }
+  const onLanguageChange = (e) => {
+    setLang(e.target.value);
+  };
 
-  const data = { message: lang+" "+verse };
+  const data = { message: lang + " " + verse };
 
   const getTranslation = () => {
-    console.log(data)
+    console.log(data);
     axios
       .post("http://127.0.0.1:5000/predictu", data)
       .then((response) => {
@@ -44,16 +44,30 @@ function Translate2() {
           <h2 className="text-[#3e2723ef] text-3xl text-center">
             Translate Sanskrit Verse to Hindi
           </h2>
-          <h4 className=" text-[#633f1b] text-xl text-center mt-2">
+          <h4 className=" text-[#966433] text-xl text-center mt-2">
             AI powered
           </h4>
-          <select id="language" name="language" onChange={(e)=>onLanguageChange(e)}>
-            <option value="hindi" selected>Select Language</option>
-            <option value="hindi">Hindi</option>
-            <option value="english">English</option>
-            <option value="bhojpuri">Bhojpuri</option>
-            <option value="marathi">Marathi</option>
-            <option value="Arabic">Arabic</option>
+          <select
+            id="language"
+            name="language"
+            onChange={(e) => onLanguageChange(e)}
+            className="rounded-lg bg-[#d6b086bb] "
+          >
+            <option value="hindi" selected className="p-2 rounded-lg ">
+              Select Language
+            </option>
+            <option className="bg-[#d6b086bb]" value="hindi">
+              Hindi
+            </option>
+            <option className="bg-[#d6b086bb]" value="english">
+              English
+            </option>
+            <option className="bg-[#d6b086bb]" value="marathi">
+              Marathi
+            </option>
+            <option className="bg-[#d6b086bb]" value="Arabic">
+              Arabic
+            </option>
           </select>
           <input
             className="textarea"
@@ -73,7 +87,7 @@ function Translate2() {
             <h3 className="text-[#6f2214] text-4xl font-bold text-left font-samarkan -ml-[600px]">
               Translation:
             </h3>
-            <p className="text-[black] mt-2 text-xl  font-medium ml-3 w-[80%]" >
+            <p className="text-[#6f2214] mt-2 text-xl  font-medium ml-3 w-[80%]" >
               {translation}
             </p>
           </div>
