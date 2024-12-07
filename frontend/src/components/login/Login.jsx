@@ -139,6 +139,7 @@ function Login() {
       dispatch(setUser(res.data));
 
       navigate("/");
+      console.log("aaa")
     } else {
       setError("Unable to login");
     }

@@ -33,7 +33,7 @@ if chat_session is None:
 
         #VedicVerse Instruction
 
-        system_instruction="user will give you a sanskrit shlok you just need to give its deep and detailed and full translation in hindi nothing else no greeting no being smart no improv.",
+        system_instruction="user will give you a sanskrit shlok you just need to give its deep and detailed and full translation to the language that is mentioned in the first word and avoid the first word in the translation nothing else no greeting no being smart no improv. ",
     )
     chat_session = model.start_chat(history=[])
 
@@ -41,6 +41,7 @@ if chat_session is None:
 def predictu():
     global chat_session
     text = request.get_json().get("message")
+    print(text)
     response = chat_session.send_message(text)
     message = {"answer": response.text}
     print(message)

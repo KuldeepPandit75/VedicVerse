@@ -8,14 +8,20 @@ import "./translate.css";
 function Translate2() {
   const [translation, setTranslation] = useState("First enter the Verse");
   const [verse, setVerse] = useState(null);
+  const [lang,setLang]=useState("Hindi")
 
   const handleChange = (e) => {
     setVerse(e.target.value);
   };
 
-  const data = { message: verse };
+  const onLanguageChange=(e)=>{
+    setLang(e.target.value)
+  }
+
+  const data = { message: lang+" "+verse };
 
   const getTranslation = () => {
+    console.log(data)
     axios
       .post("http://127.0.0.1:5000/predictu", data)
       .then((response) => {
@@ -41,6 +47,13 @@ function Translate2() {
           <h4 className=" text-[#633f1b] text-xl text-center mt-2">
             AI powered
           </h4>
+          <select id="language" name="language" onChange={(e)=>onLanguageChange(e)}>
+            <option value="hindi" selected>Select Language</option>
+            <option value="hindi">Hindi</option>
+            <option value="english">English</option>
+            <option value="marathi">Marathi</option>
+            <option value="Arabic">Arabic</option>
+          </select>
           <input
             className="textarea"
             maxRows={5}
