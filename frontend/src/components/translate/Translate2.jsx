@@ -62,6 +62,9 @@ function Translate2() {
             <option className="bg-[#d6b086bb]" value="english">
               English
             </option>
+            <option className="bg-[#d6b086bb]" value="bhojpuri">
+              Bhopuri
+            </option>
             <option className="bg-[#d6b086bb]" value="marathi">
               Marathi
             </option>
@@ -87,7 +90,7 @@ function Translate2() {
             <h3 className="text-[#6f2214] text-4xl font-bold text-left font-samarkan -ml-[600px]">
               Translation:
             </h3>
-            <p className="text-[#6f2214] mt-2 text-xl  font-medium ml-3 w-[80%]" >
+            <p className="text-[black] mt-2 text-xl  font-medium ml-3 w-[80%]">
               {translation}
             </p>
           </div>
