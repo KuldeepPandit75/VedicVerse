@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../header/Navbar";
 import axios from "axios";
 import { useSpeechSynthesis } from "react-speech-kit";
-import "./translate.css";
 import { FcSpeaker } from "react-icons/fc";
+import "./translate.css";
 
 function Translate2() {
   const [translation, setTranslation] = useState("First enter the Verse");
@@ -48,8 +48,9 @@ function Translate2() {
     const selectedVoice = filteredVoices.find(
       (voice) => voice.lang === languageOptions[lang]
     );
+    console.log(selectedVoice);
     if (selectedVoice) {
-      speak({ text: translation, voice: selectedVoice, rate: 0.5 });
+      speak({ text: translation, voice: selectedVoice, rate: 0.6 });
     } else {
       alert(`Voice for ${lang} is not available in your browser.`);
     }

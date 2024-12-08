@@ -210,14 +210,14 @@ const PDFViewer = () => {
       )}
       <button
         className=" tongleButton absolute left-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
-        onClick={flipToPrevPage}
+        onClick={()=>flipToPrevPage()}
       >
         ←
       </button>
 
       <button
         className=" tongleButton absolute right-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
-        onClick={flipToNextPage}
+        onClick={()=>flipToNextPage()}
       >
         →
       </button>
