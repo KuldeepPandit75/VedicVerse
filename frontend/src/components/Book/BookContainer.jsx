@@ -110,7 +110,7 @@ const BookContainer = () => {
           </div>
 
           {/* pages*/}
-          {/* this part is done in futur  */}
+          {/* this part is done in future  */}
           {/* {  <div className="cover-page relative w-full h-full bg-gradient-to-br from-[#8B4513] to-[#654321]">
             <div className="z-0 absolute top-0 left-0">
               <img className="h-[600px]" src="/border3.webp" alt="error" />
