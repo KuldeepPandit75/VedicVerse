@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { pdfjs } from "react-pdf";
 import { useLocation } from "react-router-dom";
+import stripeTexture from "/public/stripe.png";
+
 // import LeafComponents from "./leaf";
 // import pdfFile from `/books/${samved}.pdf`
 
@@ -43,7 +45,9 @@ const PDFViewer = () => {
   const [pageImages, setPageImages] = useState([]);
   const [loadedPages, setLoadedPages] = useState(new Set());
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [bookMarked, setBookMarked] = useState(
+    localStorage.getItem("bookMarked") || 0
+  );
   const bookRef = useRef(null);
   const bufferPages = 4;
 
@@ -110,6 +114,10 @@ const PDFViewer = () => {
   const onFlip = (e) => {
     const pageIndex = e.data;
     setCurrentPage(pageIndex + 1);
+    setBookMarked(pageIndex);
+    console.log(bookMarked);
+    localStorage.setItem("bookMarked", pageIndex);
+    console.log("Current Page:", currentPage); // Log the current page directly
   };
 
   // tongle page button
@@ -163,6 +171,20 @@ const PDFViewer = () => {
                 height: "100%",
               }}
             >
+              <div className=" z-20">
+                {index === bookMarked && (
+                  <div className="absolute -top-[40px] -right-48 z-100 cursor-pointer">
+                    <img
+                      className="w-[100px] h-[200px]"
+                      src={stripeTexture}
+                      alt="error"
+                    />
+                  </div>
+                )}
+                <div className="absolute top-10 -right-[166px] bg-[#efe2cf81] w-9 h-10 z-10 text-center text-2xl flex justify-center items-center">
+                  {bookMarked}
+                </div>
+              </div>
               {src ? (
                 <>
                   <div className="absolute inset-4 border-[3px] border-[#d4af37]" />
@@ -210,14 +232,14 @@ const PDFViewer = () => {
       )}
       <button
         className=" tongleButton absolute left-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
-        onClick={()=>flipToPrevPage()}
+        onClick={() => flipToPrevPage()}
       >
         ←
       </button>
 
       <button
         className=" tongleButton absolute right-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
-        onClick={()=>flipToNextPage()}
+        onClick={() => flipToNextPage()}
       >
         →
       </button>

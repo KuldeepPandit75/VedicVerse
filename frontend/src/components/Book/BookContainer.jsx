@@ -154,8 +154,12 @@ const BookContainer = () => {
             >
               <div className=" z-20">
                 {index === bookMarked && (
-                  <div className="absolute -top-[82px] -right-48 z-100 cursor-pointer">
-                    <Stripe texturePath={stripeTexture} />
+                  <div className="absolute -top-[40px] -right-48 z-100 cursor-pointer">
+                    <img
+                      className="w-[100px] h-[200px]"
+                      src={stripeTexture}
+                      alt="error"
+                    />
                   </div>
                 )}
                 <div className="absolute top-10 -right-[166px] bg-[#efe2cf81] w-9 h-10 z-10 text-center text-2xl flex justify-center items-center">
