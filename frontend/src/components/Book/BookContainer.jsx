@@ -1,13 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { gsap } from "gsap";
 import LeafComponents from "./leaf";
 import verse from "./json/verse.json";
 import translations from "./json/translation.json";
 import chapters from "./json/chapters.json";
-
+import Stripe from "./Stripe.jsx";
+import stripeTexture from "/public/stripe.png";
 const BookContainer = () => {
   const linkedListArray = [];
+  const [bookMarked, setBookMarked] = useState(
+    localStorage.getItem("bookMarked") || 0
+  );
 
   for (let i = 0; i < 10; i++) {
     const page = {
@@ -32,10 +36,10 @@ const BookContainer = () => {
 
     linkedListArray.push(page, trans);
   }
-  console.log(verse.length);
-  console.log(translations.length);
-  console.log(translations.english.length);
-  console.log(translations.hindi.length);
+  // console.log(verse.length);
+  // console.log(translations.length);
+  // console.log(translations.english.length);
+  // console.log(translations.hindi.length);
   // console.log(linkedListArray);
 
   const contBoxRef = useRef(null);
@@ -60,10 +64,17 @@ const BookContainer = () => {
   );
   const pageFlipSound = useRef(new Audio("/pageTurnSound.mp3"));
 
-  const handleStartPageFlip = () => {
+  const goToBookmarkedPage = () => {
+    bookRef.current.pageFlip().flip(bookMarked);
+  };
+  const handleStartPageFlip = (currentPage) => {
     pageFlipSound.current.currentTime = 0;
     pageFlipSound.current.play();
+    setBookMarked(currentPage);
+    localStorage.setItem("bookMarked", currentPage); // Store the current page in localStorage
+    console.log("Current Page:", currentPage); // Log the current page directly
   };
+
   const flipToPrevPage = () => {
     bookRef.current.pageFlip().flipPrev();
   };
@@ -100,7 +111,7 @@ const BookContainer = () => {
           flippingTime={2000}
           // onChangeState={handleStartPageFlip}
           // onStartPageFlip={handleStartPageFlip}
-          onFlip={handleStartPageFlip}
+          onFlip={(e) => handleStartPageFlip(e.data)}
           // onInit={handleStartPageFlip}
           drawShadow={true}
         >
@@ -110,7 +121,7 @@ const BookContainer = () => {
           </div>
 
           {/* pages*/}
-          {/* this part is done in futur  */}
+          {/* this part is done in future  */}
           {/* {  <div className="cover-page relative w-full h-full bg-gradient-to-br from-[#8B4513] to-[#654321]">
             <div className="z-0 absolute top-0 left-0">
               <img className="h-[600px]" src="/border3.webp" alt="error" />
@@ -141,6 +152,21 @@ const BookContainer = () => {
                 height: "100%",
               }}
             >
+              <div className=" z-20">
+                {index === bookMarked && (
+                  <div className="absolute -top-[40px] -right-48 z-100 cursor-pointer">
+                    <img
+                      className="w-[100px] h-[200px]"
+                      src={stripeTexture}
+                      alt="error"
+                    />
+                  </div>
+                )}
+                <div className="absolute top-10 -right-[166px] bg-[#efe2cf81] w-9 h-10 z-10 text-center text-2xl flex justify-center items-center">
+                  {bookMarked}
+                </div>
+              </div>
+
               <div className="header text-center  mb-6">
                 <div className="ornamental-border flex items-center justify-center gap-2 mb-2">
                   <img src="/left3.png" className="w-28  h-14 " alt="" />

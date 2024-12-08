@@ -21,7 +21,7 @@ chat_session = None
 app = Flask(__name__)
 app.secret_key = "@1212324dsfdsagjhgjhgjhgjhgjhgjgj"  # Necessary if using Flask session
 
-CORS(app, resources={r"/predictu": {"origins": "http://localhost:5173"}})
+CORS(app, resources={"/predictu": {"origins": "http://localhost:5173"}})
 
 #@app.before_request
 #def start_chat_session():
