@@ -7,7 +7,6 @@ class Temple extends Phaser.Scene {
 
     preload() {
         this.load.image('temple', "/temple.jpg");
-        this.load.image('player', "/monk2.png");
         this.load.audio('backgroundMusic', "/temple.mp3")
 
         //improved 2d
@@ -30,7 +29,7 @@ class Temple extends Phaser.Scene {
 
         // Add player sprite at the center
 
-        this.player = this.physics.add.sprite(this.cameras.main.width / 2, mapHeight*1.8, 'player');
+        this.player = this.physics.add.sprite(mapWidth / 2, mapHeight-100, 'player');
         this.player.setOrigin(0.5, 0.5); // Center the player sprite
         this.player.setScale(0.4); // Decrease the size of the player
 
@@ -68,18 +67,25 @@ class Temple extends Phaser.Scene {
         const speed = 200; // Adjust speed as needed
         if (this.cursors.left.isDown) {
             this.player.setVelocityX(-speed);
+            this.player.anims.play('walkLeft',true)
         } else if (this.cursors.right.isDown) {
             this.player.setVelocityX(speed);
-        } else {
-            this.player.setVelocityX(0);
-        }
-
-        if (this.cursors.up.isDown) {
+            this.player.anims.play('walkRight',true)
+        } else if (this.cursors.up.isDown) {
             this.player.setVelocityY(-speed);
+            this.player.anims.play('walkUp',true)
         } else if (this.cursors.down.isDown) {
             this.player.setVelocityY(speed);
         } else {
+            this.player.setVelocityX(0);
             this.player.setVelocityY(0);
+            this.player.setTexture('player');
+            this.player.anims.stop();
+        }
+
+        if (this.player.y>=1200) {
+            this.scene.start('Lobby',{x:870,y:280}); // Switch to the next scene
+            this.music.stop();
         }
     }
 }
