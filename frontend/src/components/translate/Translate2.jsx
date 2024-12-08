@@ -87,12 +87,12 @@ function Translate2() {
           <input
             className="textarea mt-4"
             placeholder="Enter the Verse"
-            onChange={handleChange}
+            onChange={() => handleChange()}
             value={verse}
           />
 
           <button
-            onClick={getTranslation}
+            onClick={() => getTranslation()}
             className="bg-[#A41623] text-white text-xl font-medium py-2 px-6 rounded-lg mt-5 hover:bg-[#8c121e]"
           >
             Translate
