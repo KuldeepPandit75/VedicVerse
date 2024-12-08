@@ -19,16 +19,18 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="min-h-screen bg-cover bg-center flex justify-evenly mt-5">
+      <div className="sticky z-10 top-0">
+        <Navbar />
+      </div>
+      <div className="min-h-screen  flex flex-col md:flex-row justify-center items-center gap-20">
         <div
           className=" hover:scale-105 transition-transform duration-300 cursor-pointer"
           onClick={() => navtoMeta()}
         >
-          <div className="   w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className=" w-96 md:w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="guru.png" alt="guru" className="w-64 h-60" />
           </div>
-          <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl text-center">
+          <div className="  w-96 md:w-80  h-64  bg-gray-700 bg-opacity-70 rounded-b-3xl text-center">
             <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
               Explore Our Culture in 2D
             </h2>
@@ -44,10 +46,10 @@ const Home = () => {
           className=" hover:scale-105 transition-transform duration-300 cursor-pointer"
           onClick={() => navtoBook()}
         >
-          <div className="   w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className=" w-96 md:w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="veds 1.png" alt="guru" className="w-64 h-60" />
           </div>
-          <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl font-samarkan text-center">
+          <div className=" w-96 md:w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl font-samarkan text-center">
             <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
               Collection of vedas
             </h2>
@@ -62,10 +64,10 @@ const Home = () => {
           className=" hover:scale-105 transition-transform duration-300 cursor-pointer"
           onClick={() => navtoTranslate()}
         >
-          <div className="   w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className="w-96 md:w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="vedvyas 1.png" alt="guru" className="w-64 h-60" />
           </div>
-          <div className="  w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl  text-center">
+          <div className="w-96 md:w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl  text-center">
             <h2 className="text-[#FFB563] text-3xl font-semibolds p-2  font-samarkan">
               Translate Vedic Texts{" "}
             </h2>

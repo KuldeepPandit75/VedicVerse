@@ -28,7 +28,7 @@ const Navbar = () => {
         Vedic Verse
       </h1>
 
-      <ul className="flex justify-around items-center bg-[#5a040dbd] rounded-2xl w-[506px] h-10 -left-96">
+      <ul className="flex absolute justify-around items-center left-[410px] bg-[#5a040dbd] rounded-2xl w-[506px] h-10 ">
         <li
           className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
           onClick={navtoHome}
@@ -56,7 +56,7 @@ const Navbar = () => {
         {showDropdown && (
           <div className="absolute right-0 mt-2 bg-white shadow-lg rounded-md w-32">
             <button
-              onClick={handleLogout}
+              onClick={() => handleLogout()}
               className="block w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100 hover:rounded-lg"
             >
               Log Out

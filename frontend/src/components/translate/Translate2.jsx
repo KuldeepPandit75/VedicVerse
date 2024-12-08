@@ -50,7 +50,7 @@ function Translate2() {
     );
     console.log(selectedVoice);
     if (selectedVoice) {
-      speak({ text: translation, voice: selectedVoice, rate: 0.6 });
+      speak({ text: translation, voice: selectedVoice, rate: 0.8 });
     } else {
       alert(`Voice for ${lang} is not available in your browser.`);
     }

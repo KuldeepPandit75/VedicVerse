@@ -5,7 +5,6 @@ import LeafComponents from "./leaf";
 import verse from "./json/verse.json";
 import translations from "./json/translation.json";
 import chapters from "./json/chapters.json";
-import Stripe from "./Stripe.jsx";
 import stripeTexture from "/public/stripe.png";
 const BookContainer = () => {
   const linkedListArray = [];
@@ -65,8 +64,12 @@ const BookContainer = () => {
   const pageFlipSound = useRef(new Audio("/pageTurnSound.mp3"));
 
   const goToBookmarkedPage = () => {
-    bookRef.current.pageFlip().flip(bookMarked);
+    console.log("Flipping to bookmarked page:", bookMarked);
+    console.log(bookMarked);
+
+    bookRef.current.pageFlip().flip(parseInt(bookMarked, 10));
   };
+
   const handleStartPageFlip = (currentPage) => {
     pageFlipSound.current.currentTime = 0;
     pageFlipSound.current.play();
@@ -152,21 +155,6 @@ const BookContainer = () => {
                 height: "100%",
               }}
             >
-              <div className=" z-20">
-                {index === bookMarked && (
-                  <div className="absolute -top-[40px] -right-48 z-100 cursor-pointer">
-                    <img
-                      className="w-[100px] h-[200px]"
-                      src={stripeTexture}
-                      alt="error"
-                    />
-                  </div>
-                )}
-                <div className="absolute top-10 -right-[166px] bg-[#efe2cf81] w-9 h-10 z-10 text-center text-2xl flex justify-center items-center">
-                  {bookMarked}
-                </div>
-              </div>
-
               <div className="header text-center  mb-6">
                 <div className="ornamental-border flex items-center justify-center gap-2 mb-2">
                   <img src="/left3.png" className="w-28  h-14 " alt="" />
@@ -237,6 +225,19 @@ const BookContainer = () => {
       >
         →
       </button>
+      <div className=" z-20 absolute top-0 right-28 cursor-pointer">
+        <div onClick={() => goToBookmarkedPage()}>
+          <img
+            className="w-[100px] h-[200px]"
+            src={stripeTexture}
+            alt="error"
+          />
+        </div>
+
+        <div className="absolute top-20 right-7 bg-[#efe2cf81] w-9 h-10 z-10 text-center text-4xl flex justify-center items-center">
+          {bookMarked}
+        </div>
+      </div>
     </div>
   );
 };
