@@ -102,7 +102,7 @@ function Translate2() {
             <h3 className="text-[#6f2214] text-4xl font-bold text-left w-full">
               Translation:
             </h3>
-            <p className="text-[#ffd29d] mt-2 text-xl font-medium w-[80%]">
+            <p className="text-[black] mt-2 text-xl  font-medium ml-3 w-[80%]">
               {translation}
             </p>
 
