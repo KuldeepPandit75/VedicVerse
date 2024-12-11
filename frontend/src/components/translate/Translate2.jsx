@@ -59,10 +59,7 @@ function Translate2() {
   return (
     <div className="h-screen">
       <Navbar />
-      <div
-        className="flex justify-center items-center h-[70vh] w-screen bg-cover bg-center mt-10"
-        style={{ backgroundImage: "url('/pagedesign.png')" }}
-      >
+      <div className=" main flex justify-center items-center h-[70vh]  w-screen bg-cover bg-center mt-10">
         <div className="w-[80%] h-[90%] rounded-2xl flex flex-col items-center p-6 overflow-hidden">
           <h2 className="text-[#3e2723ef] text-3xl text-center">
             Translate Sanskrit Verse to {lang}
@@ -100,7 +97,7 @@ function Translate2() {
           </button>
 
           <div className="mt-5 px-10 w-full flex flex-col justify-center items-center">
-            <h3 className="text-[#6f2214] text-4xl font-bold text-left w-full">
+            <h3 className="text-[#6f2214] text-4xl font-bold text-left w-full md:ml-16">
               Translation:
             </h3>
             <p className="text-[black] mt-2 text-xl  font-medium ml-3 w-[80%]">
@@ -109,9 +106,9 @@ function Translate2() {
 
             <div
               onClick={() => readTranslation()}
-              className=" cursor-pointer  rounded-lg mt-4 absolute top-[480px] right-64 hover:bg-[#2e1e18] "
+              className=" cursor-pointer  absolute top-[720px] right-2 md:top-[530px] md:right-64 hover:bg-[#2e1e18] "
             >
-              <FcSpeaker className="w-8 h-8 " />
+              <FcSpeaker className="w-8 h-8  " />
             </div>
           </div>
         </div>

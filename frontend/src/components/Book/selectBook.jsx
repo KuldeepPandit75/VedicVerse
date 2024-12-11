@@ -1,36 +1,41 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
-export default function selectBook() {
+export default function SelectBook() {
   const navigate = useNavigate();
 
-  const navtogita = () => {
+  const navToGita = () => {
     navigate("/book");
   };
-  const navtoBook = () => {
+
+  const navToBook = () => {
     navigate("/vedbooks");
   };
+
   return (
-    <div className="flex justify-evenly items-center  min-h-screen min-w-full backdrop-blur-md">
-      <div className="cursor-pointer ">
+    <div className="flex flex-col md:flex-row justify-center items-center h-screen backdrop-blur-md px-4">
+      {/* Library Book */}
+      <div className="cursor-pointer mb-6 md:mb-0 md:px-4 mt-20">
         <img
-          className="w-[300px] h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
+          className="w-[250px] h-[375px] md:w-[300px] md:h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
           src="/cover/vedas.jpeg"
-          alt="error"
-          onClick={() => navtoBook()}
+          alt="Vedas"
+          onClick={() => navToBook()}
         />
-        <p className="text-center text-4xl mt-3 text-[#5a040de4] font-samarkan font-semibold">
+        <p className="text-center text-3xl md:text-4xl mt-3 text-[#5a040de4] font-samarkan font-semibold">
           Library
         </p>
       </div>
-      <div className="cursor-pointer ">
+
+      {/* 2D Library Book */}
+      <div className="cursor-pointer mb-6 md:mb-0 md:px-4">
         <img
-          className="w-[300px] h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
+          className="w-[250px] h-[375px] md:w-[300px] md:h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
           src="/cover/vedas2.jpeg"
-          alt="error"
-          onClick={() => navtogita()}
+          alt="Gita"
+          onClick={() => navToGita()}
         />
-        <p className="text-center text-4xl mt-3 text-[#5a040dfa] font-samarkan font-semibold">
+        <p className="text-center text-3xl md:text-4xl mt-3 text-[#5a040dfa] font-samarkan font-semibold">
           2D Library
         </p>
       </div>

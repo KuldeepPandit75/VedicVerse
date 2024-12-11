@@ -20,15 +20,15 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between items-center px-6 py-6 relative">
       {/* Brand Name */}
-      <h1 className="text-[#5a040dfa] text-4xl font-bold font-samarkan">
+      <h1 className="text-[#5a040dfa] text-4xl font-black font-samarkan ">
         Vedic Verse
       </h1>
 
       {/* Navigation Links */}
       <ul
-        className={`absolute left-0 bg-[#5a040dbd] rounded-2xl text-center w-full p-6  md:static md:flex md:space-x-6 md:p-1 md:w-[506px] md:justify-center transition-all duration-500 ${
+        className={`absolute left-0 bg-[#5a040dbd] rounded-2xl text-center w-full p-6  md:absoult md:left-[410px] md:flex md:justify-evenly md:p-1 md:w-[506px] transition-all duration-500 ${
           showMenu ? "top-[80px]" : "top-[-400px]"
-        } md:top-0`}
+        } md:top-6`}
       >
         <li
           className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
@@ -44,6 +44,12 @@ const Navbar = () => {
           onClick={navToVedas}
         >
           Vedas
+        </li>
+        <li
+          className={`md:hidden text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointers`}
+          onClick={() => handleLogout()}
+        >
+          Logout
         </li>
       </ul>
 
