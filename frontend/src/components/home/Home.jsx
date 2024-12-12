@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../features/Feature";
+// import Card from "../features/Feature";
 import { useNavigate } from "react-router";
 import Navbar from "../header/Navbar";
 
@@ -22,7 +22,6 @@ const Home = () => {
         <Navbar />
       </div>
       <div className="min-h-screen flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 p-4">
-  
         <div
           className="hover:scale-105 transition-transform duration-700 cursor-pointer"
           onClick={() => navtoMeta()}
@@ -62,7 +61,6 @@ const Home = () => {
           </div>
         </div>
 
-     
         <div
           className="hover:scale-105 transition-transform duration-700 cursor-pointer"
           onClick={() => navtoTranslate()}

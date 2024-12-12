@@ -15,7 +15,7 @@ export default function SelectBook() {
   return (
     <div className="flex flex-col md:flex-row justify-center items-center h-screen backdrop-blur-md px-4">
       {/* Library Book */}
-      <div className="cursor-pointer mb-6 md:mb-0 md:px-4 mt-20">
+      <div className="cursor-pointer mb-6 md:mb-0 md:px-4 ">
         <img
           className="w-[250px] h-[375px] md:w-[300px] md:h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
           src="/cover/vedas.jpeg"

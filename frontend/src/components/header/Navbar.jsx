@@ -9,6 +9,7 @@ const Navbar = () => {
 
   const navToHome = () => navigate("/");
   const navToVedas = () => navigate("/bookstype");
+  const navToIntro = () => navigate("/intro");
 
   const handleLogout = () => {
     sessionStorage.clear();
@@ -32,16 +33,19 @@ const Navbar = () => {
       >
         <li
           className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
-          onClick={navToHome}
+          onClick={() => navToHome()}
         >
           Home
         </li>
-        <li className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer">
+        <li
+          className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
+          onClick={() => navToIntro()}
+        >
           Introduction
         </li>
         <li
           className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
-          onClick={navToVedas}
+          onClick={() => navToVedas()}
         >
           Vedas
         </li>
