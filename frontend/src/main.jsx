@@ -21,6 +21,7 @@ import Translate2 from "./components/translate/Translate2.jsx";
 import VedBooks from "./components/vedBooks/VedBooks.jsx";
 import PDFViewer from "./components/Book/Book2.jsx";
 import ThreeCanvas from "./components/fire/ThreeCanvas.jsx";
+import Intro from "./components/features/Intro.jsx";
 
 function App() {
   const router = createBrowserRouter(
@@ -41,6 +42,14 @@ function App() {
             element={
               <PrivateRoute>
                 <BookContainer />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="intro"
+            element={
+              <PrivateRoute>
+                <Intro />
               </PrivateRoute>
             }
           />

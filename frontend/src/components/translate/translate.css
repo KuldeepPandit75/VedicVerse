@@ -31,3 +31,7 @@
   color: #a67c52;
   font-style: italic;
 }
+
+.main {
+  background-image: url("/pagedesign.png") ;
+}
