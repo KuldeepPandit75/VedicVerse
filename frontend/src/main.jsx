@@ -22,7 +22,7 @@ import VedBooks from "./components/vedBooks/VedBooks.jsx";
 import PDFViewer from "./components/Book/Book2.jsx";
 // import ThreeCanvas from "./components/fire/ThreeCanvas.jsx";
 import Intro from "./components/features/Intro.jsx";
-
+import Sparks from "./components/features/FireSparkles.jsx";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -58,6 +58,14 @@ function App() {
             element={
               <PrivateRoute>
                 <VedBooks />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="animated-stories"
+            element={
+              <PrivateRoute>
+                <Sparks />
               </PrivateRoute>
             }
           />
