@@ -21,6 +21,7 @@ import Translate2 from "./components/translate/Translate2.jsx";
 import VedBooks from "./components/vedBooks/VedBooks.jsx";
 import PDFViewer from "./components/Book/Book2.jsx";
 import Intro from "./components/features/Intro.jsx";
+import Sparks from "./components/features/Sparks.jsx";
 
 function App() {
   const router = createBrowserRouter(
@@ -57,6 +58,14 @@ function App() {
             element={
               <PrivateRoute>
                 <VedBooks />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="animated-stories"
+            element={
+              <PrivateRoute>
+                <Sparks />
               </PrivateRoute>
             }
           />

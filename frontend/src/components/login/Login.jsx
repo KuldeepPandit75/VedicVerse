@@ -139,7 +139,7 @@ function Login() {
       dispatch(setUser(res.data));
 
       navigate("/");
-      console.log("aaa")
+      console.log("aaa");
     } else {
       setError("Unable to login");
     }
@@ -173,12 +173,14 @@ function Login() {
             label="Enter Username"
             onChange={(e) => onValueChange(e)}
             name="username"
+            required
             sx={{ backgroundColor: "#FFD29D", borderRadius: "10px", zIndex: 2 }}
           />
           <TextField
             label="Enter Password"
             onChange={(e) => onValueChange(e)}
             name="password"
+            required
             sx={{ backgroundColor: "#FFD29D", borderRadius: "10px", zIndex: 2 }}
           />
           {error && (
@@ -207,23 +209,26 @@ function Login() {
         </Wrapper>
       ) : (
         <Wrapper>
-          <Title variant="h3">Welcome to VaultBlog!</Title>
+          <Title variant="h3">Welcome to Vedic Verse</Title>
           <TextField
             onChange={(e) => onInputChange(e)}
             name="name"
             label="Enter Name"
+            required
             sx={{ backgroundColor: "#FFD29D", borderRadius: "10px", zIndex: 2 }}
           />
           <TextField
             onChange={(e) => onInputChange(e)}
             name="username"
             label="Enter Username"
+            required
             sx={{ backgroundColor: "#FFD29D", borderRadius: "10px", zIndex: 2 }}
           />
           <TextField
             onChange={(e) => onInputChange(e)}
             name="password"
             label="Set Password"
+            required
             sx={{ backgroundColor: "#FFD29D", borderRadius: "10px", zIndex: 2 }}
           />
 
