@@ -107,7 +107,7 @@ class Lobby extends Phaser.Scene {
 
         let {x,y}=data;
 
-        this.player = this.physics.add.sprite(x || mapWidth / 2, y || mapHeight / 2, 'player');
+        this.player = this.physics.add.sprite(x || mapWidth / 2, y || mapHeight / 2.3, 'player');
         this.player.setOrigin(0.5, 0.5); // Center the player sprite
         this.player.setScale(0.35); // Decrease the size of the player
 
@@ -250,6 +250,7 @@ class Lobby extends Phaser.Scene {
             // if(this.isHighlighted){
 
                 this.scene.start("Story")
+                this.music.stop();
             // }
         })
     }

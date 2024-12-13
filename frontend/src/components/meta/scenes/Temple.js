@@ -22,7 +22,7 @@ class Temple extends Phaser.Scene {
         // Create a tile sprite for the background to allow for a larger map
 
         const mapWidth = this.cameras.main.width; // Example map width
-        const mapHeight = this.cameras.main.height * 1.85; // Example map height
+        const mapHeight = this.cameras.main.height * 1.55; // Example map height
         const background = this.add.tileSprite(0, 0, mapWidth, mapHeight, 'temple');
         background.setScale(1.3)
         background.setOrigin(0, 0); // Set origin to top-left
