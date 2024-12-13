@@ -63,24 +63,44 @@ class Temple extends Phaser.Scene {
     }
 
     update() {
-        // Update player position based on input
-        const speed = 200; // Adjust speed as needed
+        const speed = 150; // Adjust speed as needed
+        
+        // Initialize direction vector
+        let dirX = 0;
+        let dirY = 0;
+    
+        // Check input and update direction
         if (this.cursors.left.isDown) {
-            this.player.setVelocityX(-speed);
-            this.player.anims.play('walkLeft',true)
+            dirX = -1;
         } else if (this.cursors.right.isDown) {
-            this.player.setVelocityX(speed);
-            this.player.anims.play('walkRight',true)
-        } else if (this.cursors.up.isDown) {
-            this.player.setVelocityY(-speed);
-            this.player.anims.play('walkUp',true)
+            dirX = 1;
+        }
+    
+        if (this.cursors.up.isDown) {
+            dirY = -1;
         } else if (this.cursors.down.isDown) {
-            this.player.setVelocityY(speed);
+            dirY = 1;
+        }
+    
+        // Create and normalize the direction vector
+        const magnitude = Math.sqrt(dirX * dirX + dirY * dirY);
+        const normalizedDirX = magnitude === 0 ? 0 : dirX / magnitude;
+        const normalizedDirY = magnitude === 0 ? 0 : dirY / magnitude;
+    
+        // Apply velocity using the vector
+        this.player.setVelocity(normalizedDirX * speed, normalizedDirY * speed);
+    
+        // Handle animations based on direction
+        if (dirX < 0) {
+            this.player.anims.play('walkLeft', true);
+        } else if (dirX > 0) {
+            this.player.anims.play('walkRight', true);
+        } else if (dirY < 0) {
+            this.player.anims.play('walkUp', true);
+        } else if (dirY > 0) {
+            this.player.anims.play('walkDown', true); // Assuming you have a 'walkDown' animation
         } else {
-            this.player.setVelocityX(0);
-            this.player.setVelocityY(0);
-            this.player.setTexture('player');
-            this.player.anims.stop();
+            this.player.anims.stop(); // Stop animation when no movement
         }
 
         if (this.player.y>=1200) {

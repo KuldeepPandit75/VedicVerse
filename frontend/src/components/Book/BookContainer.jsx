@@ -4,9 +4,7 @@ import { gsap } from "gsap";
 import LeafComponents from "./leaf";
 import verse from "./json/verse.json";
 import translations from "./json/translation.json";
-import chapters from "./json/chapters.json";
-import Stripe from "./Stripe.jsx";
-import stripeTexture from "/public/stripe.png";
+import stripeTexture from "/stripe.png";
 const BookContainer = () => {
   const linkedListArray = [];
   const [bookMarked, setBookMarked] = useState(

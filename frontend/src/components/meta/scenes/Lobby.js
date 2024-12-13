@@ -21,6 +21,13 @@ class Lobby extends Phaser.Scene {
         this.load.image('u1','/u1.png')
         this.load.image('u2','/u2.png')
         this.load.image('u3','/u3.png')
+        this.load.image('b1','/b1.png')
+        this.load.image('b2','/b2.png')
+        this.load.image('b3','/b3.png')
+        this.load.image('pillarL','Lpillar.png')
+        this.load.image('pillarR','pillarR.png')
+        this.load.image('treeTop','treetop.png')
+        this.load.image('blueHut','blueHut.png')
 
         //improved 2d
 
@@ -31,6 +38,10 @@ class Lobby extends Phaser.Scene {
 
     create(data) {
         console.log('Lobby scene created');
+
+        //tracking variables
+        this.isTypingCompleted = false; // To track typing completion
+        this.isHighlighted=false;
 
         // Create a tile sprite for the background to allow for a larger map
 
@@ -50,7 +61,24 @@ class Lobby extends Phaser.Scene {
             frameRate: 5, // Speed of the animation (frames per second)
             repeat: -1,    // Repeat indefinitely (-1 means loop forever)
         });
-    
+
+        // Setting Top layer Elements Here
+
+        const pillarL=this.add.sprite(386,595,'pillarL');
+        pillarL.depth=1;
+
+        const pillarR=this.add.sprite(1402,595,'pillarL');
+        pillarR.depth=1;
+
+        const treeTop=this.add.sprite(455,607,'treeTop');
+        treeTop.depth=1;
+
+        const treeTop2=this.add.sprite(1327,607,'treeTop');
+        treeTop2.depth=1;
+
+        this.blueHut=this.add.sprite(255,630,'blueHut');
+        this.blueHut.depth=1;
+
         // Add a sprite and play the animation
         const fire = this.add.sprite(870, 210, 'frame1'); // Position and initial frame
         fire.play('fireAn1');
@@ -112,6 +140,17 @@ class Lobby extends Phaser.Scene {
                 { key: 'u2' },
                 { key: 'u3' }
             ],
+            frameRate: 8, // Adjust speed of the animation
+            repeat: -1     // Loop the animation infinitely
+        });
+
+        this.anims.create({
+            key: 'walkDown',
+            frames: [
+                { key: 'b1' },
+                { key: 'b2' },
+                { key: 'b3' }
+            ],
             frameRate: 6, // Adjust speed of the animation
             repeat: -1     // Loop the animation infinitely
         });
@@ -128,6 +167,7 @@ class Lobby extends Phaser.Scene {
 
         // Set up keyboard input
         this.cursors = this.input.keyboard.createCursorKeys();
+        // this.enterKey=this.input.keyboard.addKey(Phaser.Input.Keyboard.ENTER)
 
         // Set camera to follow the player
         this.cameras.main.startFollow(this.player);
@@ -137,31 +177,50 @@ class Lobby extends Phaser.Scene {
         this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
 
         //collideable object
+
         const boundary1 = this.add.rectangle(545, 200, 320, 480);
-        // boundary1.setStrokeStyle(2, 0x00ff00);
         this.physics.add.existing(boundary1, true); 
         
         const boundary2 = this.add.rectangle(745, 180, 100, 300);
-        // boundary2.setStrokeStyle(2, 0x00ff00);
         this.physics.add.existing(boundary2, true); 
 
         const boundary3 = this.add.rectangle(1000, 180, 100, 300);
-        // boundary3.setStrokeStyle(2, 0x00ff00);
         this.physics.add.existing(boundary3, true); 
 
         const boundary4 = this.add.rectangle(1220, 200, 350, 500);
         // boundary4.setStrokeStyle(2, 0x00ff00);
         this.physics.add.existing(boundary4, true); 
 
+        const boundary5 = this.add.rectangle(550, 780, 300, 300);
+        this.physics.add.existing(boundary5, true); 
+
+        const boundary6 = this.add.rectangle(720, 850, 200, 300);
+        this.physics.add.existing(boundary6, true); 
+
+        const boundary7 = this.add.rectangle(1050, 850, 200, 300);
+        this.physics.add.existing(boundary7, true); 
+
+        const boundary8 = this.add.rectangle(1220, 780, 350, 300);
+        this.physics.add.existing(boundary8, true); 
+
+        const boundary9 = this.add.rectangle(260, 670, 130, 50);
+        // boundary9.setStrokeStyle(2, 0x00ff00);
+        this.physics.add.existing(boundary9, true); 
+        
+
         // // enable collision
         this.physics.add.collider(this.player, boundary1); // Restrict movement
         this.physics.add.collider(this.player, boundary2); // Restrict movement
         this.physics.add.collider(this.player, boundary3); // Restrict movement
         this.physics.add.collider(this.player, boundary4); // Restrict movement
+        this.physics.add.collider(this.player, boundary5); // Restrict movement
+        this.physics.add.collider(this.player, boundary6); // Restrict movement
+        this.physics.add.collider(this.player, boundary7); // Restrict movement
+        this.physics.add.collider(this.player, boundary8); // Restrict movement
+        this.physics.add.collider(this.player, boundary9); // Restrict movement
 
         //Dialogue Box
 
-        this.isTypingCompleted = false; // To track typing completion
         this.dialogMessage = 'Hello, welcome to the game! This is a typing animation.';
         
         // Dialog box and text setup
@@ -187,13 +246,12 @@ class Lobby extends Phaser.Scene {
         // Space key for skipping or destroying dialog
         this.input.keyboard.on('keydown-SPACE', this.handleSpacePress, this);
 
-        //improved 2d
+        this.input.keyboard.on('keydown-ENTER',()=>{
+            // if(this.isHighlighted){
 
-        // const map = this.make.tilemap({key:"map"});
-        // const tileset = map.addTilesetImage('tileset');
-        // const layer = map.createLayer('Tile Layer 1', tileset, 0, 0);
-
-        // this.physics.add.collider(this.player, layer);
+                this.scene.start("Story")
+            // }
+        })
     }
 
     typeText(index) {
@@ -218,7 +276,7 @@ class Lobby extends Phaser.Scene {
     }
 
     update() {
-        const speed = 100; // Adjust speed as needed
+        const speed = 150; // Adjust speed as needed
         
         // Initialize direction vector
         let dirX = 0;
@@ -275,6 +333,22 @@ class Lobby extends Phaser.Scene {
             this.dialogBox.x - dialogWidth / 2 + 50,  // Text offset within dialog box
             this.dialogBox.y - dialogHeight / 2 + 20
         );
+
+        //Hut Hightlight
+
+        const distance = Phaser.Math.Distance.Between(
+            this.player.x, this.player.y,
+            this.blueHut.x, this.blueHut.y
+        );
+
+        // Highlight if player is near
+        if (distance < 100) {
+            this.blueHut.setTint(0xff0000); // Highlight with red tint
+            this.isHighlighted = true;
+        } else {
+            this.blueHut.clearTint(); // Remove highlight
+            this.isHighlighted = false;
+        }
     }
     
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
 import { pdfjs } from "react-pdf";
 import { useLocation } from "react-router-dom";
-import stripeTexture from "/public/stripe.png";
+import stripeTexture from "/stripe.png";
 
 // import LeafComponents from "./leaf";
 // import pdfFile from `/books/${samved}.pdf`
