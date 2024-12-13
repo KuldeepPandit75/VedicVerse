@@ -20,10 +20,8 @@ import Translate from "./components/translate/Translate.jsx";
 import Translate2 from "./components/translate/Translate2.jsx";
 import VedBooks from "./components/vedBooks/VedBooks.jsx";
 import PDFViewer from "./components/Book/Book2.jsx";
-import ThreeCanvas from "./components/fire/ThreeCanvas.jsx";
 import Intro from "./components/features/Intro.jsx";
-import Sparks from "./components/features/Sparks.jsx";
-
+import Sparks from "./components/features/FireSparkles.jsx";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -108,14 +106,6 @@ function App() {
             element={
               <PrivateRoute>
                 <Translate />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="story"
-            element={
-              <PrivateRoute>
-                <ThreeCanvas />
               </PrivateRoute>
             }
           />

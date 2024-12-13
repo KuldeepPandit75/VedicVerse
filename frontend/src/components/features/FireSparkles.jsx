@@ -1,69 +1,24 @@
-// SparksBackground.js
-import * as THREE from "three";
-import { useRef, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import React from "react";
 
-const Sparks = () => {
-  const particleCount = 500;
-  const positions = new Float32Array(particleCount * 3);
-  const velocities = new Float32Array(particleCount * 3);
-
-  // Initialize positions and velocities
-  for (let i = 0; i < particleCount; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 5;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 5;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 5;
-
-    velocities[i * 3] = (Math.random() - 0.5) * 0.02;
-    velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.02;
-    velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.02;
-  }
-
-  const meshRef = useRef();
-
-  useFrame(() => {
-    const positionsArray = meshRef.current.geometry.attributes.position.array;
-
-    for (let i = 0; i < particleCount; i++) {
-      positionsArray[i * 3] += velocities[i * 3];
-      positionsArray[i * 3 + 1] += velocities[i * 3 + 1];
-      positionsArray[i * 3 + 2] += velocities[i * 3 + 2];
-
-      // Reset particle if it moves too far
-      if (positionsArray[i * 3 + 1] < -2) {
-        positionsArray[i * 3] = (Math.random() - 0.5) * 5;
-        positionsArray[i * 3 + 1] = 2;
-        positionsArray[i * 3 + 2] = (Math.random() - 0.5) * 5;
-      }
-    }
-
-    meshRef.current.geometry.attributes.position.needsUpdate = true;
-  });
-
+export default function FireSparkles() {
   return (
-    <points ref={meshRef}>
-      <bufferGeometry attach="geometry">
-        <bufferAttribute
-          attach="attributes-position"
-          count={particleCount}
-          array={positions}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial attach="material" color="orange" size={0.05} />
-    </points>
+    <div className=" relative">
+      <video
+        muted
+        autoPlay
+        loop
+        src="/sparks.mp4"
+        style={{ width: "100%", height: "auto" }}
+      ></video>
+      <h1 className=" absolute text-[#c2783c] font-samarkan top-1/3 left-1/3 text-5xl font-black  animate-fade-in">
+        Vyasa and Ganesha :
+      </h1>
+      <h4 className="absolute text-[#c2783c] top-[300px] left-[500px] text-3xl  animate-fade-in">
+        The Untold Story of the Mahabharata's Creation :-
+      </h4>
+      <p className="absolute text-[#c2783c] top-[600px] left-[450px] text-3xl animate-fade-in">
+        Use HeadPhone for better experience{" "}
+      </p>
+    </div>
   );
-};
-
-const SparksBackground = () => {
-  return (
-    <Canvas
-      camera={{ position: [0, 0, 5] }}
-      style={{ height: "100vh", background: "black" }}
-    >
-      <Sparks />
-    </Canvas>
-  );
-};
-
-export default SparksBackground;
+}
