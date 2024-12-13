@@ -85,7 +85,7 @@ function Translate2() {
           <input
             className="textarea mt-4"
             placeholder="Enter the Verse"
-            onChange={() => handleChange()}
+            onChange={(e) => handleChange(e)}
             value={verse}
           />
 
