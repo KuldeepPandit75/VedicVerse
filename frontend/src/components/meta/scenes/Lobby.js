@@ -46,7 +46,7 @@ class Lobby extends Phaser.Scene {
         // Create a tile sprite for the background to allow for a larger map
 
         const mapWidth = this.cameras.main.width * 1.2; // Example map width
-        const mapHeight = this.cameras.main.height * 1.5; // Example map height
+        const mapHeight = this.cameras.main.height * 1.25; // Example map height
         const background = this.add.tileSprite(0, 0, mapWidth, mapHeight, 'background');
         background.setOrigin(0, 0); // Set origin to top-left
 
@@ -107,7 +107,7 @@ class Lobby extends Phaser.Scene {
 
         let {x,y}=data;
 
-        this.player = this.physics.add.sprite(x || mapWidth / 2, y || mapHeight / 2.3, 'player');
+        this.player = this.physics.add.sprite(x || mapWidth / 2, y || mapHeight / 2.1, 'player');
         this.player.setOrigin(0.5, 0.5); // Center the player sprite
         this.player.setScale(0.35); // Decrease the size of the player
 
