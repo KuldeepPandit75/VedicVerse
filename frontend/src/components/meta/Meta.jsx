@@ -1,12 +1,12 @@
-import React from 'react'
-import PhaserGame from './PhaserGame'
+import React from "react";
+import PhaserGame from "./PhaserGame.js";
 
 function Meta() {
   return (
     <>
-      <PhaserGame/>
+      <PhaserGame />
     </>
-  )
+  );
 }
 
-export default Meta
+export default Meta;
