@@ -9,9 +9,10 @@ class Story extends Phaser.Scene {
             { image: "scene1", audio: "/voiceover1.wav", subtitle: "In the sacred valleys of the Himalayas, where snow-covered peaks touch the heavens, Sage Ved Vyasa sat deep in meditation. His long white hair and beard reflected his immense wisdom and devotion. A soft glow of spiritual energy surrounded him, filling the atmosphere with peace and divinity." },
             { image: "scene2", audio: "/voiceover2.wav", subtitle: "Suddenly, a divine radiance illuminated the surroundings, and Lord Brahma, with his four faces, appeared. Holding a lotus flower and a golden staff, Brahma stood majestically in the air. In his serene yet commanding voice, he addressed Vyasa, 'O Sage, you must compose an epic that will guide humanity. This scripture shall encompass all the knowledge of creation." },
             { image: "scene3", audio: "/voiceover3.wav", subtitle: "After Lord Brahma’s departure, Vyasa stood by a tranquil river, lost in deep thought. He gazed at the flowing water, pondering, 'How can I undertake such a monumental task and document it all?' The immense responsibility weighed heavily on his mind, yet his determination remained unwavering." },
-            { image: "scene4", audio: "/voiceover4.wav", subtitle: "Determined, Vyasa approached Lord Ganesha, who was seated regally beneath a grand, ancient tree. Adorned with divine ornaments, Ganesha listened attentively as Vyasa explained his predicament. With a serene smile, Ganesha replied, 'Sage, it will be my honor to assist you in this divine task." },
-            { image: "scene5", audio: "/voiceover5.wav", subtitle: "Lord Ganesha, calm yet resolute, said, 'I will write the epic for you, but on one condition: you must recite without pausing. If you stop, I too shall cease writing.' Vyasa, with a knowing smile, countered, 'Then I too set a condition—you must fully understand each verse before inscribing it.' Both agreed, setting the stage for a remarkable collaboration." },
-            { image: "scene6", audio: "/voiceover6.wav", subtitle: "After three years of relentless effort, the Mahabharata was finally complete. Ganesha wrote the final verse and placed the stylus down. Vyasa looked upon the completed scrolls with a smile of deep satisfaction. Together, they had created an eternal masterpiece—a gift to humanity." },
+            { image: "scene4", audio: "/voiceover4.wav", subtitle: "Determined, Vyasa approached Lord Ganesha, who was seated regally beneath a grand, ancient tree. Adorned with divine ornaments, Ganesha listened attentively as Vyasa explained his predicament. With a serene smile, Ganesha replied, 'Sage, it will be my honor to assist you in this divine task. Lord Ganesha, calm yet resolute, said, 'I will write the epic for you, but on one condition: you must recite without pausing. If you stop, I too shall cease writing.' Vyasa, with a knowing smile, countered, 'Then I too set a condition—you must fully understand each verse before inscribing it.' Both agreed, setting the stage for a remarkable collaboration." },
+            { image: "scene5", audio: "/voiceover5.wav", subtitle: "Lord Ganesha wrote at an astonishing speed, his stylus moving without pause. Sage Vyasa, however, skillfully inserted complex sentences that made Ganesha stop briefly to understand their meaning. These moments allowed Vyasa to catch his breath and prepare the next verse, ensuring the epic’s seamless composition." },
+            { image: "scene6", audio: "/voiceover6.wav", subtitle: "Lord Ganesha was inscribing the Mahabharata at an incredible speed when his stylus suddenly broke. Unwilling to stop, he broke off a piece of his own tusk and continued writing without hesitation. This act of resolve earned him the name ‘Ekadanta,’ the one with one tusk." },
+            { image: "scene7", audio: "/voiceover7.wav", subtitle: "After three years of relentless effort, the Mahabharata was finally complete. Ganesha wrote the final verse and placed the stylus down. Vyasa looked upon the completed scrolls with a smile of deep satisfaction. Together, they had created an eternal masterpiece—a gift to humanity." },
         ];
         this.currentAudio = null; // Track the currently playing audio
     }
@@ -23,6 +24,8 @@ class Story extends Phaser.Scene {
         this.load.image("scene4", "/scene4.webp");
         this.load.image("scene5", "/scene5.webp");
         this.load.image("scene6", "/scene6.webp");
+        this.load.image("scene7", "/scene7.webp");
+        this.load.audio("storyBg","/storyBg.mp3")
         
         // Load audio for each scene
         this.scenes.forEach(scene => {
@@ -35,6 +38,14 @@ class Story extends Phaser.Scene {
     create(){
         // Create a black background
         this.cameras.main.setBackgroundColor(0x000000);
+
+        //Music tamjham
+
+        this.music = this.sound.add('storyBg', {
+            loop: true, // Enable looping
+            volume: 0.1, // Adjust volume (optional)
+        });
+        this.music.play();
         
         // Create title text
         this.titleText = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, this.scenes[this.currentSceneIndex].subtitle, {
@@ -94,7 +105,7 @@ class Story extends Phaser.Scene {
 
             // Create a background rectangle for the subtitle
             const subtitleText = this.scenes[this.currentSceneIndex].subtitle;
-            const subtitleWidth = this.cameras.main.width * 0.8; // 80% of viewport width
+            const subtitleWidth = this.cameras.main.width ; // 80% of viewport width
 
             // Create a background rectangle for the subtitle
             const subtitleBackground = this.add.rectangle(this.cameras.main.centerX, this.cameras.main.height - 80, subtitleWidth, 50, 0x000000, 0.7).setOrigin(0.5);
@@ -117,6 +128,7 @@ class Story extends Phaser.Scene {
                 this.currentAudio.play(); // Play the next audio if available
             }
         } else {
+            this.music.stop();
             this.scene.start('Lobby'); // Return to Lobby or any other scene when done
         }
     }
