@@ -247,11 +247,11 @@ class Lobby extends Phaser.Scene {
         this.input.keyboard.on('keydown-SPACE', this.handleSpacePress, this);
 
         this.input.keyboard.on('keydown-ENTER',()=>{
-            // if(this.isHighlighted){
+            if(this.isHighlighted){
 
                 this.scene.start("Story")
                 this.music.stop();
-            // }
+            }
         })
     }
 
@@ -343,7 +343,7 @@ class Lobby extends Phaser.Scene {
         );
 
         // Highlight if player is near
-        if (distance < 100) {
+        if (distance < 150) {
             this.blueHut.setTint(0xff0000); // Highlight with red tint
             this.isHighlighted = true;
         } else {

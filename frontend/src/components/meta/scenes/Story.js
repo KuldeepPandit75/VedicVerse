@@ -5,7 +5,7 @@ class Story extends Phaser.Scene {
         super({key:'Story'});
         this.currentSceneIndex = 0; // Track the current scene index
         this.scenes = [
-            { audio: null, subtitle: "Ganesha writes Mahabharata" }, // Initial black screen with title
+            { audio: null, subtitle: "The Untold Story of the Mahabharata's Creation" }, // Initial black screen with title
             { image: "scene1", audio: "/voiceover1.wav", subtitle: "In the sacred valleys of the Himalayas, where snow-covered peaks touch the heavens, Sage Ved Vyasa sat deep in meditation. His long white hair and beard reflected his immense wisdom and devotion. A soft glow of spiritual energy surrounded him, filling the atmosphere with peace and divinity." },
             { image: "scene2", audio: "/voiceover2.wav", subtitle: "Suddenly, a divine radiance illuminated the surroundings, and Lord Brahma, with his four faces, appeared. Holding a lotus flower and a golden staff, Brahma stood majestically in the air. In his serene yet commanding voice, he addressed Vyasa, 'O Sage, you must compose an epic that will guide humanity. This scripture shall encompass all the knowledge of creation." },
             { image: "scene3", audio: "/voiceover3.wav", subtitle: "After Lord Brahma’s departure, Vyasa stood by a tranquil river, lost in deep thought. He gazed at the flowing water, pondering, 'How can I undertake such a monumental task and document it all?' The immense responsibility weighed heavily on his mind, yet his determination remained unwavering." },
