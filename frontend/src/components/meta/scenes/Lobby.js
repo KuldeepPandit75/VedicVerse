@@ -28,7 +28,6 @@ class Lobby extends Phaser.Scene {
     this.load.image("pillarR", "pillarR.png");
     this.load.image("treeTop", "treetop.png");
     this.load.image("blueHut", "blueHut.png");
-    this.load.video("sparks", "/sparks.mp4", "loadeddata", false, true);
 
     //improved 2d
 
@@ -242,42 +241,15 @@ class Lobby extends Phaser.Scene {
 
     this.input.keyboard.on("keydown-SPACE", this.handleSpacePress, this);
 
-    this.input.keyboard.on("keydown-ENTER", () => {
-      if (this.isHighlighted) {
-        const videoKey = "sparks";
+    this.input.keyboard.on('keydown-ENTER',()=>{
+        if(this.isHighlighted){
 
-        if (this.cache.video.exists(videoKey)) {
-          console.log("Video loaded successfully. Adding to scene.");
-
-          // Create and configure the video
-          const video = this.add.video(
-            this.cameras.main.centerX,
-            this.cameras.main.centerY,
-            videoKey
-          );
-
-          // Adjust the video size (increase width and height)
-          const videoWidth = this.cameras.main.width * 1.2; // 20% larger
-          const videoHeight = this.cameras.main.height * 1.2;
-
-          video.setOrigin(0.5); // Center origin
-          video.setDisplaySize(videoWidth, videoHeight); // Apply adjusted size
-          video.setDepth(10); // Increase z-index using setDepth
-
-          video.play(); // Play the video
-
-          // Stop and transition after 5 seconds
-          this.time.delayedCall(5000, () => {
-            video.stop();
-            video.destroy();
-            this.scene.start("Story");
+            this.scene.start("Story")
             this.music.stop();
-          });
-        } else {
-          console.error("Video not loaded. Check preload or file path.");
         }
-      }
-    });
+    })
+
+    
   }
 
   typeText(index) {

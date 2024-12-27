@@ -25,7 +25,9 @@ class Story extends Phaser.Scene {
         this.load.image("scene5", "/scene5.webp");
         this.load.image("scene6", "/scene6.webp");
         this.load.image("scene7", "/scene7.webp");
-        this.load.audio("storyBg","/storyBg.mp3")
+        this.load.audio("storyBg","/storyBg.mp3");
+        this.load.video("sparks", "/sparks.mp4", "loadeddata", false, true);
+
         
         // Load audio for each scene
         this.scenes.forEach(scene => {
@@ -46,24 +48,37 @@ class Story extends Phaser.Scene {
             volume: 0.1, // Adjust volume (optional)
         });
         this.music.play();
-        
-        // Create title text
-        this.titleText = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, this.scenes[this.currentSceneIndex].subtitle, {
-            font: '48px Arial',
-            fill: '#ffffff',
-            align: 'center'
-        }).setOrigin(0.5);
+
+
+          // Create and configure the video
+          this.video = this.add.video(
+            this.cameras.main.centerX,
+            this.cameras.main.centerY,
+            'sparks'
+          );
+
+          // Adjust the video size (increase width and height)
+          const videoWidth = this.cameras.main.width * 0.2; // 20% larger
+          const videoHeight = this.cameras.main.height * 0.2;
+
+          //video ka agar lag raha hai wo neeche hai to ye setorigin ko 0.1 se 0.5 krke dekh le bekar lag ri hai isiliye niche kia hai. MOJ KAR
+
+          this.video.setOrigin(0.5,0.1); // Center origin
+          this.video.setDisplaySize(videoWidth, videoHeight); // Apply adjusted size
+          this.video.setDepth(10); // Increase z-index using setDepth
+
+          this.video.play(); // Play the video
 
         // Fade in the title
         this.tweens.add({
-            targets: this.titleText,
+            targets: this.video,
             alpha: { from: 0, to: 1 },
             duration: 2000,
             onComplete: () => {
                 // After fade in, wait for a moment then fade out
                 this.time.delayedCall(2000, () => {
                     this.tweens.add({
-                        targets: this.titleText,
+                        targets: this.video,
                         alpha: { from: 1, to: 0 },
                         duration: 2000,
                     });
@@ -82,8 +97,8 @@ class Story extends Phaser.Scene {
         this.currentSceneIndex++;
         if (this.currentSceneIndex < this.scenes.length) {
             // Remove title text
-            if (this.titleText) {
-                this.titleText.destroy();
+            if (this.video) {
+                this.video.destroy();
             }
             this.cameras.main.setBackgroundColor(0x000000); // Reset background color
             
