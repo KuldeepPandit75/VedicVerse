@@ -3,4 +3,4 @@
 /backend/.env
 /frontend/.env
 /frontend/public/books
-/frontend/public/sparks.mp4
+# /frontend/public/sparks.mp4
