@@ -64,12 +64,34 @@ export default function QuizPage() {
   };
 
   return (
-    <section className="quiz-page relative overflow-hidden">
+    <section className="quiz-page relative overflow-hidden flex">
       <img
         className="w-full h-screen object-cover"
         src="/pagedesign.png"
         alt="Quiz Background"
       />
+
+      {/* Sidebar */}
+      <div className="absolute left-3 top-1/3 transform -translate-y-1/2 bg-opacity-80 bg-[#a8661cb5] text-white p-2 w-40 rounded-xl">
+        <h3 className="text-xl text-center font-bold text-black">Questions</h3>
+        <ul className="mt-4 flex gap-2 flex-wrap">
+          {questions.map((_, index) => (
+            <li key={index} className="mb-2 ">
+              <button
+                onClick={() => setCurrentQuestion(index)}
+                className={`text-center w-11 px-3 py-2 rounded-md ${
+                  currentQuestion === index
+                    ? "bg-amber-800"
+                    : "bg-amber-700 hover:bg-amber-800"
+                }`}
+              >
+                {index + 1}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div
         ref={contentRef}
         className="absolute top-5 left-10 md:left-56 text-white p-6 bg-opacity-70 rounded-lg md:w-[850px] overflow-y-auto"
@@ -79,10 +101,10 @@ export default function QuizPage() {
         </h1>
 
         <div className="mt-6">
-          <h3 className="text-xl md:text-2xl font-semibold text-red-800">
+          <h3 className="text-xl md:text-2xl font-semibold text-red-800/90">
             {`Question ${currentQuestion + 1} of ${questions.length}`}
           </h3>
-          <p className="mt-3 text-lg md:text-xl text-red-800">
+          <p className="mt-3 text-lg md:text-2xl font-semibold text-center text-red-800">
             {questions[currentQuestion].question}
           </p>
           <ul className="mt-4 list-disc pl-6">
@@ -90,9 +112,9 @@ export default function QuizPage() {
               <li key={index} className="mt-2">
                 <button
                   onClick={() => handleAnswer(option)}
-                  className={`w-full text-left p-2 rounded-md border bg-gradient-to-r from-[#beae88] via-[#eed9a7] to-[#d5b68e] text-[#5a3e20] shadow-md shadow-black/20 inset-shadow hover:from-[#f6e9c8] hover:via-[#eed3a1] hover:to-[#d4b185] hover:border-[#c29f77] opacity-60-700 transition ${
+                  className={`w-full text-left p-2 rounded-md border bg-[#ae9b70] hover:bg-[#8b561abb] transition ${
                     userAnswers[currentQuestion] === option
-                      ? "bg-[#d6b086bb] text-white"
+                      ? "bg-amber-800 text-white"
                       : "bg-white text-black"
                   }`}
                 >
@@ -102,18 +124,18 @@ export default function QuizPage() {
             ))}
           </ul>
 
-          <div className="mt-6 flex justify-between">
+          <div className="mt-6 flex justify-around">
             <button
               onClick={previousQuestion}
               disabled={currentQuestion === 0}
-              className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition"
+              className="bg-amber-800 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-[#8b561abb] transition"
             >
               Previous
             </button>
             <button
               onClick={nextQuestion}
               disabled={currentQuestion === questions.length - 1}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+              className="bg-amber-800 text-white px-4 py-2 rounded-lg hover:bg-[#5f4425] transition"
             >
               Next
             </button>
@@ -129,7 +151,7 @@ export default function QuizPage() {
         <div className="text-center mt-8">
           <button
             onClick={scrollToContent}
-            className="bg-blue-500 text-white p-3 rounded-md hover:bg-blue-700 transition"
+            className="bg-amber-800 text-white p-3 rounded-md hover:bg-amber-700 transition"
           >
             Scroll to Read More
           </button>
