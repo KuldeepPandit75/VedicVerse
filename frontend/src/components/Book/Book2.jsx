@@ -166,11 +166,43 @@ const PDFViewer = () => {
               className="page-content bg-[#efe2cf] rounded-lg p-4 flex flex-col items-center justify-center"
             >
               {src ? (
-                <img
-                  src={src}
-                  alt={`Page ${index + 1}`}
-                  className="w-full h-full object-contain"
-                />
+                <>
+                  <div className=" flex items-center justify-center gap-2  z-10  relative">
+                    <img src="/left3.png" className="w-28  h-14 " alt="" />
+                    <img
+                      src="om2.png"
+                      alt="Om"
+                      className="w-14 h-42 transform hover:rotate-180 transition-transform duration-1000"
+                    />
+                    <img
+                      src="/left5.png"
+                      className="w-28 h-14 rotate-180"
+                      alt=""
+                    />
+                  </div>
+                  <img
+                    src={src}
+                    alt={`Page ${index + 1}`}
+                    className="w-full h-full object-contain relative -top-12 z-0"
+                  />
+                  <div className="z-0 absolute top-0 left-0">
+                    <img
+                      className="h-[600px]"
+                      src="/border3.webp"
+                      alt="error"
+                    />
+                  </div>
+                  <div className="footer text-center  relative">
+                    <div className="absolute left-0 right-0 -top-2 transform -translate-y-1/2">
+                      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"></div>
+                    </div>
+                    <div className="relative inline-block -top-20">
+                      <span className="inline-block px-8 py-2 text-lg text-[#8B4513] border-2 border-[#d4af37] rounded-full bg-[#fff9f0] relative z-10">
+                        पृष्ठ {index + 1} / {pageImages.length}
+                      </span>
+                    </div>
+                  </div>
+                </>
               ) : (
                 <p>Loading Page {index + 1}...</p>
               )}
