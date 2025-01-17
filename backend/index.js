@@ -15,12 +15,11 @@ const port = process.env.PORT || 3030;
 
 // app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use(cors());
+app.use(cors({ origin: "https://mercat-ten.vercel.app" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/", router);
-// app.use("/api/quizzes", quizRoutes);
 app.listen(port, () => {
   console.log(`listening on port http://localhost:${port}`);
 });
