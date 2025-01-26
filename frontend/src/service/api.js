@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_NOTIFICATION_MESSAGES, SERVICE_CALLS } from "../constants/config";
 import { getAccessToken, getType } from "../utils/common-utils";
 
-const API_URL= "http://localhost:2020";
+const API_URL= import.meta.env.VITE_BACKEND_URL;
 
 const axiosInstance = axios.create({
     baseURL: API_URL,

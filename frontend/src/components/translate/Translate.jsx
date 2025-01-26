@@ -128,7 +128,7 @@ function Translate() {
     const data = { message: verse }
 
     const getTranslation = () => {
-        axios.post("http://127.0.0.1:5000/predictu", data)
+        axios.post(`${import.meta.env.VITE_BOT_URL}/predictu`, data)
             .then(response => {
                 console.log("Response Data:", response.data);
                 setTranslation(response.data.answer)
