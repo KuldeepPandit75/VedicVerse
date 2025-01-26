@@ -10,6 +10,7 @@ const Navbar = () => {
   const navToHome = () => navigate("/");
   const navToVedas = () => navigate("/bookstype");
   const navToIntro = () => navigate("/intro");
+  const navToQuiz = () => navigate("/quiz");
 
   const handleLogout = () => {
     sessionStorage.clear();
@@ -48,6 +49,12 @@ const Navbar = () => {
           onClick={() => navToVedas()}
         >
           Vedas
+        </li>
+        <li
+          className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
+          onClick={() => navToQuiz()}
+        >
+          Quiz
         </li>
         <li
           className={`md:hidden text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointers`}

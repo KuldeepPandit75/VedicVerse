@@ -49,9 +49,9 @@ function App() {
           <Route
             path="quiz"
             element={
-              <PrivateRoute>
+              <>
                 <QuizPage />
-              </PrivateRoute>
+              </>
             }
           />
           <Route
