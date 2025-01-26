@@ -15,7 +15,13 @@ const port = process.env.PORT || 3030;
 
 // app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://mercat-ten.vercel.app", "http://localhost:5173", "https://vedicverse.onrender.com"], // Add both production and development origins
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
