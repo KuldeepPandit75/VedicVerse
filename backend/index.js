@@ -22,8 +22,7 @@ app.use(
       "https://vedic-verse.vercel.app",
       "https://vedicverse.onrender.com",
     ], // Add both production and development origins
-    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"],
+
     credentials: true,
   })
 );
