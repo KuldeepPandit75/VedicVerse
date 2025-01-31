@@ -22,8 +22,7 @@ app.use(
       "http://localhost:5173",
       "https://vedic-verse.vercel.app",
       "https://vedicverse.onrender.com",
-    ], // Add both production and development origins
-    credentials: true,
+    ] // Add both production and development origins
   })
 );
 app.use(express.urlencoded({ extended: true }));
