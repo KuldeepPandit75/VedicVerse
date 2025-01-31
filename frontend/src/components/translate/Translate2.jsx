@@ -57,9 +57,9 @@ function Translate2() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <Navbar />
-      <div className=" main flex justify-center items-center h-[70vh]  w-screen bg-cover bg-center mt-10">
+      <div className=" main flex justify-center items-center md:h-[80vh] h-[100vh]   w-screen  bg-cover bg-center mt-10">
         <div className="w-[80%] h-[90%] rounded-2xl flex flex-col items-center p-6 overflow-hidden">
           <h2 className="text-[#3e2723ef] text-3xl text-center">
             Translate Sanskrit Verse to {lang}
@@ -106,7 +106,7 @@ function Translate2() {
 
             <div
               onClick={() => readTranslation()}
-              className=" cursor-pointer  absolute top-[720px] right-2 md:top-[530px] md:right-64 hover:bg-[#2e1e18] "
+              className=" cursor-pointer rounded-xl  absolute top-[650px] right-16 md:top-[600px] md:right-64 hover:bg-[#2e1e18] "
             >
               <FcSpeaker className="w-8 h-8  " />
             </div>

@@ -115,10 +115,10 @@ const PDFViewer = () => {
     storedBookmarks[selectedBook.bookName] = pageIndex;
     localStorage.setItem("bookmarks", JSON.stringify(storedBookmarks));
 
-    console.log("Bookmarked Page:", pageIndex);
+    // console.log("Bookmarked Page:", pageIndex);
   };
   const goToBookmarkedPage = () => {
-    console.log("Flipping to bookmarked page:", bookMarked);
+    // console.log("Flipping to bookmarked page:", bookMarked);
     bookRef.current.pageFlip().flip(parseInt(bookMarked, 10));
   };
 

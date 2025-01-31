@@ -64,8 +64,8 @@ const BookContainer = () => {
   const pageFlipSound = useRef(new Audio("/pageTurnSound.mp3"));
 
   const goToBookmarkedPage = () => {
-    console.log("Flipping to bookmarked page:", bookMarked);
-    console.log(bookMarked);
+    // console.log("Flipping to bookmarked page:", bookMarked);
+    // console.log(bookMarked);
 
     bookRef.current.pageFlip().flip(parseInt(bookMarked, 10));
   };
@@ -75,9 +75,9 @@ const BookContainer = () => {
     pageFlipSound.current.play();
     setBookMarked(currentPage);
     localStorage.setItem("bookMarked", currentPage); // Store the current page in localStorage
-    console.log("Current Page:", currentPage); // Log the current page directly
+    // console.log("Current Page:", currentPage); // Log the current page directly
   };
-
+  
   const flipToPrevPage = () => {
     bookRef.current.pageFlip().flipPrev();
   };
@@ -88,14 +88,14 @@ const BookContainer = () => {
 
   return (
     <div className="container min-h-screen min-w-full bg-gradient-to-b from-[#f7e6d0] to-[#e09c4f]">
-      {}
+      {/* three js leaf components */}
       <div className="absolute inset-0 z-10">
         <LeafComponents />
       </div>
 
       <div
         ref={contBoxRef}
-        className="flipbook-container relative z-10 flex  justify-center pr-8 items-center min-h-screen py-5"
+        className="flipbook-container  relative z-10 flex  justify-center pr-8 items-center min-h-screen py-5"
       >
         <HTMLFlipBook
           ref={bookRef}
@@ -213,14 +213,14 @@ const BookContainer = () => {
         </HTMLFlipBook>
       </div>
       <button
-        className=" tongleButton absolute left-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
+        className=" tongleButton absolute left-16 md:top-1/2 top-2/3 md:w-20 w-10 h-10 md:h-20 z-20 transform -translate-y-1/2 text-white text-center bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513] "
         onClick={flipToPrevPage}
       >
         ←
       </button>
 
       <button
-        className=" tongleButton absolute right-16 top-1/2 w-20 h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
+        className=" tongleButton absolute right-16 md:top-1/2 top-2/3 md:w-20 w-10 h-10 md:h-20 z-20 transform -translate-y-1/2 text-white bg-[#9c511cf0] p-3 rounded-full  hover:bg-[#8B4513]"
         onClick={flipToNextPage}
       >
         →

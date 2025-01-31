@@ -26,7 +26,7 @@ const Home = () => {
           className="hover:scale-105 transition-transform duration-700 cursor-pointer"
           onClick={() => navtoBook()}
         >
-          <div className="w-full max-w-sm md:w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="veds 1.png" alt="vedas" className="w-64 h-60 mx-auto" />
           </div>
           <div className="w-full max-w-sm md:w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl font-samarkan text-center">
@@ -45,7 +45,7 @@ const Home = () => {
           className="hover:scale-105 transition-transform duration-700 cursor-pointer"
           onClick={() => navtoTranslate()}
         >
-          <div className="w-full max-w-sm md:w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="vedvyas 1.png" alt="guru" className="w-64 h-60 mx-auto" />
           </div>
           <div className="w-full max-w-sm md:w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl text-center">
@@ -63,7 +63,7 @@ const Home = () => {
           className="hover:scale-105 transition-transform duration-700 cursor-pointer"
           onClick={() => navtoMeta()}
         >
-          <div className="w-full max-w-sm md:w-80 h-64 bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="guru.png" alt="guru" className="w-64 h-60 mx-auto" />
           </div>
           <div className="w-full max-w-sm md:w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl text-center">

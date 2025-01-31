@@ -34,8 +34,10 @@ export default function VedBooks() {
 
   return (
     <div className="min-h-screen backdrop-blur-[10px]">
-      <Navbar />
-      <div className="p-8 backdrop-blur-lg h-screen overflow-y-auto m-3">
+      <div className="fixed top-0 left-0 w-full z-50">
+        <Navbar />
+      </div>
+      <div className="p-8 backdrop-blur-lg h-screen overflow-y-auto z-10 pt-24">
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {coverPhoto.map((book, index) => (
             <li
