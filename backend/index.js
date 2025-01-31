@@ -1,5 +1,6 @@
 import express from "express";
 const app = express();
+// import cors from "cors";
 import cors from "cors";
 import Connection from "./database/db.js";
 // import quizRoutes from "./routes/quizRoutes.js";
