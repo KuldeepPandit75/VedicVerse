@@ -33,17 +33,17 @@ function App() {
           <Route
             path=""
             element={
-              <>
+              <PrivateRoute>
                 <Home />
-              </>
+              </PrivateRoute>
             }
           />
           <Route
             path="book"
             element={
-              <>
+              <PrivateRoute>
                 <BookContainer />
-              </>
+              </PrivateRoute>
             }
           />
           <Route
@@ -57,41 +57,41 @@ function App() {
           <Route
             path="intro"
             element={
-              <>
+              <PrivateRoute>
                 <Intro />
-              </>
+              </PrivateRoute>
             }
           />
           <Route
             path="vedbooks"
             element={
-              <>
+              <PrivateRoute>
                 <VedBooks />
-              </>
+              </PrivateRoute>
             }
           />
           <Route
             path="animated-stories"
             element={
-              <>
+              <PrivateRoute>
                 <Sparks />
-              </>
+              </PrivateRoute>
             }
           />
           <Route
             path="bookstype"
             element={
-              <>
+              <PrivateRoute>
                 <SelectBook />
-              </>
+              </PrivateRoute>
             }
           />
           <Route
             path="uploadBook"
             element={
-              <>
+              <PrivateRoute>
                 <PDFViewer />
-              </>
+              </PrivateRoute>
             }
           />
 
@@ -106,17 +106,17 @@ function App() {
           <Route
             path="translate"
             element={
-              <>
+              <PrivateRoute>
                 <Translate2 />
-              </>
+              </PrivateRoute>
             }
           />
           <Route
             path="translate2"
             element={
-              <>
+              <PrivateRoute>
                 <Translate />
-              </>
+              </PrivateRoute>
             }
           />
           {/* <Route
