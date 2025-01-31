@@ -99,7 +99,6 @@ for (const [key, value] of Object.entries(SERVICE_CALLS)) {
       headers: {
         Authorization: getAccessToken(),
       },
-      withCredentials: true,
       TYPE: getType(value, body),
       onUploadProgress: function (progressEvent) {
         if (showUploadProgress) {
