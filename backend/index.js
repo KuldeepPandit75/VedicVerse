@@ -17,11 +17,7 @@ const port = process.env.PORT || 3030;
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://vedic-verse.vercel.app",
-      "https://vedicverse.onrender.com",
-    ], // Add both production and development origins
+    origin: "*", // Add both production and development origins
 
     credentials: true,
   })
