@@ -1,6 +1,5 @@
 import express from "express";
 const app = express();
-// import cors from "cors";
 import cors from "cors";
 import Connection from "./database/db.js";
 // import quizRoutes from "./routes/quizRoutes.js";
@@ -16,19 +15,12 @@ const port = process.env.PORT || 3030;
 
 // app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://vedic-verse.vercel.app",
-      "https://vedicverse.onrender.com",
-    ] // Add both production and development origins
-  })
-);
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/", router);
+
 app.listen(port, () => {
   console.log(`listening on port http://localhost:${port}`);
 });
