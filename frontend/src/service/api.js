@@ -6,7 +6,6 @@ const API_URL = import.meta.env.VITE_BACKEND_URL;
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
-  withCredentials: true,
   timeout: 10000,
 });
 
@@ -100,7 +99,6 @@ for (const [key, value] of Object.entries(SERVICE_CALLS)) {
       headers: {
         Authorization: getAccessToken(),
       },
-      withCredentials: true,
       TYPE: getType(value, body),
       onUploadProgress: function (progressEvent) {
         if (showUploadProgress) {
