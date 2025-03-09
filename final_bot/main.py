@@ -1,10 +1,13 @@
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS  # Import CORS
 import os
 import google.generativeai as genai
+from dotenv import load_dotenv
 
 # Configure the API key
-genai.configure(api_key="AIzaSyBBNkD1EN-d9ibioxvm1y0cYfenY2xyQ1o")
+load_dotenv()
+api_key = os.getenv("GENAI_API_KEY")
+genai.configure(api_key=api_key)
 
 # Create the model configuration
 generation_config = {
@@ -19,7 +22,7 @@ generation_config = {
 chat_session = None
 
 app = Flask(__name__)
-app.secret_key = "@1212324dsfdsagjhgjhgjhgjhgjhgjgj"  # Necessary if using Flask session
+
 
 CORS(app, resources={"/predictu": {"origins": "http://localhost:5173"}})
 
