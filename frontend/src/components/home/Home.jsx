@@ -21,12 +21,12 @@ const Home = () => {
       <div className="sticky z-10 top-0">
         <Navbar />
       </div>
-      <div className="min-h-screen flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 p-4">
+      <div className="min-h-[88vh] flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20">
         <div
           className="hover:scale-105 transition-transform duration-700 cursor-pointer"
           onClick={() => navtoBook()}
         >
-          <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
+          <div className="w-full max-w-sm md:w-80 h-60 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img src="veds 1.png" alt="vedas" className="w-64 h-60 mx-auto" />
           </div>
           <div className="w-full max-w-sm md:w-80 h-64 bg-gray-700 bg-opacity-70 rounded-b-3xl font-samarkan text-center">

@@ -15,6 +15,17 @@ const Component = styled(Box)`
   margin: 0;
   font-family: Poppins;
   color: #c05746;
+  position:relative;
+
+  // &::before {
+  //   content:"";
+  //   background-color:black;
+  //   height:100vh;
+  //   left:0;
+  //   top:100%;
+  //   z-index:1000;
+    // mix-blend-mode: difference;
+  // }
 `;
 
 const ImageBox = styled(Box)`
@@ -24,6 +35,7 @@ const ImageBox = styled(Box)`
 
 const Image = styled("img")({
   width: 450,
+  // zIndex: -1,
 
   "&.background": {
     position: "absolute",
