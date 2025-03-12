@@ -2,12 +2,17 @@ import React from "react";
 // import Card from "../features/Feature";
 import { useNavigate } from "react-router";
 import Navbar from "../header/Navbar";
+import { setGameLoading } from "../../features/vedicSlice";
 
 const Home = () => {
   const navigate = useNavigate();
 
   const navtoMeta = () => {
-    navigate("/meta");
+    setGameLoading(true)
+    setTimeout(()=>{
+
+      navigate("/meta");
+    },1000)
   };
   const navtoTranslate = () => {
     navigate("/translate");
@@ -17,11 +22,11 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className="overflow-x-hidden relative">
       <div className="sticky z-10 top-0">
         <Navbar />
       </div>
-      <div className="min-h-[88vh] flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 p-10">
         <div
           className="hover:scale-105 transition-transform duration-700 cursor-pointer"
           onClick={() => navtoBook()}
@@ -79,7 +84,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

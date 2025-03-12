@@ -28,6 +28,7 @@ class Lobby extends Phaser.Scene {
     this.load.image("pillarR", "pillarR.png");
     this.load.image("treeTop", "treetop.png");
     this.load.image("blueHut", "blueHut.png");
+    this.load.image('orangeHut','orangeHut.png')
 
     //improved 2d
 
@@ -80,6 +81,9 @@ class Lobby extends Phaser.Scene {
 
     this.blueHut = this.add.sprite(255, 630, "blueHut");
     this.blueHut.depth = 1;
+
+    this.orangeHut=this.add.sprite(249, 380, "orangeHut");
+    this.orangeHut.depth=1;
 
     // Add a sprite and play the animation
     const fire = this.add.sprite(870, 210, "frame1"); // Position and initial frame
@@ -144,7 +148,7 @@ class Lobby extends Phaser.Scene {
     //Music tamjham
     this.music = this.sound.add("nature", {
       loop: true, // Enable looping
-      volume: 0.1, // Adjust volume (optional)
+      volume: 0.02, // Adjust volume (optional)
     });
     this.music.play();
 
@@ -207,7 +211,7 @@ class Lobby extends Phaser.Scene {
     //Dialogue Box
 
     this.dialogMessage =
-      "Hello, welcome to the game! This is a typing animation.";
+      "Welcome, traveler, to the sacred lands of VedicVerse! You stand at the gateway to ancient wisdom, where the knowledge of the Vedas comes to life through challenges and stories.";
 
     // Dialog box and text setup
     const dialogHeight = 150;
@@ -274,7 +278,7 @@ class Lobby extends Phaser.Scene {
   }
 
   update() {
-    const speed = 150; // Adjust speed as needed
+    const speed = 300; // Adjust speed as needed
 
     // Initialize direction vector
     let dirX = 0;
@@ -343,7 +347,7 @@ class Lobby extends Phaser.Scene {
 
     // Highlight if player is near
     if (distance < 150) {
-      this.blueHut.setTint(0xff0000); // Highlight with red tint
+      this.blueHut.setTint(0xffffff55); // Highlight with red tint
       this.isHighlighted = true;
     } else {
       this.blueHut.clearTint(); // Remove highlight

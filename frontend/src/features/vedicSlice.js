@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     user: null,
     accessToken: localStorage.getItem("accessToken") || null,
+    gameLoading: false,
 };
 
 export const vedicSlice = createSlice({
@@ -17,9 +18,12 @@ export const vedicSlice = createSlice({
             state.accessToken = null;
             localStorage.removeItem("accessToken");
         },
+        setGameLoading(state){
+            state.gameLoading=action.payload;
+        }
     },
 });
 
-export const { setUser, logout } = vedicSlice.actions;
+export const { setUser, logout, setGameLoading } = vedicSlice.actions;
 
 export default vedicSlice.reducer;

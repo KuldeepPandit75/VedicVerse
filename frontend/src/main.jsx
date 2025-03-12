@@ -7,7 +7,6 @@ import {
   Route,
   RouterProvider,
 } from "react-router";
-import { Provider } from "react-redux";
 
 import store from "./App/store.js";
 import Layout from "./Layout.jsx";
@@ -28,6 +27,7 @@ import {
   Sparks,
   QuizPage,
 } from "./components/index.js";
+import { Provider } from "react-redux";
 
 
 function App() {
@@ -139,14 +139,15 @@ function App() {
   );
 
   return (
-    <Provider store={store}>
       <RouterProvider router={router} />
-    </Provider>
   );
 }
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <Provider store={store}>
+
     <App />
+    </Provider>
   </StrictMode>
 );
