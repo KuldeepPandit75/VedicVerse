@@ -215,7 +215,7 @@ class Lobby extends Phaser.Scene {
 
     // Dialog box and text setup
     const dialogHeight = 150;
-    const dialogWidth = 600;
+    const dialogWidth = 700;
     this.dialogBox = this.add
       .rectangle(
         this.cameras.main.centerX,
@@ -228,15 +228,16 @@ class Lobby extends Phaser.Scene {
       .setOrigin(0.5);
 
     this.dialogText = this.add.text(
-      50,
-      this.cameras.main.height - dialogHeight + 20,
+      this.cameras.main.centerX,
+      this.cameras.main.height - dialogHeight / 20,
       "",
       {
         font: "24px Arial",
         fill: "#ffffff",
         wordWrap: { width: dialogWidth - 100, useAdvancedWrap: true },
+        align:'center'
       }
-    );
+    ).setOrigin(0.09,0.1);
 
     // Start typing animation
     this.typeText(0);

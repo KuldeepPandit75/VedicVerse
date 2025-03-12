@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import Card from "../features/Feature";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import Navbar from "../header/Navbar";
 import { setGameLoading } from "../../features/vedicSlice";
+import { useDispatch } from "react-redux";
+
 
 const Home = () => {
   const navigate = useNavigate();
-
+  const dispatch=useDispatch();
+  
   const navtoMeta = () => {
-    setGameLoading(true)
+    dispatch(setGameLoading(true));
     setTimeout(()=>{
 
       navigate("/meta");
     },1000)
   };
+
   const navtoTranslate = () => {
     navigate("/translate");
   };
   const navtoBook = () => {
     navigate("/bookstype");
   };
+
+  useEffect(()=>{
+    dispatch(setGameLoading(false))
+  },[])
 
   return (
     <div className="overflow-x-hidden relative">

@@ -3,9 +3,9 @@ import PhaserGame from './PhaserGame'
 
 function Meta() {
   return (
-    <>
+    <div className='overflow-hidden'>
       <PhaserGame/>
-    </>
+    </div>
   )
 }
 

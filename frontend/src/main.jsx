@@ -6,7 +6,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
-} from "react-router";
+} from "react-router-dom";
 
 import store from "./App/store.js";
 import Layout from "./Layout.jsx";
@@ -27,7 +27,8 @@ import {
   Sparks,
   QuizPage,
 } from "./components/index.js";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
+import Cloud from "./components/Cloud.jsx";
 
 
 function App() {
@@ -139,15 +140,15 @@ function App() {
   );
 
   return (
-      <RouterProvider router={router} />
+    <Provider store={store}>
+        <Cloud/>
+        <RouterProvider router={router} />
+    </Provider>
   );
 }
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Provider store={store}>
-
     <App />
-    </Provider>
   </StrictMode>
 );

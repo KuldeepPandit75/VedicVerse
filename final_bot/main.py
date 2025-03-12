@@ -27,7 +27,7 @@ def translate_text(text, target_lang):
     # Generate translation
     with torch.no_grad():
         generated_tokens = model.generate(
-            **encoded, forced_bos_token_id=tokenizer.get_lang_id(target_lang)
+            **encoded, forced_bos_token_id=tokenizer.convert_tokens_to_ids(f'{target_lang}')
         )
 
     # Decode the translated tokens to text
@@ -58,6 +58,8 @@ def predictu():
         return jsonify({"error": "Invalid target language"}), 400
     
     translated_message = translate_text(message, tar_lang_code)
+
+    print(translated_message)
     
     # Return the translated message as the response
     return jsonify({"answer": translated_message})

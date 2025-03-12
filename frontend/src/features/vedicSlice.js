@@ -18,7 +18,7 @@ export const vedicSlice = createSlice({
             state.accessToken = null;
             localStorage.removeItem("accessToken");
         },
-        setGameLoading(state){
+        setGameLoading(state,action){
             state.gameLoading=action.payload;
         }
     },
