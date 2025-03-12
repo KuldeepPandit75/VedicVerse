@@ -42,7 +42,8 @@ class Lobby extends Phaser.Scene {
 
     //tracking variables
     this.isTypingCompleted = false; // To track typing completion
-    this.isHighlighted = false;
+    this.isBHHighlighted = false;
+    this.isOHHighlighted = false;
 
     // Create a tile sprite for the background to allow for a larger map
 
@@ -206,7 +207,7 @@ class Lobby extends Phaser.Scene {
     this.physics.add.collider(this.player, boundary6); // Restrict movement
     this.physics.add.collider(this.player, boundary7); // Restrict movement
     this.physics.add.collider(this.player, boundary8); // Restrict movement
-    this.physics.add.collider(this.player, boundary9); // Restrict movement
+    // this.physics.add.collider(this.player, boundary9); // Blue Hut Restriction
 
     //Dialogue Box
 
@@ -247,14 +248,21 @@ class Lobby extends Phaser.Scene {
     this.input.keyboard.on("keydown-SPACE", this.handleSpacePress, this);
 
     this.input.keyboard.on('keydown-ENTER',()=>{
-        if(this.isHighlighted){
-
+        if(this.isBHHighlighted){
+            const homeBtn=document.getElementsByClassName("homeBtn");
+            homeBtn[0].style.visibility="hidden";
             this.scene.start("Story")
             this.music.stop();
         }
     })
 
-    
+    this.textBg = this.add.rectangle(0, 0, 300,30, 0x000000, 0.5).setOrigin(0.5, 0.5).setVisible(false);
+    this.oHutText=this.add.text(0,0,"Explore Veds Through Games",{fontSize:'16px',fill:'#fff'}).setOrigin(0.5,0.5).setVisible(false);
+    this.bHutText=this.add.text(0,0,"Explore Veds Through Stories",{fontSize:'16px',fill:'#fff'}).setOrigin(0.5,0.5).setVisible(false);
+    this.textBg.depth=1;
+    this.bHutText.depth=1;
+    this.oHutText.depth=1;
+
   }
 
   typeText(index) {
@@ -339,7 +347,7 @@ class Lobby extends Phaser.Scene {
 
     //Hut Hightlight
 
-    const distance = Phaser.Math.Distance.Between(
+    const distBwPnBH = Phaser.Math.Distance.Between(
       this.player.x,
       this.player.y,
       this.blueHut.x,
@@ -347,12 +355,37 @@ class Lobby extends Phaser.Scene {
     );
 
     // Highlight if player is near
-    if (distance < 150) {
+    if (distBwPnBH < 100) {
       this.blueHut.setTint(0xffffff55); // Highlight with red tint
-      this.isHighlighted = true;
+      this.isBHHighlighted = true;
+      this.bHutText.setPosition(this.blueHut.x,this.blueHut.y-50).setVisible(true);
+      this.textBg.setPosition(this.blueHut.x,this.blueHut.y-50).setVisible(true);
     } else {
       this.blueHut.clearTint(); // Remove highlight
-      this.isHighlighted = false;
+      this.isBHHighlighted = false;
+      this.bHutText.setVisible(false);
+      this.textBg.setVisible(false);
+    }
+
+
+    const distBwPnOH = Phaser.Math.Distance.Between(
+      this.player.x,
+      this.player.y,
+      this.orangeHut.x,
+      this.orangeHut.y
+    );
+
+    // Highlight if player is near
+    if (distBwPnOH < 100) {
+      this.orangeHut.setTint(0xffbb4455); // Highlight with red tint
+      this.isOHHighlighted = true;
+      this.oHutText.setPosition(this.orangeHut.x,this.orangeHut.y-50).setVisible(true);
+      this.textBg.setPosition(this.orangeHut.x,this.orangeHut.y-50).setVisible(true);
+    } else {
+      this.orangeHut.clearTint(); // Remove highlight
+      this.isOHHighlighted = false;
+      this.oHutText.setVisible(false);
+      this.textBg.setVisible(false);
     }
   }
 }

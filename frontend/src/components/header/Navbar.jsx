@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center px-6 py-6 relative backdrop-blur-[4px] rounded-b-xl">
+    <nav className="flex justify-between items-center px-6 py-6 relative backdrop-blur-[4px] rounded-b-xl z-[1000]">
       {/* Brand Name */}
       <h1 className="text-[#5a040dfa] text-4xl font-black font-samarkan ">
         Vedic Verse

@@ -9,9 +9,11 @@ import { useDispatch } from "react-redux";
 const Home = () => {
   const navigate = useNavigate();
   const dispatch=useDispatch();
+
   
   const navtoMeta = () => {
     dispatch(setGameLoading(true));
+
     setTimeout(()=>{
 
       navigate("/meta");
