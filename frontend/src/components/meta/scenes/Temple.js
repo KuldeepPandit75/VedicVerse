@@ -7,6 +7,7 @@ class Temple extends Phaser.Scene {
 
     preload() {
         this.load.image('temple', "/temple.jpg");
+        this.load.image('krishnji', '/meta elements/krishna.png')
         this.load.audio('backgroundMusic', "/temple.mp3")
 
         //improved 2d
@@ -29,7 +30,7 @@ class Temple extends Phaser.Scene {
 
         // Add player sprite at the center
 
-        this.player = this.physics.add.sprite(mapWidth / 2, mapHeight-100, 'player');
+        this.player = this.physics.add.sprite(mapWidth / 2, mapHeight - 100, 'player');
         this.player.setOrigin(0.5, 0.5); // Center the player sprite
         this.player.setScale(0.4); // Decrease the size of the player
 
@@ -53,6 +54,20 @@ class Temple extends Phaser.Scene {
         this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
         this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
 
+        //Krishna Ji
+
+        this.krishnji = this.physics.add.sprite(730, 610, 'krishnji');
+        this.krishnji.setOrigin(0.5, 0.5);
+        this.krishnji.setScale(1.3);
+
+        // Boundaries
+
+        const boundary1 = this.add.rectangle(730, 670, 110, 20);
+        // boundary1.setStrokeStyle(2, 0x00ff00);
+        this.physics.add.existing(boundary1, true);
+        this.physics.add.collider(this.player, boundary1); // Restrict movement
+
+
         //improved 2d
 
         // const map = this.make.tilemap({key:"map"});
@@ -64,32 +79,32 @@ class Temple extends Phaser.Scene {
 
     update() {
         const speed = 150; // Adjust speed as needed
-        
+
         // Initialize direction vector
         let dirX = 0;
         let dirY = 0;
-    
+
         // Check input and update direction
         if (this.cursors.left.isDown) {
             dirX = -1;
         } else if (this.cursors.right.isDown) {
             dirX = 1;
         }
-    
+
         if (this.cursors.up.isDown) {
             dirY = -1;
         } else if (this.cursors.down.isDown) {
             dirY = 1;
         }
-    
+
         // Create and normalize the direction vector
         const magnitude = Math.sqrt(dirX * dirX + dirY * dirY);
         const normalizedDirX = magnitude === 0 ? 0 : dirX / magnitude;
         const normalizedDirY = magnitude === 0 ? 0 : dirY / magnitude;
-    
+
         // Apply velocity using the vector
         this.player.setVelocity(normalizedDirX * speed, normalizedDirY * speed);
-    
+
         // Handle animations based on direction
         if (dirX < 0) {
             this.player.anims.play('walkLeft', true);
@@ -103,8 +118,8 @@ class Temple extends Phaser.Scene {
             this.player.anims.stop(); // Stop animation when no movement
         }
 
-        if (this.player.y>=1200) {
-            this.scene.start('Lobby',{x:870,y:280}); // Switch to the next scene
+        if (this.player.y >= 1200) {
+            this.scene.start('Lobby', { x: 870, y: 280 }); // Switch to the next scene
             this.music.stop();
         }
     }
