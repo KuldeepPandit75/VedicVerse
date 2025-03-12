@@ -19,16 +19,6 @@ const UserSchema = new Schema(
       trim: true,
     },
 
-    fullName: {
-      type: String,
-      required: true,
-      trim: true,
-      index: true,
-    },
-    avatar: {
-      type: String,
-      required: true,
-    },
     password: {
       type: String,
       required: [true, "password is required"],
