@@ -1,5 +1,6 @@
 flask
 flask_cors
-google_generativeai
+transformers
+torch
 python-dotenv
 os
