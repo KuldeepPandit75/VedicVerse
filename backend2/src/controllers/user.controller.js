@@ -24,8 +24,8 @@ const generateAccessAndRefreshToken = async (userId) => {
 };
 
 const signup = asyncHandler(async (req, res) => {
-  const { UserName, email, password, about, firstName, surName } = req.body;
-  if ([UserName, email, password].some((field) => field.trim() === "")) {
+  const { username, email, password } = req.body;
+  if ([username, email, password].some((field) => field.trim() === "")) {
     throw new ApiError(400, "All fields are required");
   }
 
@@ -33,14 +33,19 @@ const signup = asyncHandler(async (req, res) => {
     $or: [{ email }],
   });
   if (existUser) {
-    throw new ApiError(400, "email is already exist ");
+    throw new ApiError(410, "email is already exist ");
+  }
+  const existUserWithUsername = await User.findOne({
+    $or: [{ username }],
+  });
+  if (existUserWithUsername) {
+    throw new ApiError(410, "username  is already exist ");
   }
 
   const user = await User.create({
     email,
-    username: UserName,
+    username,
     password,
-    about,
   });
   const createdUser = await User.findById(user._id).select(
     "-password -refreshToken"
@@ -61,7 +66,13 @@ const signup = asyncHandler(async (req, res) => {
     .status(201)
     .cookie("accessToken", accessToken, options)
     .cookie("refreshToken", refreshToken, options)
-    .json(new ApiResponse(201, loggedInUser, "user register successdully"));
+    .json(
+      new ApiResponse(
+        201,
+        { user: loggedInUser, accessToken, refreshToken },
+        "user register successdully"
+      )
+    );
 });
 
 const loginUser = asyncHandler(async (req, res) => {
