@@ -1,17 +1,18 @@
 import Login from "./login/Login.jsx";
 // import Layout from "../Layout.jsx";
 import Meta from "./meta/Meta.jsx";
-import Home from "./home/Home.jsx";
+import Home from "./Home/Home.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import BookContainer from "./Book/BookContainer.jsx";
 import SelectBook from "./Book/selectBook.jsx";
-import Translate from "./translate/Translate.jsx";
-import Translate2 from "./translate/Translate2.jsx";
-import VedBooks from "./vedBooks/VedBooks.jsx";
+import Translate from "./Translate/Translate.jsx";
+import Translate2 from "./Translate/Translate2.jsx";
+import VedBooks from "./VedBooks/VedBooks.jsx";
 import PDFViewer from "./Book/Book2.jsx";
-import Intro from "./features/Intro.jsx";
-import Sparks from "./features/FireSparkles.jsx";
+import Intro from "./Features/Intro.jsx";
+import Sparks from "./Features/FireSparkles.jsx";
 import QuizPage from "./Quiz/quiz.jsx";
+import IntroVedas from "./AboutVedas/introVedas.jsx";
 
 // import Login from "./components/login/Login.jsx";
 // import Meta from "./components/meta/Meta.jsx";
@@ -43,4 +44,5 @@ export {
   Intro,
   Sparks,
   QuizPage,
+  IntroVedas,
 };

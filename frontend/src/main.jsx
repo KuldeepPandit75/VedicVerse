@@ -25,11 +25,11 @@ import {
   // ThreeCanvas,
   Intro,
   Sparks,
+  IntroVedas,
   QuizPage,
 } from "./components/index.js";
 import { Provider, useSelector } from "react-redux";
 import Cloud from "./components/Cloud.jsx";
-
 
 function App() {
   const router = createBrowserRouter(
@@ -83,6 +83,14 @@ function App() {
               <PrivateRoute>
                 <Sparks />
               </PrivateRoute>
+            }
+          />
+          <Route
+            path="Vedasintro"
+            element={
+              <>
+                <IntroVedas />
+              </>
             }
           />
           <Route
@@ -141,8 +149,8 @@ function App() {
 
   return (
     <Provider store={store}>
-        <Cloud/>
-        <RouterProvider router={router} />
+      <Cloud />
+      <RouterProvider router={router} />
     </Provider>
   );
 }
