@@ -22,9 +22,7 @@ function Leaf({ position }) {
     <mesh ref={leafRef} position={position}>
       <planeGeometry args={[0.5, 0.5]} />
       <meshStandardMaterial
-        map={new THREE.TextureLoader().load(
-          "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241100/leaf8_atjofr.png"
-        )}
+        map={new THREE.TextureLoader().load("leaf8.png")} 
         transparent={true}
       />
     </mesh>

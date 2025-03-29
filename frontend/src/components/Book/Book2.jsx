@@ -175,18 +175,14 @@ const PDFViewer = () => {
               {src ? (
                 <>
                   <div className=" flex items-center justify-center gap-2  z-10  relative">
-                    <img
-                      src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241103/left3_benhox.png"
-                      className="w-28  h-14 "
-                      alt=""
-                    />
+                    <img src="/left3.png" className="w-28  h-14 " alt="" />
                     <img
                       src="om2.png"
                       alt="Om"
                       className="w-14 h-42 transform hover:rotate-180 transition-transform duration-1000"
                     />
                     <img
-                      src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241100/left5_gz0hfg.png"
+                      src="/left5.png"
                       className="w-28 h-14 rotate-180"
                       alt=""
                     />
@@ -199,7 +195,7 @@ const PDFViewer = () => {
                   <div className="z-0 absolute top-0 left-0">
                     <img
                       className="h-[600px]"
-                      src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241083/border3_x1yp3c.webp"
+                      src="/border3.webp"
                       alt="error"
                     />
                   </div>

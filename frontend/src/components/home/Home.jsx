@@ -39,7 +39,7 @@ const Home = () => {
       <div className="sticky z-10 top-0">
         <Navbar />
       </div>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 p-10 flex-wrap">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 p-10 flex-wrap h-[85vh]">
         <div
           className="transition-transform duration-700 cursor-pointer hover:scale-105"
           onClick={() => navtoBook()}
@@ -60,30 +60,6 @@ const Home = () => {
               Unlock the wisdom of the ages through our curated library of the
               Vedas. Explore sacred scriptures that have shaped human thought,
               philosophy, and spirituality for millennia.
-            </p>
-          </div>
-        </div>
-
-        <div
-          className="transition-transform duration-700 cursor-pointer hover:scale-105"
-          onClick={() => navtoTranslate()}
-        >
-          <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
-            <img
-              src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241321/vedvyas_1_owi2eo.png"
-              alt="guru"
-              className="w-64 h-60 mx-auto"
-            />
-            {/* <img src="vedvyas 1.png" alt="guru" className="w-64 h-60 mx-auto" /> */}
-          </div>
-          <div className="w-full h-64 max-w-sm text-center bg-gray-700 md:w-80 bg-opacity-70 rounded-b-3xl">
-            <h2 className="text-[#FFB563] text-2xl md:text-3xl font-semibold p-2 font-samarkan">
-              Translate Vedic Texts
-            </h2>
-            <p className="text-sm text-white md:text-base">
-              Bridge the gap between ancient knowledge and the modern world. Use
-              our tools to translate and understand Vedic texts, preserving
-              their meaning and making them accessible to everyone.
             </p>
           </div>
         </div>
@@ -111,30 +87,31 @@ const Home = () => {
           </div>
         </div>
 
-        {/* // Add a new card similar to your existing ones */}
-
         <div
           className="transition-transform duration-700 cursor-pointer hover:scale-105"
-          onClick={() => navtoShop()}
+          onClick={() => navtoTranslate()}
         >
           <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img
-              src="marketplace.png"
-              alt="marketplace"
-              className="w-64 mx-auto h-60"
+              src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241321/vedvyas_1_owi2eo.png"
+              alt="guru"
+              className="w-64 h-60 mx-auto"
             />
+            {/* <img src="vedvyas 1.png" alt="guru" className="w-64 h-60 mx-auto" /> */}
           </div>
           <div className="w-full h-64 max-w-sm text-center bg-gray-700 md:w-80 bg-opacity-70 rounded-b-3xl">
             <h2 className="text-[#FFB563] text-2xl md:text-3xl font-semibold p-2 font-samarkan">
-              Sacred Marketplace
+              Translate Vedic Texts
             </h2>
             <p className="text-sm text-white md:text-base">
-              Explore our collection of authentic Vedic artifacts and ritual
-              items. Browse traditional malas, yantras, and altar pieces or
-              create your own custom sacred items crafted by skilled artisans.
+              Bridge the gap between ancient knowledge and the modern world. Use
+              our tools to translate and understand Vedic texts, preserving
+              their meaning and making them accessible to everyone.
             </p>
           </div>
         </div>
+
+        {/* // Add a new card similar to your existing ones */}
 
 
 {/* <div
