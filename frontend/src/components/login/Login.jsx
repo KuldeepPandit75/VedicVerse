@@ -129,7 +129,7 @@ function Login() {
     const res = await apiCLient.post(SIGNUP_ROUTE, signup);
 
     if (res.status === 201) {
-      console.log("userdata", res.data.data.accessToken);
+      // console.log("userdata", res.data.data.accessToken);
 
       const userData = res.data.data.user;
       setSignup(signupInitialValues);
@@ -160,7 +160,7 @@ function Login() {
     const res = await apiCLient.post(LOGIN_ROUTE, login);
 
     if (res.status === 200) {
-      console.log("userdata", res.data.data.accessToken);
+      // console.log("userdata", res.data.data.accessToken);
 
       const userData = res.data.data.user;
       setLogin(loginInitialValues);
