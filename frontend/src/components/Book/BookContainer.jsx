@@ -266,6 +266,14 @@ const BookContainer = () => {
       >
         →
       </button>
+      <div className="absolute bottom-0 right-10">
+        <p className="text-xl">
+          source:{" "}
+          <a target="_blank" href="https://vedicheritage.gov.in/">
+            https://vedicheritage.gov.in/
+          </a>
+        </p>
+      </div>
       <div className=" z-20 absolute top-0 right-28 cursor-pointer">
         <div onClick={() => goToBookmarkedPage()}>
           <img
