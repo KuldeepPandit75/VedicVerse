@@ -67,7 +67,7 @@ export default function QuizPage() {
     <section className="quiz-page relative overflow-hidden flex">
       <img
         className="w-full h-screen object-cover"
-        src="/pagedesign.png"
+        src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241191/pagedesign_dfgion.png"
         alt="Quiz Background"
       />
 

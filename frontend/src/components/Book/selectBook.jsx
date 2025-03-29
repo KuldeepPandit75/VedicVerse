@@ -26,7 +26,7 @@ export default function SelectBook() {
         <div className="cursor-pointer text-center">
           <img
             className="w-[250px] h-[375px] md:w-[300px] md:h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
-            src="/cover/vedas.jpeg"
+            src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241087/vedas_uf7efi.jpg"
             alt="Vedas"
             onClick={navToBook}
           />
@@ -39,7 +39,7 @@ export default function SelectBook() {
         <div className="cursor-pointer mb-6 md:mb-0 md:px-4">
           <img
             className="w-[250px] h-[375px] md:w-[300px] md:h-[450px] hover:scale-105 transition-transform duration-400 rounded-lg"
-            src="/cover/vedas2.jpeg"
+            src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241087/vedas2_pr64bw.jpg"
             alt="Gita"
             onClick={navToGita}
           />

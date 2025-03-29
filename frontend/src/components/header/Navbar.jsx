@@ -14,7 +14,7 @@ const Navbar = () => {
 
   // Load wallet state from localStorage on component mount
   useEffect(() => {
-    const walletState = localStorage.getItem('vedic_wallet');
+    const walletState = localStorage.getItem("vedic_wallet");
     if (walletState) {
       const { connected, balance, history } = JSON.parse(walletState);
       setWalletConnected(connected);
@@ -46,21 +46,24 @@ const Navbar = () => {
   const connectWallet = () => {
     // Simulate wallet connection
     setWalletConnected(true);
-    
+
     // Set initial balance (300 points as requested)
     const initialBalance = 300;
     setWalletBalance(initialBalance);
-    
+
     // Initialize empty transaction history
     const initialHistory = [];
     setTransactionHistory(initialHistory);
-    
+
     // Save to localStorage
-    localStorage.setItem('vedic_wallet', JSON.stringify({
-      connected: true,
-      balance: initialBalance,
-      history: initialHistory
-    }));
+    localStorage.setItem(
+      "vedic_wallet",
+      JSON.stringify({
+        connected: true,
+        balance: initialBalance,
+        history: initialHistory,
+      })
+    );
   };
 
   const closeWallet = () => {
@@ -110,9 +113,9 @@ const Navbar = () => {
         >
           Quiz
         </li>
-        <li 
-        className={`md:hidden text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer`}
-        onClick={() => handleLogout()}
+        <li
+          className={`md:hidden text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer`}
+          onClick={() => handleLogout()}
         >
           Logout
         </li>
@@ -146,14 +149,18 @@ const Navbar = () => {
             <span className="absolute w-3 h-3 bg-green-500 rounded-full -top-1 -right-1"></span>
           )}
         </button>
-        
+
         {/* User Avatar */}
         <button
           className="w-10 h-10 rounded-full"
           onClick={() => setShowDropdown((prev) => !prev)}
           aria-label="User menu"
         >
-          <img src="Group 1.png" alt="User" className="w-full h-full" />
+          <img
+            src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241093/Group_1_pxdjts.png"
+            alt="User"
+            className="w-full h-full"
+          />
         </button>
 
         {showDropdown && (
@@ -170,20 +177,25 @@ const Navbar = () => {
 
       {/* Wallet Modal (MetaMask style) */}
       {showWallet && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={closeWallet}>
-          <div 
-            className="absolute inset-0 bg-black bg-opacity-50" 
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          onClick={closeWallet}
+        >
+          <div
+            className="absolute inset-0 bg-black bg-opacity-50"
             onClick={closeWallet}
           ></div>
-          
-          <div 
+
+          <div
             className="bg-gradient-to-b from-[#5a040dbd] to-[#3a2a1a] rounded-xl shadow-2xl w-full max-w-md overflow-hidden absolute right-4 top-20 md:right-16 md:top-24"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-[#FFB563] text-2xl font-samarkan">VedicVerse Wallet</h2>
-                <button 
+                <h2 className="text-[#FFB563] text-2xl font-samarkan">
+                  VedicVerse Wallet
+                </h2>
+                <button
                   onClick={closeWallet}
                   className="text-white hover:text-[#FFB563]"
                 >
@@ -193,17 +205,20 @@ const Navbar = () => {
 
               {!walletConnected ? (
                 <div className="py-8 text-center">
-                  <img 
-                    src="/wallet_icon.png" 
-                    alt="Wallet" 
+                  <img
+                    src="/wallet_icon.png"
+                    alt="Wallet"
                     className="w-24 h-24 mx-auto mb-4 opacity-70"
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.src = "https://placehold.co/100x100?text=Wallet";
                     }}
                   />
-                  <p className="mb-6 text-white">Connect your wallet to access VedicVerse marketplace and earn rewards</p>
-                  <button 
+                  <p className="mb-6 text-white">
+                    Connect your wallet to access VedicVerse marketplace and
+                    earn rewards
+                  </p>
+                  <button
                     onClick={connectWallet}
                     className="bg-[#FFB563] hover:bg-[#e59943] text-[#3a2a1a] font-bold py-3 px-6 rounded-lg transition-colors duration-300 w-full"
                   >
@@ -214,41 +229,45 @@ const Navbar = () => {
                 <div>
                   <div className="bg-[#a8661cb5] rounded-lg p-4 mb-6">
                     <div className="text-center">
-                      <div className="mb-1 text-sm text-white">Your Balance</div>
+                      <div className="mb-1 text-sm text-white">
+                        Your Balance
+                      </div>
                       <div className="flex items-center justify-center">
-                        <img 
-                          src="/vedic_coin.png" 
-                          alt="Vedic Coin" 
+                        <img
+                          src="/vedic_coin.png"
+                          alt="Vedic Coin"
                           className="w-8 h-8 mr-2"
                           onError={(e) => {
                             e.target.onerror = null;
                             e.target.src = "https://placehold.co/32x32?text=VC";
                           }}
                         />
-                        <span className="text-[#FFB563] text-3xl font-bold">{walletBalance}</span>
+                        <span className="text-[#FFB563] text-3xl font-bold">
+                          {walletBalance}
+                        </span>
                       </div>
                       <div className="mt-1 text-xs text-white">Vedic Coins</div>
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 gap-3 mb-6">
-                    <button 
+                    <button
                       onClick={navToMetaverse}
                       className="bg-[#FFB563] hover:bg-[#e59943] text-[#3a2a1a] font-bold py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
                     >
                       <FaVrCardboard className="mr-2" />
                       Explore Metaverse
                     </button>
-                    
-                    <button 
+
+                    <button
                       onClick={navToMarketplace}
                       className="bg-[#FFB563] hover:bg-[#e59943] text-[#3a2a1a] font-bold py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
                     >
                       <FaStore className="mr-2" />
                       Explore Marketplace
                     </button>
-                    
-                    <button 
+
+                    <button
                       onClick={viewHistory}
                       className="flex items-center justify-center px-4 py-3 font-bold text-white transition-colors duration-300 bg-gray-700 rounded-lg hover:bg-gray-600"
                     >
@@ -256,20 +275,36 @@ const Navbar = () => {
                       View History
                     </button>
                   </div>
-                  
+
                   {transactionHistory.length > 0 ? (
                     <div>
-                      <h3 className="text-[#FFB563] text-lg font-samarkan mb-2">Recent Transactions</h3>
+                      <h3 className="text-[#FFB563] text-lg font-samarkan mb-2">
+                        Recent Transactions
+                      </h3>
                       <div className="overflow-y-auto max-h-40">
                         {transactionHistory.map((transaction, index) => (
-                          <div key={index} className="bg-[#a8661c80] rounded-lg p-3 mb-2">
+                          <div
+                            key={index}
+                            className="bg-[#a8661c80] rounded-lg p-3 mb-2"
+                          >
                             <div className="flex justify-between">
-                              <span className="text-white">{transaction.description}</span>
-                              <span className={transaction.amount > 0 ? "text-green-400" : "text-red-400"}>
-                                {transaction.amount > 0 ? "+" : ""}{transaction.amount} VC
+                              <span className="text-white">
+                                {transaction.description}
+                              </span>
+                              <span
+                                className={
+                                  transaction.amount > 0
+                                    ? "text-green-400"
+                                    : "text-red-400"
+                                }
+                              >
+                                {transaction.amount > 0 ? "+" : ""}
+                                {transaction.amount} VC
                               </span>
                             </div>
-                            <div className="text-xs text-gray-400">{transaction.date}</div>
+                            <div className="text-xs text-gray-400">
+                              {transaction.date}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -282,7 +317,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            
+
             <div className="bg-[#3a2a1a] p-4 text-center text-white text-sm">
               Explore the metaverse to earn more Vedic Coins!
             </div>

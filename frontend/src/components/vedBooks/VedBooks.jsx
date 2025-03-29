@@ -4,16 +4,46 @@ import { useNavigate } from "react-router";
 
 export default function VedBooks() {
   const coverPhoto = [
-    { name: "samved", path: "/cover/samved.jpeg" },
-    { name: "rigved", path: "/cover/rigved.jpeg" },
-    { name: "yajurved", path: "/cover/yajurved.jpeg" },
-    { name: "arthved", path: "/cover/arthved.jpeg" },
-    { name: "gita", path: "/cover/gita.jpg" },
-    { name: "bhagwat", path: "/cover/bhagwat.jpeg" },
-    { name: "nard", path: "/cover/narad.jpeg" },
-    { name: "shiv", path: "/cover/shiv.jpeg" },
-    { name: "vaman", path: "/cover/vaman.jpeg" },
-    { name: "vishnu", path: "/cover/vishnu.jpeg" },
+    {
+      name: "samved",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241086/samved_rvrezh.jpg",
+    },
+    {
+      name: "rigved",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241086/rigved_o7vkdb.jpg",
+    },
+    {
+      name: "yajurved",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241090/yajurved_lumlob.jpg",
+    },
+    {
+      name: "arthved",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241084/arthved_j1c9qe.jpg",
+    },
+    {
+      name: "gita",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241086/gita_xkwztu.jpg",
+    },
+    {
+      name: "bhagwat",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241084/bhagwat_jjybi7.jpg",
+    },
+    {
+      name: "nard",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241085/narad_pdlkpn.jpg",
+    },
+    {
+      name: "shiv",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241087/shiv_epdpzb.jpg",
+    },
+    {
+      name: "vaman",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241087/vaman_nnzwwl.jpg",
+    },
+    {
+      name: "vishnu",
+      path: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241092/vishnu_ibaain.jpg",
+    },
   ];
 
   const navigate = useNavigate();
@@ -23,7 +53,7 @@ export default function VedBooks() {
     navigate("/uploadBook", { state: { bookName } });
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     // Trigger the spread animation after the component mounts
     const timer = setTimeout(() => {
       setIsSpread(true);

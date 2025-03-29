@@ -5,19 +5,16 @@ import Navbar from "../header/Navbar";
 import { setGameLoading } from "../../features/vedicSlice";
 import { useDispatch } from "react-redux";
 
-
 const Home = () => {
   const navigate = useNavigate();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
-  
   const navtoMeta = () => {
     dispatch(setGameLoading(true));
 
-    setTimeout(()=>{
-
+    setTimeout(() => {
       navigate("/meta");
-    },1000)
+    }, 1000);
   };
 
   const navtoTranslate = () => {
@@ -33,9 +30,9 @@ const Home = () => {
     navigate("/pandit-booking");
   };
 
-  useEffect(()=>{
-    dispatch(setGameLoading(false))
-  },[])
+  useEffect(() => {
+    dispatch(setGameLoading(false));
+  }, []);
 
   return (
     <div className="overflow-x-hidden relative">
@@ -48,7 +45,12 @@ const Home = () => {
           onClick={() => navtoBook()}
         >
           <div className="w-full max-w-sm md:w-80 h-60 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
-            <img src="veds 1.png" alt="vedas" className="w-64 h-60 mx-auto" />
+            <img
+              src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241317/veds_1_vetltj.png"
+              alt="vedas"
+              className="w-64 h-60 mx-auto"
+            />
+            {/* <img src="veds 1.png" alt="vedas" className="w-64 h-60 mx-auto" /> */}
           </div>
           <div className="w-full h-64 max-w-sm text-center bg-gray-700 md:w-80 bg-opacity-70 rounded-b-3xl font-samarkan">
             <h2 className="text-[#FFB563] text-2xl md:text-3xl font-semibold p-2 font-samarkan">
@@ -67,7 +69,12 @@ const Home = () => {
           onClick={() => navtoTranslate()}
         >
           <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
-            <img src="vedvyas 1.png" alt="guru" className="w-64 mx-auto h-60" />
+            <img
+              src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241321/vedvyas_1_owi2eo.png"
+              alt="guru"
+              className="w-64 h-60 mx-auto"
+            />
+            {/* <img src="vedvyas 1.png" alt="guru" className="w-64 h-60 mx-auto" /> */}
           </div>
           <div className="w-full h-64 max-w-sm text-center bg-gray-700 md:w-80 bg-opacity-70 rounded-b-3xl">
             <h2 className="text-[#FFB563] text-2xl md:text-3xl font-semibold p-2 font-samarkan">
@@ -85,7 +92,11 @@ const Home = () => {
           onClick={() => navtoMeta()}
         >
           <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
-            <img src="guru.png" alt="guru" className="w-64 mx-auto h-60" />
+            <img
+              src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241096/guru_lrsr4e.png"
+              alt="guru"
+              className="w-64 h-60 mx-auto"
+            />
           </div>
           <div className="w-full h-64 max-w-sm text-center bg-gray-700 md:w-80 bg-opacity-70 rounded-b-3xl">
             <h2 className="text-[#FFB563] text-2xl md:text-3xl font-semibold p-2 font-samarkan">
@@ -102,6 +113,28 @@ const Home = () => {
 
         {/* // Add a new card similar to your existing ones */}
 
+        <div
+          className="transition-transform duration-700 cursor-pointer hover:scale-105"
+          onClick={() => navtoShop()}
+        >
+          <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
+            <img
+              src="marketplace.png"
+              alt="marketplace"
+              className="w-64 mx-auto h-60"
+            />
+          </div>
+          <div className="w-full h-64 max-w-sm text-center bg-gray-700 md:w-80 bg-opacity-70 rounded-b-3xl">
+            <h2 className="text-[#FFB563] text-2xl md:text-3xl font-semibold p-2 font-samarkan">
+              Sacred Marketplace
+            </h2>
+            <p className="text-sm text-white md:text-base">
+              Explore our collection of authentic Vedic artifacts and ritual
+              items. Browse traditional malas, yantras, and altar pieces or
+              create your own custom sacred items crafted by skilled artisans.
+            </p>
+          </div>
+        </div>
 
 
 {/* <div
