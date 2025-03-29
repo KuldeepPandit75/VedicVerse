@@ -5,19 +5,19 @@ const treeData = {
   children: [
     {
       name: "Rigveda",
-      children: [{ name: "Samhitas" }, { name: "Vedic Sacrifices" }],
+      // children: [{ name: "Samhitas" }, { name: "Vedic Sacrifices" }],
     },
     {
       name: "Yajurveda",
-      children: [{ name: "Child 2.1" }, { name: "Child 2.2" }],
+      // children: [{ name: "Child 2.1" }, { name: "Child 2.2" }],
     },
     {
       name: "Samaveda",
-      children: [{ name: "Child 2.1" }, { name: "Child 2.2" }],
+      // children: [{ name: "Child 2.1" }, { name: "Child 2.2" }],
     },
     {
       name: "Atharvaveda",
-      children: [{ name: "Child 2.1" }, { name: "Child 2.2" }],
+      // children: [{ name: "Child 2.1" }, { name: "Child 2.2" }],
     },
   ],
 };
@@ -31,42 +31,50 @@ const TreeNode = ({ node, level = 0 }) => {
       className="flex flex-col items-center relative mt-6"
     >
       {/* Vertical line connecting parent to children */}
-      {level > 0 && (
+      {/* {level > 0 && (
         <motion.div
           initial={{ height: 0 }}
-          animate={{ height: "24px" }}
+          animate={{ height: "100px" }}
           transition={{ duration: 0.8, delay: level * 0.8 }}
           className="absolute top-[-24px] left-1/2 w-0.5 bg-gray-500"
         ></motion.div>
-      )}
-      <div className="text-[#4d2305] border-2 border-[#d4af37] rounded-full bg-[#bf842c] px-4 py-2 shadow-md relative">
+      )} */}
+      <div className="text-[#4d2305] text-xl border-2 border-[#d4af37] rounded-full bg-[#bf842c] px-8 py-4 shadow-md relative">
         {node.name}
       </div>
       {node.children && (
-        <div className="flex gap-6 mt-4 relative">
+        <div className="flex gap-36 mt-4 relative">
           {node.children.map((child, index) => (
             <div key={index} className="relative flex flex-col items-center">
               {/* Vertical line from parent to child */}
               <motion.div
-                initial={{ height: 0 }}
-                animate={{ height: "24px" }}
+                initial={{ height: -2 }}
+                animate={{ height: "90px" }}
                 transition={{ duration: 0.8, delay: (level + 1) * 0.8 }}
-                className="absolute top-[-24px] left-1/2 w-0.5 bg-[#d4af37]"
+                className="absolute top-[-55px] left-1/2 w-0.5 bg-[#0c0a05]"
               ></motion.div>
               {/* Horizontal connecting lines */}
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "24px" }}
-                transition={{ duration: 0.5, delay: (level + 1) * 0.8 }}
-                className={`absolute top-[-24px] ${
-                  index === 0 ? "right-0" : "left-0"
-                } h-0.5 bg-[#d4af37]`}
-              ></motion.div>
+
               <TreeNode node={child} level={level + 1} />
             </div>
           ))}
         </div>
       )}
+      <motion.div
+        style={{
+          width: "100%",
+          height: "3px", // Line thickness
+          backgroundColor: "black", // Line color
+          position: "absolute", // Use absolute positioning to control its vertical position
+          top: "30px", // Move the line 20px from the top (you can adjust this value)
+          left: "50%",
+          transform: "translateX(-50%)", // Center the line horizontally
+          zIndex: -1,
+        }}
+        initial={{ width: 0 }} // Start with width of 0 (line in the center)
+        animate={{ width: "90%" }} // Animate the width to 90%
+        transition={{ duration: 2 }} // Duration of the animation (2 seconds)
+      />
     </motion.div>
   );
 };
@@ -74,7 +82,7 @@ const TreeNode = ({ node, level = 0 }) => {
 const AnimatedTree = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6">
-      <h1 className="text-2xl font-bold mb-4">Vedic Tree</h1>
+      {/* <h1 className="text-2xl font-bold mb-4">Vedic Tree</h1> */}
       <TreeNode node={treeData} />
     </div>
   );

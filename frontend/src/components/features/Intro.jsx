@@ -1,4 +1,74 @@
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+
+// Vedic Tree data
+const treeData = {
+  name: "Vedas",
+  children: [
+    { name: "Rigveda" },
+    { name: "Yajurveda" },
+    { name: "Samaveda" },
+    { name: "Atharvaveda" },
+  ],
+};
+
+// TreeNode component to display each node
+const TreeNode = ({ node, level = 0 }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: level * 0.8, duration: 0.8 }}
+      className="flex flex-col items-center relative mt-6"
+    >
+      {/* Node Box */}
+      <div className="text-[#4d2305] text-lg z-10 md:text-base border-2 border-[#d4af37] rounded-full bg-[#bf842c] px-6 py-3 md:px-8 md:py-4 shadow-md relative">
+        {node.name}
+      </div>
+
+      {/* Render children nodes */}
+      {node.children && (
+        <div className="flex gap-12 md:gap-20 mt-6 relative">
+          {node.children.map((child, index) => (
+            <div key={index} className="relative flex flex-col items-center">
+              {/* Vertical line from parent to child */}
+              <motion.div
+                initial={{ height: 0 }}
+                animate={{ height: "90px" }}
+                transition={{ duration: 0.8, delay: (level + 1) * 0.8 }}
+                className="absolute top-[-50px] left-1/2 w-0.5 bg-[#0c0a05]"
+              />
+              {/* Recursively render child node */}
+              <TreeNode node={child} level={level + 1} />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Expanding Horizontal Line */}
+      <motion.div
+        style={{
+          width: "100%",
+          height: "3px",
+          backgroundColor: "#000",
+          position: "absolute",
+          top: "30px", // Adjust top margin for better alignment
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 1, // Increased z-index to ensure visibility
+        }}
+        initial={{ width: 0 }}
+        animate={{ width: "90%" }}
+        transition={{ duration: 2 }}
+        className="-z-10"
+      />
+    </motion.div>
+  );
+};
+
+const AnimatedTree = () => {
+  return <TreeNode node={treeData} />;
+};
 
 export default function Intro() {
   const contentRef = useRef(null); // Reference to the content div
@@ -32,17 +102,22 @@ export default function Intro() {
     <section className="intro relative overflow-hidden">
       <img
         className="w-full h-screen object-cover"
-        src="/pagedesign.png"
+        src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241191/pagedesign_dfgion.png"
         alt="VedicVerse Background"
       />
       <div
         ref={contentRef}
-        className="absolute top-5 left-10 md:left-56 text-white p-6 bg-opacity-70 rounded-lg md:w-[850px] overflow-y-auto"
+        className="absolute top-5 left-10 md:left-56 text-white p-6 bg-opacity-70 rounded-lg md:w-[850px] w-full max-w-full overflow-y-auto"
       >
         <h1 className="text-3xl md:text-4xl font-bold text-center text-[#5a040dfa]">
           Introduction to Vedic Knowledge
         </h1>
-        <p className="mt-3 text-2xl md:text-2xl font-bold text-red-800">
+
+        <div className="mt-10 ml-3 w-full flex justify-center">
+          <AnimatedTree />
+        </div>
+
+        <p className="mt-3 text-xl md:text-2xl font-bold text-red-800">
           The Vedas are the oldest and most revered scriptures in Hinduism,
           representing the core of ancient Indian knowledge and spirituality.
           Written in Sanskrit, they form the foundation of Hindu philosophy,
