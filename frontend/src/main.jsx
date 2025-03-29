@@ -24,6 +24,14 @@ import PDFViewer from "./components/Book/Book2.jsx";
 import Intro from "./components/features/Intro.jsx";
 import Sparks from "./components/features/FireSparkles.jsx";
 import QuizPage from "./components/Quiz/quiz.jsx";
+import CustomizeProduct from "./components/shop/CustomizeProduct";
+import ShopHome from "./components/shop/ShopHome";
+import ProductDetail from "./components/shop/ProductDetail";
+import PanditBooking from "./components/pandit/PanditBooking";
+import PanditDetail from "./components/pandit/PanditDetail";
+
+
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -111,6 +119,57 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+           path="/shop/customize"
+          element={
+            <PrivateRoute>
+          <CustomizeProduct />
+          </PrivateRoute>
+          } />
+    
+<Route
+ path="/shop"
+  element={
+    <PrivateRoute>
+  <ShopHome />
+  </PrivateRoute>} 
+  />
+<Route 
+path="/shop/customize"
+ element={
+  <PrivateRoute>
+ <CustomizeProduct />  </PrivateRoute>} 
+ />
+<Route
+ path="/shop/customize/:category/:id"
+  element={
+    <PrivateRoute>
+  <CustomizeProduct /> </PrivateRoute>} 
+  />
+<Route
+ path="/shop/product/:id"
+  element={
+    <PrivateRoute>
+  <ProductDetail /> </PrivateRoute>}
+   />
+
+<Route 
+path="/pandit-booking" 
+element={
+  <PrivateRoute>
+<PanditBooking />
+</PrivateRoute>
+} />
+<Route 
+path="/pandit-booking/:id"
+ element={
+  <PrivateRoute>
+ <PanditDetail />
+ </PrivateRoute>
+ } />
+
+
+
           <Route
             path="translate2"
             element={
