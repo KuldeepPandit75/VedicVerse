@@ -6,6 +6,9 @@ import verse from "./json/verse.json";
 import translations from "./json/translation.json";
 import chapters from "./json/chapters.json";
 import stripeTexture from "/public/stripe.png";
+import { MdZoomIn } from "react-icons/md";
+import { MdZoomOut } from "react-icons/md";
+
 const BookContainer = () => {
   const linkedListArray = [];
   const [bookMarked, setBookMarked] = useState(
@@ -55,6 +58,16 @@ const BookContainer = () => {
       }
     );
   }, []);
+
+  const [zoomLevel, setZoomLevel] = useState(1);
+
+  const zoomIn = () => {
+    setZoomLevel((prevZoom) => Math.min(prevZoom + 0.2, 2)); // Limit max zoom to 2x
+  };
+
+  const zoomOut = () => {
+    setZoomLevel((prevZoom) => Math.max(prevZoom - 0.2, 0.8)); // Limit min zoom to 0.8x
+  };
 
   const CoverPage = () => (
     <div className="cover-page relative w-full h-full bg-gradient-to-br from-[#8B4513] to-[#654321]">
@@ -200,6 +213,20 @@ const BookContainer = () => {
                 <div className="z-0 absolute top-0 left-0">
                   <img className="h-[600px]" src="/border3.webp" alt="error" />
                 </div>
+                <div className="flex gap-4 mt-4 z-50">
+                  <button
+                    onClick={zoomIn}
+                    className="left-44 bottom-10 absolute text-2xl text-black rounded"
+                  >
+                    <MdZoomIn />
+                  </button>
+                  <button
+                    onClick={zoomOut}
+                    className="left-1/2 text-2xl absolute bottom-10 text-black rounded"
+                  >
+                    <MdZoomOut />
+                  </button>
+                </div>
                 <div className=" text-center mt-6 relative">
                   <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2">
                     <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"></div>
@@ -228,6 +255,14 @@ const BookContainer = () => {
       >
         →
       </button>
+      <div className="absolute bottom-0 right-10">
+        <p className="text-xl">
+          source:{" "}
+          <a target="_blank" href="https://vedicheritage.gov.in/">
+            https://vedicheritage.gov.in/
+          </a>
+        </p>
+      </div>
       <div className=" z-20 absolute top-0 right-28 cursor-pointer">
         <div onClick={() => goToBookmarkedPage()}>
           <img

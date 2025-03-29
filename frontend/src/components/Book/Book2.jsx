@@ -3,6 +3,8 @@ import HTMLFlipBook from "react-pageflip";
 import { pdfjs } from "react-pdf";
 import { useLocation } from "react-router-dom";
 import stripeTexture from "/stripe.png";
+import { MdZoomIn } from "react-icons/md";
+import { MdZoomOut } from "react-icons/md";
 
 const pdfFiles = {
   samved: "/books/samved.pdf",
@@ -49,10 +51,21 @@ const PDFViewer = () => {
   const [pageImages, setPageImages] = useState([]);
   const [loadedPages, setLoadedPages] = useState(new Set());
   const [currentPage, setCurrentPage] = useState(1);
+
   const [bookMarked, setBookMarked] = useState(() => {
     const storedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || {};
     return storedBookmarks[selectedBook.bookName] || 0;
   });
+
+  const [zoomLevel, setZoomLevel] = useState(1);
+
+  const zoomIn = () => {
+    setZoomLevel((prevZoom) => Math.min(prevZoom + 0.2, 2)); // Limit max zoom to 2x
+  };
+
+  const zoomOut = () => {
+    setZoomLevel((prevZoom) => Math.max(prevZoom - 0.2, 0.8)); // Limit min zoom to 0.8x
+  };
 
   const bookRef = useRef(null);
   const bufferPages = 4;
@@ -137,12 +150,12 @@ const PDFViewer = () => {
     bookRef.current.pageFlip().flipNext();
   };
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#d4bb9a] to-[#ce9a5e] py-10 px-4">
+    <div className="min-h-screen flex flex-col overflow-hidden items-center justify-center bg-gradient-to-b from-[#d4bb9a] to-[#ce9a5e] py-10 px-4">
       {pageImages.length > 0 ? (
         <HTMLFlipBook
           ref={bookRef}
-          width={400}
-          height={600}
+          width={400 * zoomLevel}
+          height={600 * zoomLevel}
           size="fixed"
           minWidth={300}
           maxWidth={800}
@@ -152,7 +165,11 @@ const PDFViewer = () => {
           showCover={true}
           mobileScrollSupport={true}
           className="demo-book w-full max-w-md md:max-w-lg lg:max-w-2xl"
-          style={{ gap: "20px" }}
+          style={{
+            gap: "20px",
+            transform: `scale(${zoomLevel})`,
+            transformOrigin: "center",
+          }}
           flippingTime={1500}
           drawShadow={true}
           onFlip={(e) => onFlip(e)}
@@ -200,9 +217,7 @@ const PDFViewer = () => {
                     />
                   </div>
                   <div className="footer text-center  relative">
-                    <div className="absolute left-0 right-0 -top-2 transform -translate-y-1/2">
-                      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"></div>
-                    </div>
+                    <div className="absolute left-0 right-0 -top-2 transform -translate-y-1/2"></div>
                     <div className="relative inline-block -top-20">
                       <span className="inline-block px-8 py-2 text-lg text-[#8B4513] border-2 border-[#d4af37] rounded-full bg-[#fff9f0] relative z-10">
                         पृष्ठ {index + 1} / {pageImages.length}
@@ -219,6 +234,20 @@ const PDFViewer = () => {
       ) : (
         <p className="text-lg font-semibold">Loading PDF...</p>
       )}
+      <div className="flex gap-4 mt-4 z-10">
+        <button
+          onClick={zoomIn}
+          className="  px-1 left-[670px] bottom-6 absolute text-2xl text-black rounded"
+        >
+          <MdZoomIn />
+        </button>
+        <button
+          onClick={zoomOut}
+          className="px-1 text-2xl absolute bottom-6 text-black rounded"
+        >
+          <MdZoomOut />
+        </button>
+      </div>
 
       <div className="flex gap-20 -mt-20">
         <button
@@ -234,6 +263,14 @@ const PDFViewer = () => {
         >
           →
         </button>
+      </div>
+      <div className="absolute bottom-0 right-10">
+        <p className="text-xl">
+          source:{" "}
+          <a target="_blank" href="https://vedicheritage.gov.in/">
+            https://vedicheritage.gov.in/
+          </a>
+        </p>
       </div>
 
       <div className=" z-20 absolute top-0 right-16 cursor-pointer ">

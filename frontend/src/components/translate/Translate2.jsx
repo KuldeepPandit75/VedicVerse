@@ -4,6 +4,7 @@ import axios from "axios";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { FcSpeaker } from "react-icons/fc";
 import "./translate.css";
+import { FaMicrophone } from "react-icons/fa";
 
 function Translate2() {
   const [translation, setTranslation] = useState("First enter the Verse");
@@ -82,12 +83,20 @@ function Translate2() {
             ))}
           </select>
 
-          <input
-            className="textarea mt-4"
-            placeholder="Enter the Verse"
-            onChange={(e) => handleChange(e)}
-            value={verse}
-          />
+          <div className="w-[95%] flex justify-center items-center ">
+            <input
+              className="textarea"
+              placeholder="Enter the Verse"
+              onChange={(e) => handleChange(e)}
+              value={verse}
+            />
+            <button
+              onClick={() => console.log("click ")}
+              className="flex items-center justify-center p-4  hover:scale-125 rounded-xl"
+            >
+              <FaMicrophone />
+            </button>
+          </div>
 
           <button
             onClick={() => getTranslation()}
