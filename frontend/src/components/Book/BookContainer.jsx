@@ -160,14 +160,18 @@ const BookContainer = () => {
             >
               <div className="header text-center  mb-6">
                 <div className="ornamental-border flex items-center justify-center gap-2 mb-2">
-                  <img src="/left3.png" className="w-28  h-14 " alt="" />
+                  <img
+                    src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241103/left3_benhox.png"
+                    className="w-28  h-14 "
+                    alt=""
+                  />
                   <img
                     src="om2.png"
                     alt="Om"
                     className="w-14 h-42 transform hover:rotate-180 transition-transform duration-1000"
                   />
                   <img
-                    src="/left5.png"
+                    src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241100/left5_gz0hfg.png"
                     className="w-28 h-14 rotate-180"
                     alt=""
                   />
@@ -195,10 +199,17 @@ const BookContainer = () => {
                 </div>
 
                 <div className=" top-48 left-20 -z-10 absolute opacity-80">
-                  <img src="/water2.png" alt="waterMark" />
+                  <img
+                    src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241629/water2.png"
+                    alt="waterMark"
+                  />
                 </div>
                 <div className="z-0 absolute top-0 left-0">
-                  <img className="h-[600px]" src="/border3.webp" alt="error" />
+                  <img
+                    className="h-[600px]"
+                    src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241083/border3_x1yp3c.webp"
+                    alt="error"
+                  />
                 </div>
                 <div className=" text-center mt-6 relative">
                   <div className="absolute left-0 right-0 top-1/2 transform -translate-y-1/2">

@@ -7,7 +7,7 @@ export default function FireSparkles() {
         muted
         autoPlay
         loop
-        src="/sparks.mp4"
+        src="https://res.cloudinary.com/kuldeepcloudinary/video/upload/v1743241635/sparks_ll6lqv.mp4"
         style={{ width: "100%", height: "auto" }}
       ></video>
       <h1 className=" absolute text-[#c2783c] font-samarkan top-1/3 left-1/3 text-5xl font-black  animate-fade-in">
