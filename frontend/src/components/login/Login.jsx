@@ -6,6 +6,7 @@ import { setUser } from "../../features/vedicSlice.js";
 import { useNavigate, Navigate } from "react-router";
 import { Alert } from "@mui/material";
 import "@fontsource/akaya-kanadaka";
+import { apiCLient, LOGIN_ROUTE, SIGNUP_ROUTE } from "../../service/api2.js";
 
 const Component = styled(Box)`
   overflow: hidden;
@@ -15,6 +16,17 @@ const Component = styled(Box)`
   margin: 0;
   font-family: Poppins;
   color: #c05746;
+  position: relative;
+
+  // &::before {
+  //   content:"";
+  //   background-color:black;
+  //   height:100vh;
+  //   left:0;
+  //   top:100%;
+  //   z-index:1000;
+  // mix-blend-mode: difference;
+  // }
 `;
 
 const ImageBox = styled(Box)`
@@ -24,6 +36,7 @@ const ImageBox = styled(Box)`
 
 const Image = styled("img")({
   width: 450,
+  // zIndex: -1,
 
   "&.background": {
     position: "absolute",
@@ -78,13 +91,13 @@ const Brand = styled(Typography)`
 `;
 
 const signupInitialValues = {
-  name: "",
   username: "",
+  email: "",
   password: "",
 };
 
 const loginInitialValues = {
-  username: "",
+  email: "",
   password: "",
 };
 
@@ -111,15 +124,31 @@ function Login() {
   };
 
   const signUpUser = async () => {
-    let response = await API.userSignup(signup);
+    console.log(signup);
 
-    if (response.isSuccess) {
-      setError("");
+    const res = await apiCLient.post(SIGNUP_ROUTE, signup);
+
+    if (res.status === 201) {
+      console.log("userdata", res.data.data.accessToken);
+
+      const userData = res.data.data.user;
       setSignup(signupInitialValues);
-      togglePage("login");
-    } else {
-      setError("Something went wrong! Please try again.");
+
+      const accessToken = res.data.data.accessToken;
+      sessionStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("accessToken", accessToken);
+
+      dispatch(setUser(userData));
+      navigate("/");
     }
+
+    // if (response.isSuccess) {
+    //   setError("");
+    //   setSignup(signupInitialValues);
+    //   togglePage("login");
+    // } else {
+    //   setError("Something went wrong! Please try again.");
+    // }
   };
 
   const onValueChange = (e) => {
@@ -127,22 +156,41 @@ function Login() {
   };
 
   const loginUser = async () => {
-    let res = await API.userLogin(login);
-    if (res.isSuccess) {
-      setError("");
-      setLogin(loginInitialValues);
+    // let res = await API.userLogin(login);
+    const res = await apiCLient.post(LOGIN_ROUTE, login);
 
-      const accessToken = `Bearer ${res.data.accessToken}`;
+    if (res.status === 200) {
+      console.log("userdata", res.data.data.accessToken);
+
+      const userData = res.data.data.user;
+      setLogin(loginInitialValues);
+      const accessToken = res.data.data.accessToken;
       sessionStorage.setItem("accessToken", accessToken);
       localStorage.setItem("accessToken", accessToken);
 
-      dispatch(setUser(res.data));
-
+      dispatch(setUser(userData));
       navigate("/");
-      console.log("aaa");
-    } else {
-      setError("Unable to login");
-    }
+      // if (userData) {
+      //   disPatch(authLogin(userData));
+      //   navigate("/");
+      // }
+    } else setError("Unable to login");
+
+    // if (res.isSuccess) {
+    //   setError("");
+    //   setLogin(loginInitialValues);
+
+    //   // const accessToken = `Bearer ${res.data.accessToken}`;
+    //   sessionStorage.setItem("accessToken", accessToken);
+    //   localStorage.setItem("accessToken", accessToken);
+
+    //   dispatch(setUser(res.data));
+
+    //   navigate("/");
+    //   console.log("aaa");
+    // } else {
+    //   setError("Unable to login");
+    // }
   };
 
   // Testing whether data is updating on redux or not
@@ -170,9 +218,9 @@ function Login() {
           </Title>
           <Brand>Vedic Verse</Brand>
           <TextField
-            label="Enter Username"
+            label="Enter email"
             onChange={(e) => onValueChange(e)}
-            name="username"
+            name="email"
             required
             sx={{ backgroundColor: "#FFD29D", borderRadius: "10px", zIndex: 2 }}
           />
@@ -212,15 +260,15 @@ function Login() {
           <Title variant="h3">Welcome to Vedic Verse</Title>
           <TextField
             onChange={(e) => onInputChange(e)}
-            name="name"
-            label="Enter Name"
+            name="username"
+            label="Enter User Name"
             required
             sx={{ backgroundColor: "#FFD29D", borderRadius: "10px", zIndex: 2 }}
           />
           <TextField
             onChange={(e) => onInputChange(e)}
-            name="username"
-            label="Enter Username"
+            name="email"
+            label="Enter email"
             required
             sx={{ backgroundColor: "#FFD29D", borderRadius: "10px", zIndex: 2 }}
           />

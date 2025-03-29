@@ -74,7 +74,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center px-6 py-6 relative backdrop-blur-[4px] rounded-b-xl">
+    <nav className="flex justify-between items-center px-6 py-6 relative backdrop-blur-[4px] rounded-b-xl z-[1000]">
       {/* Brand Name */}
       <h1 className="text-[#5a040dfa] text-4xl font-black font-samarkan ">
         Vedic Verse
@@ -82,37 +82,37 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <ul
-        className={`absolute left-0 bg-[#5a040dbd] rounded-2xl text-center w-full p-6  md:absoult md:left-[410px] md:flex md:justify-evenly md:p-1 md:w-[506px] transition-all duration-500 ${
+        className={`left-0 bg-[#5a040dbd] rounded-2xl text-center w-full p-6  md:absoult md:left-[410px] md:flex md:justify-evenly md:p-1 md:w-[506px] mr-20 transition-all duration-500 ${
           showMenu ? "top-[80px]" : "top-[-400px]"
         } md:top-6`}
       >
         <li
-          className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
+          className="text-[#FFB563] text-xl font-medium hover:text-red-400 cursor-pointer"
           onClick={() => navToHome()}
         >
           Home
         </li>
         <li
-          className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
+          className="text-[#FFB563] text-xl font-medium hover:text-red-400 cursor-pointer"
           onClick={() => navToIntro()}
         >
           Introduction
         </li>
         <li
-          className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
+          className="text-[#FFB563] text-xl font-medium hover:text-red-400 cursor-pointer"
           onClick={() => navToVedas()}
         >
           Vedas
         </li>
         <li
-          className="text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer"
+          className="text-[#FFB563] text-xl font-medium hover:text-red-400 cursor-pointer"
           onClick={() => navToQuiz()}
         >
           Quiz
         </li>
-        <li
-          className={`md:hidden text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer`}
-          onClick={() => handleLogout()}
+        <li 
+        className={`md:hidden text-[#FFB563] text-2xl font-medium hover:text-red-400 cursor-pointer`}
+        onClick={() => handleLogout()}
         >
           Logout
         </li>

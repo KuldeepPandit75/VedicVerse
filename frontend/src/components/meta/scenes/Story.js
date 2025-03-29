@@ -199,7 +199,8 @@ class Story extends Phaser.Scene {
       }
     } else {
       this.music.stop();
-      this.scene.start("Lobby"); // Return to Lobby or any other scene when done
+      this.scene.start("Lobby",{x:265,y:680});
+      this.currentSceneIndex= -1;
     }
   }
 

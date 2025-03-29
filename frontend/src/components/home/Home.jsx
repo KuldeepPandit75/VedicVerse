@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import Card from "../features/Feature";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import Navbar from "../header/Navbar";
+import { setGameLoading } from "../../features/vedicSlice";
+import { useDispatch } from "react-redux";
+
 
 const Home = () => {
   const navigate = useNavigate();
+  const dispatch=useDispatch();
 
+  
   const navtoMeta = () => {
-    navigate("/meta");
+    dispatch(setGameLoading(true));
+
+    setTimeout(()=>{
+
+      navigate("/meta");
+    },1000)
   };
+
   const navtoTranslate = () => {
     navigate("/translate");
   };
@@ -22,18 +33,22 @@ const Home = () => {
     navigate("/pandit-booking");
   };
 
+  useEffect(()=>{
+    dispatch(setGameLoading(false))
+  },[])
+
   return (
-    <>
-      <div className="sticky top-0 z-10">
+    <div className="overflow-x-hidden relative">
+      <div className="sticky z-10 top-0">
         <Navbar />
       </div>
-      <div className="flex flex-wrap items-center justify-center min-h-screen gap-10 p-4 md:flex-row md:gap-20">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 p-10">
         <div
           className="transition-transform duration-700 cursor-pointer hover:scale-105"
           onClick={() => navtoBook()}
         >
-          <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
-            <img src="veds 1.png" alt="vedas" className="w-64 mx-auto h-60" />
+          <div className="w-full max-w-sm md:w-80 h-60 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
+            <img src="veds 1.png" alt="vedas" className="w-64 h-60 mx-auto" />
           </div>
           <div className="w-full h-64 max-w-sm text-center bg-gray-700 md:w-80 bg-opacity-70 rounded-b-3xl font-samarkan">
             <h2 className="text-[#FFB563] text-2xl md:text-3xl font-semibold p-2 font-samarkan">
@@ -129,11 +144,7 @@ const Home = () => {
 
 
       </div>
-
-
-
-
-    </>
+    </div>
   );
 };
 

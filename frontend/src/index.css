@@ -6,9 +6,34 @@
   src: url("/SAMAN___.ttf") format("truetype");
 }
 
+@font-face {
+
+  font-family: 'NHaas'; /* Name your font */
+
+  src: url('./NHaasGroteskTXPro-65Md.ttf') format('truetype');
+
+}
+
+@font-face {
+
+  font-family: 'Gilroy'; /* Name your font */
+
+  src: url('./Gilroy-Regular.ttf') format('truetype');
+
+}
+
+@font-face {
+
+  font-family: 'GilroyB'; /* Name your font */
+
+  src: url('./Gilroy-Bold.ttf') format('truetype');
+
+}
+
 * {
   margin: 0;
   padding: 0;
+  /* font-family: "GilroyB"; */
   font-family: "Akaya Kanadaka";
 }
 
@@ -21,5 +46,19 @@ body {
 }
 
 #root {
-  background-color: rgba(255, 255, 255, 0.15);
+  /* background-color: rgba(255, 255, 255, 0.15); */
+}
+
+::-webkit-scrollbar{
+  width:1rem;
+}
+
+::-webkit-scrollbar-track{
+  background:#d59d63;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #962729;
+  border-radius: 100vw;
+  border: solid #d59d63 4px;
 }

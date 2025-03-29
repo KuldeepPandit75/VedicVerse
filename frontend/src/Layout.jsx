@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, Navigate } from "react-router-dom";
-import Navbar from "./components/header/Navbar.jsx";
+import Cloud from "./components/Cloud.jsx";
+import { Provider } from "react-redux";
+import store from "./App/store.js";
+import { useSelector } from "react-redux";
 
-function Layout({ isAuthenticated, isUserAuthenticated }) {
+function Layout() {
+
+
   return (
-    <>
-      <Outlet />
-    </>
+      <>
+        <Outlet />
+      </>
   );
 }
 

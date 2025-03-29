@@ -28,6 +28,7 @@ class Lobby extends Phaser.Scene {
     this.load.image("pillarR", "pillarR.png");
     this.load.image("treeTop", "treetop.png");
     this.load.image("blueHut", "blueHut.png");
+    this.load.image('orangeHut','orangeHut.png')
 
     //improved 2d
 
@@ -41,7 +42,8 @@ class Lobby extends Phaser.Scene {
 
     //tracking variables
     this.isTypingCompleted = false; // To track typing completion
-    this.isHighlighted = false;
+    this.isBHHighlighted = false;
+    this.isOHHighlighted = false;
 
     // Create a tile sprite for the background to allow for a larger map
 
@@ -80,6 +82,9 @@ class Lobby extends Phaser.Scene {
 
     this.blueHut = this.add.sprite(255, 630, "blueHut");
     this.blueHut.depth = 1;
+
+    this.orangeHut=this.add.sprite(249, 380, "orangeHut");
+    this.orangeHut.depth=1;
 
     // Add a sprite and play the animation
     const fire = this.add.sprite(870, 210, "frame1"); // Position and initial frame
@@ -144,7 +149,7 @@ class Lobby extends Phaser.Scene {
     //Music tamjham
     this.music = this.sound.add("nature", {
       loop: true, // Enable looping
-      volume: 0.1, // Adjust volume (optional)
+      volume: 0.02, // Adjust volume (optional)
     });
     this.music.play();
 
@@ -202,16 +207,16 @@ class Lobby extends Phaser.Scene {
     this.physics.add.collider(this.player, boundary6); // Restrict movement
     this.physics.add.collider(this.player, boundary7); // Restrict movement
     this.physics.add.collider(this.player, boundary8); // Restrict movement
-    this.physics.add.collider(this.player, boundary9); // Restrict movement
+    // this.physics.add.collider(this.player, boundary9); // Blue Hut Restriction
 
     //Dialogue Box
 
     this.dialogMessage =
-      "Hello, welcome to the game! This is a typing animation.";
+      "Welcome, traveler, to the sacred lands of VedicVerse! You stand at the gateway to ancient wisdom, where the knowledge of the Vedas comes to life through challenges and stories.";
 
     // Dialog box and text setup
     const dialogHeight = 150;
-    const dialogWidth = 600;
+    const dialogWidth = 700;
     this.dialogBox = this.add
       .rectangle(
         this.cameras.main.centerX,
@@ -224,15 +229,16 @@ class Lobby extends Phaser.Scene {
       .setOrigin(0.5);
 
     this.dialogText = this.add.text(
-      50,
-      this.cameras.main.height - dialogHeight + 20,
+      this.cameras.main.centerX,
+      this.cameras.main.height - dialogHeight / 20,
       "",
       {
         font: "24px Arial",
         fill: "#ffffff",
         wordWrap: { width: dialogWidth - 100, useAdvancedWrap: true },
+        align:'center'
       }
-    );
+    ).setOrigin(0.09,0.1);
 
     // Start typing animation
     this.typeText(0);
@@ -242,14 +248,21 @@ class Lobby extends Phaser.Scene {
     this.input.keyboard.on("keydown-SPACE", this.handleSpacePress, this);
 
     this.input.keyboard.on('keydown-ENTER',()=>{
-        if(this.isHighlighted){
-
+        if(this.isBHHighlighted){
+            const homeBtn=document.getElementsByClassName("homeBtn");
+            homeBtn[0].style.visibility="hidden";
             this.scene.start("Story")
             this.music.stop();
         }
     })
 
-    
+    this.textBg = this.add.rectangle(0, 0, 300,30, 0x000000, 0.5).setOrigin(0.5, 0.5).setVisible(false);
+    this.oHutText=this.add.text(0,0,"Explore Veds Through Games",{fontSize:'16px',fill:'#fff'}).setOrigin(0.5,0.5).setVisible(false);
+    this.bHutText=this.add.text(0,0,"Explore Veds Through Stories",{fontSize:'16px',fill:'#fff'}).setOrigin(0.5,0.5).setVisible(false);
+    this.textBg.depth=1;
+    this.bHutText.depth=1;
+    this.oHutText.depth=1;
+
   }
 
   typeText(index) {
@@ -274,7 +287,7 @@ class Lobby extends Phaser.Scene {
   }
 
   update() {
-    const speed = 150; // Adjust speed as needed
+    const speed = 300; // Adjust speed as needed
 
     // Initialize direction vector
     let dirX = 0;
@@ -334,7 +347,7 @@ class Lobby extends Phaser.Scene {
 
     //Hut Hightlight
 
-    const distance = Phaser.Math.Distance.Between(
+    const distBwPnBH = Phaser.Math.Distance.Between(
       this.player.x,
       this.player.y,
       this.blueHut.x,
@@ -342,12 +355,37 @@ class Lobby extends Phaser.Scene {
     );
 
     // Highlight if player is near
-    if (distance < 150) {
-      this.blueHut.setTint(0xff0000); // Highlight with red tint
-      this.isHighlighted = true;
+    if (distBwPnBH < 100) {
+      this.blueHut.setTint(0xffffff55); // Highlight with red tint
+      this.isBHHighlighted = true;
+      this.bHutText.setPosition(this.blueHut.x,this.blueHut.y-50).setVisible(true);
+      this.textBg.setPosition(this.blueHut.x,this.blueHut.y-50).setVisible(true);
     } else {
       this.blueHut.clearTint(); // Remove highlight
-      this.isHighlighted = false;
+      this.isBHHighlighted = false;
+      this.bHutText.setVisible(false);
+      this.textBg.setVisible(false);
+    }
+
+
+    const distBwPnOH = Phaser.Math.Distance.Between(
+      this.player.x,
+      this.player.y,
+      this.orangeHut.x,
+      this.orangeHut.y
+    );
+
+    // Highlight if player is near
+    if (distBwPnOH < 100) {
+      this.orangeHut.setTint(0xffbb4455); // Highlight with red tint
+      this.isOHHighlighted = true;
+      this.oHutText.setPosition(this.orangeHut.x,this.orangeHut.y-50).setVisible(true);
+      this.textBg.setPosition(this.orangeHut.x,this.orangeHut.y-50).setVisible(true);
+    } else {
+      this.orangeHut.clearTint(); // Remove highlight
+      this.isOHHighlighted = false;
+      this.oHutText.setVisible(false);
+      this.textBg.setVisible(false);
     }
   }
 }
