@@ -18,7 +18,7 @@ CORS(app, resources={"/predictu": {"origins": "http://localhost:5173"}})
 
 # Function to translate text using NLLB-200
 def translate_text(text, target_lang):
-    source_lang = 'sa'  # Sanskrit as source language
+    source_lang = 'san_Deva'  # Sanskrit as source language
     tokenizer.src_lang = source_lang  # Set the source language to Sanskrit
 
     # Encode the text using the tokenizer
@@ -43,17 +43,17 @@ def predictu():
 
     # Language mapping dictionary for the supported languages in NLLB-200
     lang_dic = {
-        "Hindi": "hi", 
-        "English": "en", 
-        "French": "fr", 
-        "Spanish": "es", 
-        "Arabic": "ar", 
-        "Marathi": "mr", 
-        "Bhojpuri": "bho"
+        "Hindi": "hin_Deva", 
+        "English": "eng_Latn", 
+        "French": "fra_Latn", 
+        "Spanish": "spa_Latn", 
+        "Arabic": "arb_Arab", 
+        "Marathi": "mar_Deva", 
+        "Bhojpuri": "bho_Deva"
     }
 
     # Translate the message using NLLB-200
-    tar_lang_code = lang_dic.get(target_language)
+    tar_lang_code = lang_dic[target_language]
     if tar_lang_code is None:
         return jsonify({"error": "Invalid target language"}), 400
     
