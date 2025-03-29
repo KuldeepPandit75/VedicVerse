@@ -1,7 +1,7 @@
 .textarea {
   box-sizing: border-box;
   width: 80%;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   font-family: "Caveat", cursive;
   font-size: 1rem;
   font-weight: 500;
@@ -33,5 +33,5 @@
 }
 
 .main {
-  background-image: url("/pagedesign.png") ;
+  background-image: url("https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241191/pagedesign_dfgion.png");
 }

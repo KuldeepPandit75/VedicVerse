@@ -4,6 +4,8 @@ import axios from "axios";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { FcSpeaker } from "react-icons/fc";
 import "./translate.css";
+import { FaMicrophone } from "react-icons/fa";
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 function Translate2() {
   const [translation, setTranslation] = useState("First enter the Verse");
@@ -11,9 +13,32 @@ function Translate2() {
   const [lang, setLang] = useState("Hindi");
   const { speak, voices } = useSpeechSynthesis();
   const [filteredVoices, setFilteredVoices] = useState([]);
+  const [isListening, setIsListening] = useState(false);
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+  } = useSpeechRecognition();
+
+  useEffect(() => {
+    if (transcript) {
+      setVerse(transcript);
+    }
+  }, [transcript]);
 
   const handleChange = (e) => {
     setVerse(e.target.value);
+  };
+
+  const toggleListening = () => {
+    if (listening) {
+      SpeechRecognition.stopListening();
+      setIsListening(false);
+    } else {
+      resetTranscript();
+      SpeechRecognition.startListening({ continuous: true });
+      setIsListening(true);
+    }
   };
 
   const getTranslation = () => {
@@ -82,12 +107,20 @@ function Translate2() {
             ))}
           </select>
 
-          <input
-            className="textarea mt-4"
-            placeholder="Enter the Verse"
-            onChange={(e) => handleChange(e)}
-            value={verse}
-          />
+          <div className="w-[95%] flex justify-center items-center ">
+            <input
+              className="textarea"
+              placeholder="Enter the Verse"
+              onChange={(e) => handleChange(e)}
+              value={verse}
+            />
+            <button
+              onClick={toggleListening}
+              className={`flex items-center justify-center p-4 hover:scale-125 rounded-xl ${isListening ? 'text-red-500' : ''}`}
+            >
+              <FaMicrophone />
+            </button>
+          </div>
 
           <button
             onClick={() => getTranslation()}
