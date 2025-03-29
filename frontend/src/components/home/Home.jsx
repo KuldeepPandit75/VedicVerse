@@ -42,7 +42,7 @@ const Home = () => {
       <div className="sticky z-10 top-0">
         <Navbar />
       </div>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 p-10">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 p-10 flex-wrap">
         <div
           className="transition-transform duration-700 cursor-pointer hover:scale-105"
           onClick={() => navtoBook()}
@@ -104,7 +104,7 @@ const Home = () => {
 
 
 
-<div
+{/* <div
   className="transition-transform duration-700 cursor-pointer hover:scale-105"
   onClick={() => navtoShop()}
 >
@@ -121,9 +121,9 @@ const Home = () => {
       custom sacred items crafted by skilled artisans.
     </p>
   </div>
-</div>
+</div> */}
 
-<div
+{/* <div
   className="transition-transform duration-700 cursor-pointer hover:scale-105"
   onClick={() => navtoPanditBooking()}
 >
@@ -140,7 +140,7 @@ const Home = () => {
       and daily pujas with knowledgeable practitioners.
     </p>
   </div>
-</div>
+</div> */}
 
 
       </div>
