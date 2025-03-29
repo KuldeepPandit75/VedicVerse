@@ -58,7 +58,10 @@ const BookContainer = () => {
 
   const CoverPage = () => (
     <div className="cover-page relative w-full h-full bg-gradient-to-br from-[#8B4513] to-[#654321]">
-      <img src="/cover/gita.jpg" alt="frontPage   " />
+      <img
+        src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241086/gita_xkwztu.jpg"
+        alt="frontPage   "
+      />
     </div>
   );
   const pageFlipSound = useRef(new Audio("/pageTurnSound.mp3"));
@@ -77,7 +80,7 @@ const BookContainer = () => {
     localStorage.setItem("bookMarked", currentPage); // Store the current page in localStorage
     // console.log("Current Page:", currentPage); // Log the current page directly
   };
-  
+
   const flipToPrevPage = () => {
     bookRef.current.pageFlip().flipPrev();
   };

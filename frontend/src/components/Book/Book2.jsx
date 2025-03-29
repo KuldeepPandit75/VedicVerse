@@ -18,16 +18,23 @@ const pdfFiles = {
 };
 
 const coverPhoto = {
-  samved: "/cover/samved.jpeg",
-  rigved: "/cover/rigved.jpeg",
-  yajurved: "/cover/yajurved.jpeg",
-  arthved: "/cover/arthved.jpeg",
-  gita: "/cover/gita.jpeg",
-  bhagwat: "/cover/bhagwat.jpeg",
-  nard: "/cover/narad.jpeg",
-  shiv: "/cover/shiv.jpeg",
-  vaman: "/cover/vaman.jpeg",
-  vishnu: "/cover/vishnu.jpeg",
+  samved:
+    "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241086/samved_rvrezh.jpg",
+  rigved:
+    "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241086/rigved_o7vkdb.jpg",
+  yajurved:
+    "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241090/yajurved_lumlob.jpg",
+  arthved:
+    "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241084/arthved_j1c9qe.jpg",
+  gita: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241086/gita_xkwztu.jpg",
+  bhagwat:
+    "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241084/bhagwat_jjybi7.jpg",
+  nard: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241085/narad_pdlkpn.jpg",
+  shiv: "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241087/shiv_epdpzb.jpg",
+  vaman:
+    "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241087/vaman_nnzwwl.jpg",
+  vishnu:
+    "https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241092/vishnu_ibaain.jpg",
 };
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
