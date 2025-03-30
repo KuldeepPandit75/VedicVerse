@@ -43,11 +43,10 @@ function Meta() {
     }, 6000)
   }
 const handleSpech =(text)=>{
-  console.log("helloaaaa");
   // console.log("speech sy");
   
-  const value= new SpeechSynthesisUtterance("hello how are you");
-  value.lang='en-US'
+  const value= new SpeechSynthesisUtterance(text);
+  value.lang='hi-IN'
   window.speechSynthesis.speak(value);
 }
   const getResponse = () => {
