@@ -156,7 +156,7 @@ class Lobby extends Phaser.Scene {
     //Music tamjham
     this.music = this.sound.add("nature", {
       loop: true, // Enable looping
-      volume: 0.02, // Adjust volume (optional)
+      volume: 0.08, // Adjust volume (optional)
     });
     this.music.play();
 

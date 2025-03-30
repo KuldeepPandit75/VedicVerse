@@ -40,7 +40,7 @@ class Temple extends Phaser.Scene {
         //Music tamjham
         this.music = this.sound.add('backgroundMusic', {
             loop: true, // Enable looping
-            volume: 0.03, // Adjust volume (optional)
+            volume: 0.08, // Adjust volume (optional)
         });
         this.music.play();
         this.music.setSeek(10)

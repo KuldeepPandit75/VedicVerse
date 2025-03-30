@@ -94,6 +94,13 @@ const handleSpech =(text)=>{
     dispatch(setTalk(false))
   }
 
+  const closeVideo=()=>{
+    const video = document.getElementById("video");
+    video.pause();
+    const videoBox = document.getElementsByClassName("videoBox");
+    videoBox[0].style.display='none'
+  }
+
   // setTimeout(()=>{
   //   const canvas=document.getElementById("game-container");
 
@@ -132,6 +139,7 @@ const handleSpech =(text)=>{
       </div>
 
       <div className="videoBox absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] overflow-hidden hidden h-full w-full">
+        <FaXmark className="absolute text-white text-3xl z-[10000] top-10 right-10" onClick={()=>{closeVideo()}}/>
         <div className="relative flex h-full justify-center items-center bg-[#00000088]">
           <p className="absolute text-center text-white text-2xl">
             Loading Your Today's Blessing....

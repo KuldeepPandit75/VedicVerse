@@ -30,16 +30,17 @@ class Ashram extends Phaser.Scene {
     console.log("Ashram scene created");
 
     // Create a tile sprite for the background
-    const mapWidth = this.cameras.main.width * 1.2;
+    const mapWidth = this.cameras.main.width * 1;
     const mapHeight = this.cameras.main.height * 1.25;
     const background = this.add.tileSprite(0, 0, mapWidth, mapHeight, "ashram");
     background.setOrigin(0, 0);
+    background.setScale(1.6)
 
     // Add player sprite at the center
     let { x, y } = data;
     this.player = this.physics.add.sprite(
-      x || mapWidth / 2,
-      y || mapHeight / 2.1,
+      mapWidth / 1.4,
+      mapHeight / 1.5,
       "player"
     );
     this.player.setOrigin(0.5, 0.5);
@@ -62,8 +63,8 @@ class Ashram extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
 
     // Set world bounds
-    this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
-    this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
+    this.physics.world.setBounds(0, 0, mapWidth*1.6, mapHeight*1.6);
+    this.cameras.main.setBounds(0, 0, mapWidth*1.6, mapHeight*1.6);
   }
 
   update() {
