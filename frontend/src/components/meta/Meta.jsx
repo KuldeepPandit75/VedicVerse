@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setGameLoading, setShower, setTalk } from '../../features/vedicSlice';
 import { FaXmark } from "react-icons/fa6";
 import axios from 'axios';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { FaMicrophone } from "react-icons/fa";
 
 function Meta() {
 
@@ -13,6 +15,8 @@ function Meta() {
   const [response, setResponse] = useState("Radhe Radhe! Traveller");
   const [message, setMessage] = useState("");
   const talkState = useSelector(state => state.talkGuru)
+  const [isListening, setIsListening] = useState(false);
+  const { transcript, listening, resetTranscript } = useSpeechRecognition();
 
   const navToHome = () => {
     dispatch(setGameLoading(true))
@@ -42,14 +46,15 @@ function Meta() {
   }
 const handleSpech =(text)=>{
   console.log("helloaaaa");
+  // console.log("speech sy");
   
-  const value= new SpeechSynthesisUtterance(text);
+  const value= new SpeechSynthesisUtterance("hello how are you");
   value.lang='en-US'
   window.speechSynthesis.speak(value);
 }
   const getResponse = () => {
     const data = { message: `${message}` };
-    console.log(data)
+    setMessage("")
     axios
       .post("http://127.0.0.1:5000/saint_guidance", data)
       .then((response) => {
@@ -69,12 +74,27 @@ const handleSpech =(text)=>{
     }
   }, [talkState])
 
+  useEffect(() => {
+    if (transcript) {
+      setMessage(transcript);
+    }
+  }, [transcript]);
+
+  const toggleListening = () => {
+    if (listening) {
+      SpeechRecognition.stopListening();
+      setIsListening(false);
+    } else {
+      resetTranscript();
+      SpeechRecognition.startListening({ continuous: true });
+      setIsListening(true);
+    }
+  };
 
   const closeChat = () => {
     const chatBox = document.getElementsByClassName('guruTalk')
     chatBox[0].style.display = 'none'
     dispatch(setTalk(false))
-    this.input.keyboard.enabled=true;
   }
 
   // setTimeout(()=>{
@@ -126,6 +146,14 @@ const handleSpech =(text)=>{
             className=' text-2xl mr-10 w-[30vw] rounded-lg px-2 py-1'
             value={message}
             onChange={(e)=>{setMessage(e.target.value)}} />
+          <button
+            onClick={toggleListening}
+            className={`flex items-center justify-center p-4 hover:scale-125 rounded-xl mr-4 ${
+              isListening ? "text-red-500" : "text-white"
+            }`}
+          >
+            <FaMicrophone  className='rounded-[50%] bg-[#FFB563] p-1 h-8 w-8'/>
+          </button>
           <button
             className='bg-[#FFB563] px-8 py-2 rounded-xl'
             onClick={getResponse}
