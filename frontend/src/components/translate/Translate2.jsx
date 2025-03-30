@@ -5,7 +5,9 @@ import { useSpeechSynthesis } from "react-speech-kit";
 import { FcSpeaker } from "react-icons/fc";
 import "./translate.css";
 import { FaMicrophone } from "react-icons/fa";
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 function Translate2() {
   const [translation, setTranslation] = useState("First enter the Verse");
@@ -14,11 +16,7 @@ function Translate2() {
   const { speak, voices } = useSpeechSynthesis();
   const [filteredVoices, setFilteredVoices] = useState([]);
   const [isListening, setIsListening] = useState(false);
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-  } = useSpeechRecognition();
+  const { transcript, listening, resetTranscript } = useSpeechRecognition();
 
   useEffect(() => {
     if (transcript) {
@@ -84,7 +82,7 @@ function Translate2() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <div className=" main flex justify-center items-center md:h-[80vh] h-[100vh]   w-screen  bg-cover bg-center mt-10">
+      <div className=" main flex justify-center items-center md:h-[80vh] h-[100vh]   w-screen   bg-cover bg-center mt-10">
         <div className="w-[80%] h-[90%] rounded-2xl flex flex-col items-center p-6 overflow-hidden">
           <h2 className="text-[#3e2723ef] text-3xl text-center">
             Translate Sanskrit Verse to {lang}
@@ -107,7 +105,7 @@ function Translate2() {
             ))}
           </select>
 
-          <div className="w-[95%] flex justify-center items-center ">
+          <div className="w-[95%] flex justify-center items-center  ">
             <input
               className="textarea"
               placeholder="Enter the Verse"
@@ -116,7 +114,9 @@ function Translate2() {
             />
             <button
               onClick={toggleListening}
-              className={`flex items-center justify-center p-4 hover:scale-125 rounded-xl ${isListening ? 'text-red-500' : ''}`}
+              className={`flex items-center justify-center p-4 hover:scale-125 rounded-xl ${
+                isListening ? "text-red-500" : ""
+              }`}
             >
               <FaMicrophone />
             </button>
