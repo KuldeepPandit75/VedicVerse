@@ -69,9 +69,9 @@ const Home = () => {
         >
           <div className="w-full max-w-sm md:w-80 h-64 backdrop-blur-[2px] bg-[#a8661cb5] rounded-t-2xl shadow-lg p-6 text-center">
             <img
-              src="https://res.cloudinary.com/kuldeepcloudinary/image/upload/v1743241096/guru_lrsr4e.png"
+              src="guru.png"
               alt="guru"
-              className="w-64 h-60 mx-auto"
+              className="w-66 mt-14 mx-auto"
             />
           </div>
           <div className="w-full h-64 max-w-sm text-center bg-gray-700 md:w-80 bg-opacity-70 rounded-b-3xl">
