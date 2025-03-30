@@ -5,6 +5,7 @@ const initialState = {
     accessToken: localStorage.getItem("accessToken") || null,
     gameLoading: false,
     shower: false,
+    talkGuru: false,
 };
 
 export const vedicSlice = createSlice({
@@ -24,10 +25,13 @@ export const vedicSlice = createSlice({
         },
         setShower(state,action){
             state.shower=action.payload;
+        },
+        setTalk(state,action){
+            state.talkGuru=action.payload
         }
     },
 });
 
-export const { setUser, logout, setGameLoading, setShower } = vedicSlice.actions;
+export const { setUser, logout, setGameLoading, setShower, setTalk } = vedicSlice.actions;
 
 export default vedicSlice.reducer;

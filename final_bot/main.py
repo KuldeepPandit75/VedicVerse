@@ -3,6 +3,8 @@ from flask_cors import CORS  # Import CORS
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
+import PyPDF2
+import io
 
 # Configure the API key
 load_dotenv()
@@ -11,36 +13,86 @@ genai.configure(api_key=api_key)
 
 # Create the model configuration
 generation_config = {
-  "temperature": 1,
+  "temperature": 0.7,  # Slightly reduced for more focused responses
   "top_p": 0.95,
   "top_k": 64,
   "max_output_tokens": 8192,
   "response_mime_type": "text/plain",
 }
 
-# Global variable to store the chat session
+# Global variables to store the chat sessions
 chat_session = None
+saint_session = None
 
 app = Flask(__name__)
 
 CORS(app, resources={
     "/predictu": {"origins": "http://localhost:5173"},
-    "/translate": {"origins": "http://localhost:5173"}
+    "/saint_guidance": {"origins": "http://localhost:5173"}
 })
 
-#@app.before_request
-#def start_chat_session():
-chat_session = None
+def extract_text_from_pdf(pdf_file):
+    pdf_reader = PyPDF2.PdfReader(pdf_file)
+    text = ""
+    for page in pdf_reader.pages:
+        text += page.extract_text()
+    return text
+
+# Initialize chat sessions
 if chat_session is None:
     model = genai.GenerativeModel(
         model_name="gemini-1.5-flash",
         generation_config=generation_config,
-
-        #VedicVerse Instruction
-
         system_instruction="user will give you a sanskrit shlok written in sanskrit or english written sanskrit you just need to give its deep and detailed and full translation to the language that is mentioned in the first word and avoid the first word in the translation nothing else no greeting no being smart no improv.",
     )
     chat_session = model.start_chat(history=[])
+
+@app.post("/saint_guidance/upload")
+def upload_knowledge():
+    global saint_session
+    if 'pdf' not in request.files:
+        return jsonify({"error": "No PDF file provided"}), 400
+    
+    pdf_file = request.files['pdf']
+    if pdf_file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+    
+    # Extract text from PDF
+    pdf_text = extract_text_from_pdf(pdf_file)
+    
+    # Initialize saint model with PDF knowledge
+    saint_model = genai.GenerativeModel(
+        model_name="gemini-1.5-flash",
+        generation_config=generation_config,
+        system_instruction=f"""You are a wise and compassionate saint who guides travelers with spiritual wisdom. 
+        Your knowledge comes from the following text: {pdf_text}
+        
+        As a saint, you should:
+        1. Provide guidance based on the knowledge from the provided text
+        2. Be compassionate and understanding in your responses
+        3. Use simple language to explain complex concepts
+        4. Share relevant quotes or teachings when appropriate
+        5. Maintain a calm and peaceful tone
+        6. Focus on practical wisdom that can help travelers in their journey
+        
+        Remember to stay within the scope of the knowledge provided in the text."""
+    )
+    
+    saint_session = saint_model.start_chat(history=[])
+    return jsonify({"message": "Knowledge base initialized successfully"})
+
+@app.post("/saint_guidance")
+def get_saint_guidance():
+    global saint_session
+    if saint_session is None:
+        return jsonify({"error": "Knowledge base not initialized. Please upload a PDF first."}), 400
+    
+    text = request.get_json().get("message")
+    if not text:
+        return jsonify({"error": "No message provided"}), 400
+    
+    response = saint_session.send_message(text)
+    return jsonify({"answer": response.text})
 
 @app.post("/predictu")
 def predictu():
@@ -51,7 +103,6 @@ def predictu():
     message = {"answer": response.text}
     print(message)
     return jsonify(message)
-
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=5000)

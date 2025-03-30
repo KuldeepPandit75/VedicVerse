@@ -1,4 +1,6 @@
 import Phaser from "phaser";
+import store from "../../../App/store";
+import { setTalk } from "../../../features/vedicSlice";
 
 class Lobby extends Phaser.Scene {
   constructor() {
@@ -28,7 +30,8 @@ class Lobby extends Phaser.Scene {
     this.load.image("pillarR", "pillarR.png");
     this.load.image("treeTop", "treetop.png");
     this.load.image("blueHut", "blueHut.png");
-    this.load.image('orangeHut','orangeHut.png')
+    this.load.image('orangeHut','orangeHut.png');
+    this.load.image('guru','teacher2.png')
 
     //improved 2d
 
@@ -44,6 +47,7 @@ class Lobby extends Phaser.Scene {
     this.isTypingCompleted = false; // To track typing completion
     this.isBHHighlighted = false;
     this.isOHHighlighted = false;
+    this.isGuru=false;
 
     // Create a tile sprite for the background to allow for a larger map
 
@@ -117,6 +121,9 @@ class Lobby extends Phaser.Scene {
     );
     this.player.setOrigin(0.5, 0.5); // Center the player sprite
     this.player.setScale(0.35); // Decrease the size of the player
+
+    this.guru = this.physics.add.sprite(1450,500,'guru')
+    this.guru.setScale(0.16);
 
     this.anims.create({
       key: "walkRight",
@@ -198,6 +205,10 @@ class Lobby extends Phaser.Scene {
     // boundary9.setStrokeStyle(2, 0x00ff00);
     this.physics.add.existing(boundary9, true);
 
+    const boundary10 = this.add.rectangle(1400, 570, 30, 140);
+    // boundary10.setStrokeStyle(2, 0x00ff00);
+    this.physics.add.existing(boundary10, true);
+
     // // enable collision
     this.physics.add.collider(this.player, boundary1); // Restrict movement
     this.physics.add.collider(this.player, boundary2); // Restrict movement
@@ -207,7 +218,7 @@ class Lobby extends Phaser.Scene {
     this.physics.add.collider(this.player, boundary6); // Restrict movement
     this.physics.add.collider(this.player, boundary7); // Restrict movement
     this.physics.add.collider(this.player, boundary8); // Restrict movement
-    // this.physics.add.collider(this.player, boundary9); // Blue Hut Restriction
+    this.physics.add.collider(this.player, boundary10); // Blue Hut Restriction
 
     //Dialogue Box
 
@@ -253,6 +264,9 @@ class Lobby extends Phaser.Scene {
             homeBtn[0].style.visibility="hidden";
             this.scene.start("Story")
             this.music.stop();
+        }
+        if(this.isGuru){
+          store.dispatch(setTalk(true))
         }
     })
 
@@ -333,6 +347,12 @@ class Lobby extends Phaser.Scene {
       this.music.stop();
     }
 
+    // Add transition to Ashram when player reaches bottom
+    if (this.player.y >= this.physics.world.bounds.height - 100) {
+      this.scene.start("Ashram", { x: this.player.x, y: 100 });
+      this.music.stop();
+    }
+
     // Dialog positioning logic
     const dialogHeight = 150;
     const dialogWidth = 600;
@@ -387,6 +407,22 @@ class Lobby extends Phaser.Scene {
       this.oHutText.setVisible(false);
       this.textBg.setVisible(false);
     }
+
+    const distBwPnG=Phaser.Math.Distance.Between(
+      this.player.x,
+      this.player.y,
+      this.guru.x,
+      this.guru.y
+    )
+
+    if(distBwPnG<150){
+      this.isGuru=true;
+      this.guru.setTint(0xffbb4455);
+    }else{
+      this.isGuru=false;
+      this.guru.clearTint(); 
+    }
+
   }
 }
 
