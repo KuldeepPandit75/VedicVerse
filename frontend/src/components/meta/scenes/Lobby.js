@@ -267,6 +267,7 @@ class Lobby extends Phaser.Scene {
         }
         if(this.isGuru){
           store.dispatch(setTalk(true))
+          this.input.keyboard.enabled=false;
         }
     })
 
@@ -422,6 +423,10 @@ class Lobby extends Phaser.Scene {
       this.isGuru=false;
       this.guru.clearTint(); 
     }
+
+    if (!store.getState().talkGuru) {
+      this.input.keyboard.enabled=true;
+  } 
 
   }
 }

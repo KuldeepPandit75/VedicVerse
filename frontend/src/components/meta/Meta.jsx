@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux';
 import { setGameLoading, setShower, setTalk } from '../../features/vedicSlice';
 import { FaXmark } from "react-icons/fa6";
+import axios from 'axios';
 
 function Meta() {
 
@@ -39,22 +40,27 @@ function Meta() {
       video.play();
     }, 6000)
   }
-
+const handleSpech =(text)=>{
+  console.log("helloaaaa");
+  
+  const value= new SpeechSynthesisUtterance(text);
+  value.lang='en-US'
+  window.speechSynthesis.speak(value);
+}
   const getResponse = () => {
     const data = { message: `${message}` };
+    console.log(data)
     axios
       .post("http://127.0.0.1:5000/saint_guidance", data)
       .then((response) => {
         setResponse(response.data.answer);
+        handleSpech(response.data.answer)
+        console.log(response.data.answer)
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   }
-
-  useEffect(() => {
-
-  }, [response])
 
   useEffect(() => {
     if (talkState) {
@@ -63,10 +69,12 @@ function Meta() {
     }
   }, [talkState])
 
+
   const closeChat = () => {
     const chatBox = document.getElementsByClassName('guruTalk')
     chatBox[0].style.display = 'none'
     dispatch(setTalk(false))
+    this.input.keyboard.enabled=true;
   }
 
   // setTimeout(()=>{
@@ -107,19 +115,20 @@ function Meta() {
         {/* <div className="relative"> */}
 
         <img src='/teacher2.png' className='h-[700px] relative top-7 float-left' />
-        <input
-          type='text'
-          className='dialogueBox bg-white relative top-[10vh] left-[-10vw] h-[20vh] w-[40vw] rounded-xl'
-          value={response}
-        />
-        {/* </div> */}
+        <div
+          className='dialogueBox bg-white absolute top-[10vh] left-[40vw] px-5 py-2 rounded-xl max-w-[40vw]'
+        >{response}
+        </div>
         <div className="absolute bottom-[10vh] right-[10vw] flex items-center">
 
-          <input type='text' className=' text-2xl mr-10 w-[30vw] rounded-lg px-2 py-1' />
+          <input
+            type='text'
+            className=' text-2xl mr-10 w-[30vw] rounded-lg px-2 py-1'
+            value={message}
+            onChange={(e)=>{setMessage(e.target.value)}} />
           <button
             className='bg-[#FFB563] px-8 py-2 rounded-xl'
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            onClick={getResponse}
           >Ask</button>
         </div>
       </div>
