@@ -35,7 +35,6 @@ import {
 import { Provider, useSelector } from "react-redux";
 import Cloud from "./components/Cloud.jsx";
 
-
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -132,38 +131,46 @@ function App() {
             }
           />
           <Route
-           path="/shop/customize"
-          element={
-            <PrivateRoute>
-          <CustomizeProduct />
-          </PrivateRoute>
-          } />
-    
-<Route
- path="/shop"
-  element={
-    <PrivateRoute>
-  <ShopHome />
-  </PrivateRoute>} 
-  />
-<Route 
-path="/shop/customize"
- element={
-  <PrivateRoute>
- <CustomizeProduct />  </PrivateRoute>} 
- />
-<Route
- path="/shop/customize/:category/:id"
-  element={
-    <PrivateRoute>
-  <CustomizeProduct /> </PrivateRoute>} 
-  />
-<Route
- path="/shop/product/:id"
-  element={
-    <PrivateRoute>
-  <ProductDetail /> </PrivateRoute>}
-   />
+            path="/shop/customize"
+            element={
+              <PrivateRoute>
+                <CustomizeProduct />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/shop"
+            element={
+              <PrivateRoute>
+                <ShopHome />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/shop/customize"
+            element={
+              <PrivateRoute>
+                <CustomizeProduct />{" "}
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/shop/customize/:category/:id"
+            element={
+              <PrivateRoute>
+                <CustomizeProduct />{" "}
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/shop/product/:id"
+            element={
+              <PrivateRoute>
+                <ProductDetail />{" "}
+              </PrivateRoute>
+            }
+          />
 
 <Route 
 path="/pandit-booking" 
