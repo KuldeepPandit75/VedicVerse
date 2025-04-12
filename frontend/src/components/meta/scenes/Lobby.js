@@ -5,6 +5,7 @@ import { setTalk } from "../../../features/vedicSlice";
 class Lobby extends Phaser.Scene {
   constructor() {
     super({ key: "Lobby" });
+    this.dialogBox=false;
   }
 
   preload() {
@@ -223,7 +224,7 @@ class Lobby extends Phaser.Scene {
     //Dialogue Box
 
     this.dialogMessage =
-      "Welcome, traveler, to the sacred lands of VedicVerse! You stand at the gateway to ancient wisdom, where the knowledge of the Vedas comes to life through challenges and stories.";
+      "Welcome, traveler, to the sacred lands of VedicVerse!";
 
     // Dialog box and text setup
     const dialogHeight = 150;
@@ -350,7 +351,8 @@ class Lobby extends Phaser.Scene {
 
     // Add transition to Ashram when player reaches bottom
     if (this.player.y >= this.physics.world.bounds.height - 100) {
-      this.scene.start("Ashram", { x: this.player.x, y: 100 });
+      this.scene.start("Gurukul", { x: this.player.x, y: 100 });
+      document.getElementById('videoCallControls').style.visibility='visible'
       this.music.stop();
     }
 

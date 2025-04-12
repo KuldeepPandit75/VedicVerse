@@ -3,7 +3,7 @@ import {useEffect ,useRef , createElement} from 'react'
 import Lobby from "./scenes/Lobby.js";
 import Temple from "./scenes/Temple.js";
 import Story from "./scenes/Story.js";
-import Ashram from "./scenes/Ashram.js";
+import Gurukul from "./scenes/Gurukul.js";
 
 const PhaserGame = () => {
   const gameContainer = useRef(null);
@@ -22,7 +22,7 @@ const PhaserGame = () => {
                     debug: false,
                 },
             },
-            scene: [Lobby,Temple,Story,Ashram]
+            scene: [Lobby,Temple,Story,Gurukul]
         };
 
     const game = new Phaser.Game(config);

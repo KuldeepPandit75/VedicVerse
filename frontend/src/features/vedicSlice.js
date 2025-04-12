@@ -28,10 +28,13 @@ export const vedicSlice = createSlice({
         },
         setTalk(state,action){
             state.talkGuru=action.payload
-        }
+        },
+        setRecMsgRedux(state, action) {
+            state.recMsg.push(action.payload);
+        },
     },
 });
 
-export const { setUser, logout, setGameLoading, setShower, setTalk } = vedicSlice.actions;
+export const { setUser, logout, setGameLoading, setShower, setTalk, setRecMsgRedux } = vedicSlice.actions;
 
 export default vedicSlice.reducer;
