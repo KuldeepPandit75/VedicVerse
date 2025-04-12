@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../header/Navbar";
 import axios from "axios";
 import { useSpeechSynthesis } from "react-speech-kit";
@@ -42,7 +42,7 @@ function Translate2() {
   const getTranslation = () => {
     const data = { message: `${lang} ${verse}` };
     axios
-      .post("http://127.0.0.1:5000/predictu", data)
+      .post(`${import.meta.env.VITE_BOT_URL}/predictu`, data)
       .then((response) => {
         setTranslation(response.data.answer);
       })
