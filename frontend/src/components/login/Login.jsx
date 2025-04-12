@@ -1,9 +1,8 @@
 import { Box, TextField, Button, styled, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import { API } from "../../service/api.js";
+import {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/vedicSlice.js";
-import { useNavigate, Navigate } from "react-router";
+import { useNavigate} from "react-router";
 import { Alert } from "@mui/material";
 import "@fontsource/akaya-kanadaka";
 import { apiCLient, LOGIN_ROUTE, SIGNUP_ROUTE } from "../../service/api2.js";
