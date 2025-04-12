@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const Host = "http://localhost:3000";
+export const Host = import.meta.env.VITE_BACKEND_URL;
 export const USER_ROUTE = "/api/v1/users";
 
 export const SIGNUP_ROUTE = `${USER_ROUTE}/signup`;
