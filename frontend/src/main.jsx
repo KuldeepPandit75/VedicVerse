@@ -10,25 +10,22 @@ import {
 
 import store from "./App/store.js";
 import Layout from "./Layout.jsx";
-import {
-  Login,
-  Meta,
-  Home,
-  PrivateRoute,
-  BookContainer,
-  SelectBook,
-  Translate,
-  Translate2,
-  VedBooks,
-  PDFViewer,
-  // ThreeCanvas,
-  Intro,
-  Sparks,
-  IntroVedas,
-  QuizPage,
-} from "./components/index.js";
 import { Provider} from "react-redux";
 import Cloud from "./components/Cloud.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import Home from "./components/home/Home.jsx"
+import Login from "./components/login/Login.jsx"
+import BookContainer from './components/Book/BookContainer.jsx'
+import QuizPage from './components/Quiz/quiz.jsx'
+import Intro from './components/features/Intro.jsx'
+import VedBooks from './components/vedBooks/VedBooks.jsx'
+import Sparks from './components/features/FireSparkles.jsx'
+import IntroVedas from './components/AboutVedas/introVedas.jsx'
+import SelectBook from './components/Book/selectBook.jsx'
+import PDFViewer from './components/Book/Book2.jsx'
+import Meta from './components/meta/Meta.jsx'
+import Translate from './components/translate/Translate.jsx'
+import Translate2 from './components/translate/Translate2.jsx'
 
 function App() {
   const router = createBrowserRouter(
