@@ -10,11 +10,6 @@ import {
 
 import store from "./App/store.js";
 import Layout from "./Layout.jsx";
-import CustomizeProduct from "./components/shop/CustomizeProduct";
-import ShopHome from "./components/shop/ShopHome";
-import ProductDetail from "./components/shop/ProductDetail";
-import PanditBooking from "./components/pandit/PanditBooking";
-import PanditDetail from "./components/pandit/PanditDetail";
 import {
   Login,
   Meta,
@@ -32,7 +27,7 @@ import {
   IntroVedas,
   QuizPage,
 } from "./components/index.js";
-import { Provider, useSelector } from "react-redux";
+import { Provider} from "react-redux";
 import Cloud from "./components/Cloud.jsx";
 
 function App() {
@@ -130,64 +125,6 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/shop/customize"
-            element={
-              <PrivateRoute>
-                <CustomizeProduct />
-              </PrivateRoute>
-            }
-          />
-
-          <Route
-            path="/shop"
-            element={
-              <PrivateRoute>
-                <ShopHome />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/shop/customize"
-            element={
-              <PrivateRoute>
-                <CustomizeProduct />{" "}
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/shop/customize/:category/:id"
-            element={
-              <PrivateRoute>
-                <CustomizeProduct />{" "}
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/shop/product/:id"
-            element={
-              <PrivateRoute>
-                <ProductDetail />{" "}
-              </PrivateRoute>
-            }
-          />
-
-<Route 
-path="/pandit-booking" 
-element={
-  <PrivateRoute>
-<PanditBooking />
-</PrivateRoute>
-} />
-<Route 
-path="/pandit-booking/:id"
- element={
-  <PrivateRoute>
- <PanditDetail />
- </PrivateRoute>
- } />
-
-
 
           <Route
             path="translate2"
