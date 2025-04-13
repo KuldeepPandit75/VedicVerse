@@ -2,12 +2,10 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS  # Import CORS
 import os
 import google.generativeai as genai
-from dotenv import load_dotenv
 import PyPDF2
 import io
 
 # Configure the API key
-load_dotenv()
 api_key = "AIzaSyAOu5I-ZsaZMTkaV78xIiOfBAazGY-nWV0"
 genai.configure(api_key=api_key)
 
