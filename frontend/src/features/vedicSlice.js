@@ -6,6 +6,7 @@ const initialState = {
     gameLoading: false,
     shower: false,
     talkGuru: false,
+    learn: false
 };
 
 export const vedicSlice = createSlice({
@@ -29,12 +30,15 @@ export const vedicSlice = createSlice({
         setTalk(state,action){
             state.talkGuru=action.payload
         },
+        setLearn(state,action){
+            state.learn=action.payload
+        },
         setRecMsgRedux(state, action) {
             state.recMsg.push(action.payload);
         },
     },
 });
 
-export const { setUser, logout, setGameLoading, setShower, setTalk, setRecMsgRedux } = vedicSlice.actions;
+export const { setUser, logout, setGameLoading, setShower, setTalk, setRecMsgRedux, setLearn } = vedicSlice.actions;
 
 export default vedicSlice.reducer;

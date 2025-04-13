@@ -23,12 +23,14 @@ generation_config = {
 # Global variables to store the chat sessions
 chat_session = None
 saint_session = None
+vedic_math_session = None
 
 app = Flask(__name__)
 
 CORS(app, resources={
     "/predictu": {"origins": "http://localhost:5173"},
-    "/saint_guidance": {"origins": "http://localhost:5173"}
+    "/saint_guidance": {"origins": "http://localhost:5173"},
+    "/vedic_math": {"origins": "http://localhost:5173"}
 })
 
 def extract_text_from_pdf(pdf_file):
@@ -83,6 +85,43 @@ def upload_knowledge():
     saint_session = saint_model.start_chat(history=[])
     return jsonify({"message": "Knowledge base initialized successfully"})
 
+@app.post("/vedic_math/upload")
+def upload_vedic_math_knowledge():
+    global vedic_math_session
+    print(request.files)
+    if 'pdf' not in request.files:
+        return jsonify({"error": "No PDF file provided"}), 400
+    
+    pdf_file = request.files['pdf']
+    if pdf_file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+    
+    # Extract text from PDF
+    pdf_text = extract_text_from_pdf(pdf_file)
+    
+    # Initialize Vedic mathematics teacher model with PDF knowledge
+    vedic_math_model = genai.GenerativeModel(
+        model_name="gemini-1.5-flash",
+        generation_config=generation_config,
+        system_instruction=f"""You are a wise and knowledgeable Vedic mathematics teacher who teaches ancient mathematical techniques. 
+        Your knowledge comes from the following text: {pdf_text}
+        
+        As a Vedic mathematics teacher, you should:
+        1. Explain Vedic mathematical concepts clearly and concisely
+        2. Provide step-by-step explanations for solving problems using Vedic methods
+        3. Compare Vedic methods with conventional methods to highlight their advantages
+        4. Use examples to illustrate concepts
+        5. Be patient and encouraging when students have questions
+        6. Break down complex concepts into simpler parts
+        7. Always respond in the same language that the user uses
+        8. Maintain a helpful and supportive tone
+        
+        Remember to stay within the scope of Vedic mathematics knowledge provided in the text."""
+    )
+    
+    vedic_math_session = vedic_math_model.start_chat(history=[])
+    return jsonify({"message": "Vedic mathematics knowledge base initialized successfully"})
+
 @app.post("/saint_guidance")
 def get_saint_guidance():
     global saint_session
@@ -94,6 +133,19 @@ def get_saint_guidance():
         return jsonify({"error": "No message provided"}), 400
     
     response = saint_session.send_message(text)
+    return jsonify({"answer": response.text})
+
+@app.post("/vedic_math")
+def get_vedic_math_guidance():
+    global vedic_math_session
+    if vedic_math_session is None:
+        return jsonify({"error": "Vedic mathematics knowledge base not initialized. Please upload a PDF first."}), 400
+    
+    text = request.get_json().get("message")
+    if not text:
+        return jsonify({"error": "No message provided"}), 400
+    
+    response = vedic_math_session.send_message(text)
     return jsonify({"answer": response.text})
 
 @app.post("/predictu")

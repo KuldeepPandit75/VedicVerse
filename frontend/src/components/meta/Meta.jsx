@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import PhaserGame from "./PhaserGame";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { setGameLoading, setShower, setTalk } from "../../features/vedicSlice";
 import { FaXmark } from "react-icons/fa6";
@@ -24,6 +24,7 @@ function Meta() {
   const [response, setResponse] = useState("Radhe Radhe! Traveller");
   const [message, setMessage] = useState("");
   const talkState = useSelector(state => state.talkGuru)
+  const learnState = useSelector(state => state.learn)
   const [isListening, setIsListening] = useState(false);
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const [mic, setMic] = useState(true);
@@ -31,7 +32,6 @@ function Meta() {
   const [box, setBox] = useState(false);
   const [messages, setMessages] = useState([]);
   const [typedMsg, setTypedMsg] = useState("");
-  const location = useLocation();
 
   const recMsgs = useSelector((state) => state.recMsg);
 
@@ -89,6 +89,13 @@ function Meta() {
       chatBox[0].style.display = "block";
     }
   }, [talkState])
+
+  useEffect(() => {
+    if (learnState) {
+      const chatBox = document.getElementsByClassName("learnVed");
+      chatBox[0].style.display = "block";
+    }
+  }, [learnState])
 
   useEffect(() => {
     if (transcript) {
@@ -388,12 +395,22 @@ function Meta() {
         {/* Video Call Interface */}
 
       </div>
-        <video
-          className="video-player absolute h-[15vh] bg-black top-10 left-[50%] -translate-x-[50%] rounded-sm hidden"
-          id="user-2"
-          autoPlay
-          playsInline
-        ></video>
+      <video
+        className="video-player absolute h-[15vh] bg-black top-10 left-[50%] -translate-x-[50%] rounded-sm hidden"
+        id="user-2"
+        autoPlay
+        playsInline
+      ></video>
+
+      {/* learn vedic maths */}
+
+      <div className="learnVed absolute top-0 left-0 backdrop-blur h-[100vh] w-[100vw] hidden">
+
+        <img
+          src="/teacher2.png"
+          className="h-[700px] relative top-7 float-left -left-[10vw]"
+        />
+      </div>
 
     </div>
   );
