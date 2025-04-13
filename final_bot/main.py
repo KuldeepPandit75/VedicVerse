@@ -28,9 +28,9 @@ vedic_math_session = None
 app = Flask(__name__)
 
 CORS(app, resources={
-    "/predictu": {"origins": "http://localhost:5173"},
-    "/saint_guidance": {"origins": "http://localhost:5173"},
-    "/vedic_math": {"origins": "http://localhost:5173"}
+    "/predictu": {"origins": ["http://localhost:5173",'https://vedic-verse.vercel.app/']},
+    "/saint_guidance": {"origins": ["http://localhost:5173",'https://vedic-verse.vercel.app/']},
+    "/vedic_math": {"origins": ["http://localhost:5173",'https://vedic-verse.vercel.app/']}
 })
 
 def extract_text_from_pdf(pdf_file):

@@ -331,7 +331,7 @@ class Gurukul extends Phaser.Scene {
     explanationArea.appendChild(loadingElement);
     
     // Send the question to the backend
-    fetch('http://localhost:5000/vedic_math', {
+    fetch(`${import.meta.env.VITE_BOT_URL}/vedic_math`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

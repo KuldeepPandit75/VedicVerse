@@ -72,7 +72,7 @@ function Meta() {
     const data = { message: `${message}` };
     setMessage("")
     axios
-      .post("http://127.0.0.1:5000/saint_guidance", data)
+      .post(`${import.meta.env.VITE_BOT_URL}/saint_guidance`, data)
       .then((response) => {
         setResponse(response.data.answer);
         handleSpech(response.data.answer);
